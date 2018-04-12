@@ -1,0 +1,27 @@
+<template name="productkind">
+  <view class='kind'>
+    <scroll-view class='kind-left-navbar' scroll-y="true">
+      <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+        <view class="{{ item.selected==true ? 'kind-left-navbar-selected' : '' }}" data-reply-index="{{index}}" bindtap="kindBarItemClick">{{item.name}}
+        </view>
+      </block>
+    </scroll-view>
+
+    <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+      <scroll-view class='kind-right-content {{item.selected==true ? "":"hidden" }}' scroll-y="true" scroll-top="{{scrollTop}}">
+        <view class='kind-lv1-imgbox'>
+          <image class="kind-lv1-imgurl" src="{{item.imgUrl}}"></image>
+        </view>
+         <text class="kind-lv1-name">{{item.name}}分类</text>
+        <view class='kind-lv2-list'>
+          <block wx:for="{{item.child}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+            <view class='kind-lv2-item'>
+              <image class="kind-lv2-imgurl" src="{{item.imgUrl}}"></image>
+              <text class="kind-lv2-name">{{item.name}}</text>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </block>
+  </view>
+</template>

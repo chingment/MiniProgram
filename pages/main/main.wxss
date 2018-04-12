@@ -1,0 +1,285 @@
+.main-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.main-tabbar-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx;
+  margin-left: -4rpx;
+  background: #f7f7fa;
+  font-size: 20rpx;
+  color: #8a8a8a;
+  box-shadow: 6rpx 6rpx 6rpx 6rpx #aaa;
+}
+
+.main-tabbar-item {
+  float: left;
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.main-tabbar-item-icon {
+  width: 54rpx;
+  height: 54rpx;
+}
+
+/*当前字体颜色*/
+
+.main-tabbar-item-text {
+  color: red;
+}
+
+.main-tabbar-item-number {
+  width: 35rpx;
+  height: 35rpx;
+  border: 0 solid #f00;
+  border-radius: 100rpx;
+  background-color: #f10b2e;
+  color: #fff;
+  position: absolute;
+  right: 30rpx;
+}
+
+/**分类栏**/
+
+.kind {
+}
+
+.kind-left-navbar {
+  position: absolute;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  font-size: 15px;
+  border-right: 1rpx #dbdbdb solid;
+}
+
+.kind-left-navbar view {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.kind-left-navbar-selected {
+  background-color: #fff;
+  color: #b91e26;
+  font-size: 17px;
+}
+
+.kind-right-content {
+  position: absolute;
+  right: 0;
+  width: 75%;
+  height: 100%;
+}
+
+.kind-lv1-imgbox {
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+
+.kind-lv1-imgurl {
+  height: 150rpx;
+  width: 90%;
+}
+
+.kind-lv1-name {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-size: 13px;
+  height: 30px;
+}
+
+.kind-lv2-list {
+  position: relative;
+  overflow: hidden;
+}
+
+.kind-lv2-list:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.kind-lv2-list:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.kind-lv2-item {
+  position: relative;
+  float: left;
+  padding: 10px 20px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.kind-lv2-item:before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  color: #d9d9d9;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.kind-lv2-item:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.kind-lv2-imgurl {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+}
+
+.kind-lv2-name {
+  width: 120rpx;
+  height: 15px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+/*购物车*/
+
+.cart-list-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #f8f8f8;
+  padding: 0px 11px 0px 13px;
+}
+
+.cart-list-item-left {
+  width: 50px;
+  height: 100px;
+  display: inline-block;
+  line-height: 100px;
+  text-align: left;
+}
+
+.cart-list-item-left image {
+  width: 26px;
+  height: 26px;
+}
+
+.cart-list-item-middle {
+  flex: 1;
+  height: 100px;
+  overflow:hidden;
+}
+
+.cart-list-item-right {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  line-height: 100px;
+  text-align: center;
+}
+
+.cart-list-item-right image {
+  width: 32px;
+  height: 32px;
+  float: right;
+  position: relative;
+  top: 38%;
+}
+
+.cart-list-item-right .quantity {
+  width: 32px;
+  float: right;
+  font-size: 14px;
+}
+
+.cart-bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 55px;
+  background: #fff;
+  display: -webkit-box;
+  height: 50px;
+  line-height: 50px;
+  border-top: 1px solid #f8f8f8;
+}
+
+.cart-item-bottom {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  height: 34px;
+  line-height: 38px;
+}
+
+.cart-item-bottom wxc-stepper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cart-selInfo-count {
+  margin-left: 12px;
+  -webkit-box-flex: 1;
+  line-height: 50px;
+  height: 50px;
+}
+
+.cart-selInfo-sumprice {
+  line-height: 50px;
+  -webkit-box-flex: 1;
+  height: 50px;
+}
+
+.cart-selInfo-btnsettle {
+  -webkit-box-flex: 1;
+  position: relative;
+  font-size: 18px;
+  width: 127px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #e64340;
+  color: #fff;
+}

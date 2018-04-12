@@ -1,0 +1,9 @@
+<template name="personal">
+  <view>
+    <view>personal</view>
+        <view style="background: red; width: 100px; height: 100px" ></view>
+    <view style="background: green; width: 100px; height: 100px"></view>
+    <view style="background: blue; width: 100px; height: 100px"></view>
+    <view style="background: yellow; width: 100px; height: 100px"></view>
+  </view>
+</template>
