@@ -1,0 +1,30 @@
+.show{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.tabbar{
+height: 40px;
+line-height:40px;
+width: 1900px;
+transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); 
+transition-duration: 0ms;
+}
+
+.tabbar-item{
+  height: 40px;
+  line-height:40px; 
+  width: 100px;
+  float: left;
+	display: block;
+	overflow: hidden;
+	background: #fff;
+	text-align: center;
+}
+
+.tabbar .selected {  
+	border-bottom:5px solid #2d80ff;
+}

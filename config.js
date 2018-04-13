@@ -16,7 +16,8 @@ var config = {
     // 获取分类
     home: `${host}/Account/Home`,
     globalDataSet: `${host}/Global/DataSet`,
-    cartOperate: `${host}/Cart/Operate`
+    cartOperate: `${host}/Cart/Operate`,
+    productGetList: `${host}/Product/GetList`
   }
 
 };

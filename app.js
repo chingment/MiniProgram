@@ -40,5 +40,9 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+
+  getProductKind:function() {
+    console.log("app.getProductKind")
   }
 })

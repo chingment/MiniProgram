@@ -8,7 +8,7 @@ const index = require('../../pages/index/index.js');
 const productkind = require('../../pages/productkind/productkind.js');
 const personal = require('../../pages/personal/personal.js');
 
-const app = getApp()
+var app = getApp()
 
 Page({
   data: {
@@ -142,6 +142,8 @@ Page({
               productKind: res.data.productKind,
               cart: res.data.cart
             })
+
+            app.productKind = res.data.productKind;
 
             _self.mainTabBarItemSetNumber(2, res.data.cart.count)
 

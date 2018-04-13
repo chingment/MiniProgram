@@ -1,1 +1,21 @@
-<view>产品列表</view>
+<scroll-view scroll-x="true" style="height:51px;" scroll-left="{{100*tabsSliderIndex}}">
+  <view style="width:{{tabs.length*100}}px;" class="tabbar">
+    <block wx:for-items="{{tabs}}" wx:for-item="item" wx:key="{{index}}">
+      <view id="{{index}}" class="tabbar-item {{item.selected==true?'selected':''}}" data-reply-index="{{index}}" bindtap="tabBarClick">
+        <view>{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+
+<block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+  <scroll-view scroll-y="true" class="{{item.selected==true?'show':'hide'}}" data-reply-index="{{index}}" style=" height:100vh " bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+    <view class="lll" wx:for="{{item.list}}" wx:for-item="item" wx:key="item">
+      <image style="width: 50px;height: 200px;margin: 20rpx;" src="{{item.mainImg}}"></image>
+      <view class="eee">
+        <view style="margin:5px;font-size:8px"> 标题:{{item.name}}</view>
+        <view style="margin:5px;color:red;font-size:6px"> 来源:{{item.price}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</block>

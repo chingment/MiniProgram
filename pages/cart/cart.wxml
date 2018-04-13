@@ -12,12 +12,12 @@
             <view class="cart-list-item-middle">
 
               <view class="cart-list-item-mainimgbox">
-                <image class='mainimg' src="{{item.image}}" width="30" height="30" />
+                <image class='mainimg' src="{{item.skuMainImg}}"  />
               </view>
               <view class="cart-list-item-infobox">
-                <text class='skuname'>{{item.skuName}}</text>
+                <text class='skuname font-black'>{{item.skuName}}</text>
+                <text class='sumprice font-gray'>{{item.sumPrice}}</text>
               </view>
-
             </view>
             <view class="cart-list-item-right">
               <image bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-index="{{index}}" src='../../images/increase.png'></image>
@@ -31,13 +31,13 @@
 
       <view class="cart-bottom">
         <view class="cart-selInfo-count">
-          <text>已选({{countBySelected}})</text>
+          <text class='font-gray' >已选({{countBySelected}})</text>
         </view>
         <view class="cart-selInfo-sumprice">
-          <wxc-price value="249" decimal="2">{{sumPriceBySelected}}</wxc-price>
+          <text class="font-main" value="249" decimal="2">{{sumPriceBySelected}}</text>
         </view>
         <navigator url="/pages/confirm/confirm">
-          <view class="cart-selInfo-btnsettle">
+          <view class="bg-main cart-selInfo-btnsettle">
             <text>下单</text>
           </view>
         </navigator>
