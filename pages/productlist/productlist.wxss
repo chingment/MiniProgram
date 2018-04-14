@@ -1,30 +1,131 @@
-.show{
+.show {
   display: block;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
-.tabbar{
-height: 40px;
-line-height:40px;
-width: 1900px;
-transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); 
-transition-duration: 0ms;
+.scroll-tabbar {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  height: 41px;
+  background: #fff;
+  overflow: hidden;
+  border-bottom: 1rpx #dbdbdb solid;
 }
 
-.tabbar-item{
+.tabbar {
   height: 40px;
-  line-height:40px; 
+  line-height: 40px;
+  width: 1900px;
+  transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+  transition-duration: 0ms;
+}
+
+.tabbar-content {
+  margin-top: 51px;
+}
+
+.tabbar-item {
+  height: 40px;
+  line-height: 40px;
   width: 100px;
   float: left;
-	display: block;
-	overflow: hidden;
-	background: #fff;
-	text-align: center;
+  display: block;
+  overflow: hidden;
+  background: #fff;
+  text-align: center;
+  font-size: 15px;
 }
 
-.tabbar .selected {  
-	border-bottom:5px solid #2d80ff;
+.tabbar .selected {
+  border-bottom: 1px solid #f18d00;
+}
+
+.prd-list-1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.prd-list-1:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.prd-list-1:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.prd-list-1 .item {
+  position: relative;
+  float: left;
+  padding: 10px 20px;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.prd-list-1 .item:before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  color: #d9d9d9;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.prd-list-1 .item:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.prd-list-1 .item-imgbox {
+  text-align: center;
+}
+
+.prd-list-1 .item-imgurl {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.prd-list-1 .item-name {
+  width: 120rpx;
+  height: 15px;
+  font-size: 12px;
+  line-height: 14px;
 }

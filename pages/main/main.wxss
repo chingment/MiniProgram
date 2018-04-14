@@ -99,6 +99,7 @@
   right: 0;
   width: 75%;
   height: 100%;
+  padding-top:12rpx 
 }
 
 .kind-lv1-imgbox {
