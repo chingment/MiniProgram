@@ -142,10 +142,11 @@ Page({
 
             var productKind = res.data.productKind
             var cart = res.data.cart
-
+            var personal = res.data.personal
             _self.setData({
               productKind: productKind,
-              cart: cart
+              cart: cart,
+              personal: personal
             })
 
             app.productKind = productKind;

@@ -1,14 +1,69 @@
-.font-gray{
+.font-gray {
   color: #9d9d9d;
 }
-.font-black{
-  color:  #303030;
+
+.font-black {
+  color: #303030;
 }
 
-.font-main{
-  color:  #f18d00;
+.font-main {
+  color: #f18d00;
 }
 
-.bg-main{
-  background:  #f18d00;
+.bg-main {
+  background: #f18d00;
+}
+
+.col-nav {
+
+}
+
+.col-nav-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #f8f8f8;
+  padding: 5px 10px 5px 10px;
+}
+
+.col-nav-item:last-child{
+    border-bottom: 0px;
+}
+
+.col-nav-item .item-left {
+  width: 50rpx;
+  height: 70rpx;
+  line-height: 78rpx;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.col-nav-item .item-left image {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.col-nav-item .item-middle {
+  flex: 1;
+  height: 70rpx;
+  line-height: 64rpx;
+  overflow: hidden;
+}
+
+.col-nav-item .item-middle .title{
+
+  font-size: 16px;
+}
+
+.col-nav-item .item-right {
+  width: 12px;
+  height: 70rpx;
+  line-height: 54rpx;
+  display: inline-block;
+  overflow: hidden;
+  text-align: right;
+}
+
+.col-nav-item .item-right image {
+  width: 12rpx;
+  height: 16rpx;
 }

@@ -1,0 +1,96 @@
+.personal {
+  border-radius: 5.21px;
+  height: 360rpx;
+  position: relative;
+  box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.personal-userinfo {
+  height: 220rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.personal-userinfo .item-left {
+  flex: 1;
+  height: 150rpx;
+  width: 70%;
+  padding: 20rpx;
+}
+
+.personal-userinfo .item-right {
+  width: 30%;
+  height: 220rpx;
+  padding-top: 50rpx;
+  padding-left: 180rpx;
+}
+
+.personal-userinfo .item-right image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100px;
+}
+
+.personal-userinfo .item-nickname {
+  height: 62rpx;
+  line-height: 62rpx;
+}
+
+.personal-userinfo .item-isvip {
+  padding: 5px 0px;
+}
+
+.personal-userinfo .item-isvip image {
+  width: 118rpx;
+  height: 30rpx;
+}
+
+.personal-userinfo .item-phone {
+ height: 48rpx;
+ line-height: 48rpx;
+}
+
+.personal-userinfo .item-phone image {
+  height: 32rpx;
+  width: 21rpx;
+  float: left;
+  display: block;
+}
+
+.personal-userinfo .item-phone text {
+  height: 28rpx;
+  line-height: 30rpx;
+  width: 120rpx;
+  float: left;
+  display: block;
+  font-size: 12px;
+}
+
+.personal-orderstatus {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #f8f8f8;
+  padding: 10px 5px 5px 5px;
+}
+
+.personal-orderstatus .item {
+  flex: 1;
+  height: 100rpx;
+  overflow: hidden;
+  text-align: center;
+}
+
+.personal-orderstatus .item-img {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.personal-orderstatus .item-title {
+  widows: 32px;
+  height: 60rpx;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}

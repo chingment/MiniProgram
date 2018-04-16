@@ -1,0 +1,139 @@
+/**分类栏**/
+
+.kind {
+}
+
+.kind-left-navbar {
+  position: absolute;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  font-size: 15px;
+  border-right: 1rpx #dbdbdb solid;
+}
+
+.kind-left-navbar view {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.kind-left-navbar-normal {
+  color: #303030;
+}
+
+.kind-left-navbar-selected {
+  background-color: #fff;
+  color: #f18d00;
+  font-size: 17px;
+}
+
+.kind-right-content {
+  position: absolute;
+  right: 0;
+  width: 75%;
+  height: 100%;
+  padding-top: 12rpx;
+}
+
+.kind-lv1-imgbox {
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+
+.kind-lv1-imgurl {
+  height: 150rpx;
+  width: 90%;
+}
+
+.kind-lv1-name {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-size: 13px;
+  height: 30px;
+}
+
+.kind-lv2-list {
+  position: relative;
+  overflow: hidden;
+}
+
+.kind-lv2-list:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.kind-lv2-list:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.kind-lv2-item {
+  position: relative;
+  float: left;
+  padding: 10px 20px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.kind-lv2-item:before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  color: #d9d9d9;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.kind-lv2-item:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.kind-lv2-imgurl {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+}
+
+.kind-lv2-name {
+  width: 120rpx;
+  height: 15px;
+  font-size: 12px;
+  line-height: 14px;
+}
