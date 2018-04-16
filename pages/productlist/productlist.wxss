@@ -1,3 +1,7 @@
+page{
+  overflow-y:hidden;
+}
+
 .show {
   display: block;
 }
@@ -25,7 +29,7 @@
 }
 
 .tabbar-content {
-  margin-top: 51px;
+  margin-top: 41px;
 }
 
 .tabbar-item {
@@ -116,11 +120,12 @@
 
 .prd-list-1 .item-imgbox {
   text-align: center;
+  height: 320rpx;
 }
 
 .prd-list-1 .item-imgurl {
-  width: 120rpx;
-  height: 120rpx;
+  width: 100%;
+   height: 100%;
 }
 
 .prd-list-1 .item-name {

@@ -16,6 +16,11 @@ var getList = function (_this) {
     }
   }
 
+  if (currentTabIndex == -1) {
+    currentTabIndex = 0;
+    currentTab = _this.data.tabs[currentTabIndex];
+  }
+
   var pageIndex = currentTab.pageIndex
   var kindId = currentTab.kindId
 
@@ -45,12 +50,22 @@ var getList = function (_this) {
 
 Page({
   data: {
+    scrollHeight: 0
   },
   onLoad: function (options) {
     var _this = this
+
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          scrollHeight: res.windowHeight-41
+        });
+      }
+    });
+
     var kindId = options.kindId == undefined ? "0" : options.kindId
     var pKindId = options.pKindId == undefined ? "0" : options.pKindId
-    console.log("当前选择->pKindId:" + pKindId+"，kindId:" + kindId)
+    console.log("当前选择->pKindId:" + pKindId + "，kindId:" + kindId)
 
     //加载tab数据，从全局对象app.productKind获取
     var productKinds = app.productKind.list
@@ -74,7 +89,8 @@ Page({
             name: productKinds[i].child[j].name,
             pageIndex: 0,
             selected: selected,
-            list: null
+            list: null,
+            scrollTop: 0
           }
           tabs.push(tab)
         }
@@ -105,12 +121,30 @@ Page({
     var _this = this
     console.log("refesh")
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
+    var scrollTop = e.detail.scrollTop
     _this.data.tabs[index].pageIndex = 0
+    _this.data.tabs[index].scrollTop = 0
     _this.setData({
       tabs: _this.data.tabs
     })
     getList(_this)
   },
+
+  scroll: function (e) {
+    var _this = this
+    console.log("scroll")
+    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
+    var scrollTop = e.detail.scrollTop
+
+    console.log("scrollTop:" + scrollTop)
+
+    _this.data.tabs[index].scrollTop = scrollTop
+    _this.setData({
+      tabs: _this.data.tabs
+    })
+
+  },
+
   //tab点击
   tabBarClick: function (e) {
     console.log("tabBarClick");

@@ -24,10 +24,9 @@
   flex-direction: row;
   padding: 10rpx;
   margin-left: -4rpx;
-  background: #f7f7fa;
   font-size: 20rpx;
   color: #8a8a8a;
-  box-shadow: 6rpx 6rpx 6rpx 6rpx #aaa;
+  box-shadow: 3rpx 3rpx 3rpx 3rpx #aaa;
 }
 
 .main-tabbar-item {
@@ -54,14 +53,16 @@
 }
 
 .main-tabbar-item-number {
-  width: 35rpx;
+  width: 45rpx;
   height: 35rpx;
   border: 0 solid #f00;
-  border-radius: 100rpx;
   background-color: #f10b2e;
   color: #fff;
   position: absolute;
-  right: 30rpx;
+  right: 45rpx;
+  border-radius: 30rpx;
+  line-height: 34rpx;
+  z-index: 999;
 }
 
 /**分类栏**/

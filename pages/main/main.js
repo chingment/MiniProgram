@@ -34,16 +34,16 @@ Page({
       }, {
         "name": "cart",
         "pagePath": "/pages/cart/cart.wxml",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_fill.png",
+        "iconPath": "/images/cart.png",
+        "selectedIconPath": "/images/cart_fill.png",
         "text": "购物车",
         "selected": false,
         "number": 0
       }, {
         "name": "personal",
         "pagePath": "/pages/personal/personal.wxml",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_fill.png",
+        "iconPath": "/images/personal.png",
+        "selectedIconPath": "/images/personal_fill.png",
         "text": "个人",
         "selected": false,
         "number": 0
@@ -138,14 +138,19 @@ Page({
           success: function (res) {
             console.log("config.apiUrl.home->success")
 
+
+
+            var productKind = res.data.productKind
+            var cart = res.data.cart
+
             _self.setData({
-              productKind: res.data.productKind,
-              cart: res.data.cart
+              productKind: productKind,
+              cart: cart
             })
 
-            app.productKind = res.data.productKind;
+            app.productKind = productKind;
 
-            _self.mainTabBarItemSetNumber(2, res.data.cart.count)
+            _self.mainTabBarItemSetNumber(2, cart.count)
 
           },
           fail: function () {
@@ -241,9 +246,9 @@ Page({
         break;
     }
 
-    var operateList=new Array();
+    var operateList = new Array();
     operateList.push(list_item);
-    httpUtil.postRequest(config.apiUrl.cartOperate, { userId: 1215, operate: operate, list: operateList}, {
+    httpUtil.postRequest(config.apiUrl.cartOperate, { userId: 1215, operate: operate, list: operateList }, {
       success: function (res) {
         console.log("config.apiUrl.cartOperate->success")
         _self.setData({ cart: res.data })
