@@ -1,15 +1,15 @@
-<scroll-view 
- class="scroll-tabbar" scroll-x="true" scroll-left="{{100*tabsSliderIndex}}">
+<scroll-view class="scroll-tabbar" scroll-x="true" scroll-left="{{100*tabsSliderIndex}}">
   <view style="width:{{tabs.length*100}}px;" class="tabbar">
     <block wx:for-items="{{tabs}}" wx:for-item="item" wx:key="{{index}}">
       <view id="{{index}}" class="tabbar-item {{item.selected==true?'selected':''}}" data-reply-index="{{index}}" bindtap="tabBarClick">
         <view>{{item.name}}</view>
       </view>
+
     </block>
   </view>
 </scroll-view>
 
- <!-- <block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+<!-- <block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
       <scroll-view  
        scroll-y="true"
        class="tabbar-content  {{item.selected==true?'show':'hide'}}" scroll-top="{{item.scrollTop}}"
@@ -34,28 +34,25 @@
 
       </scroll-view>
 </block> -->
- <swiper class="tabbar-content" bindchange="swiperSwitchTab" current="{{tabsSliderIndex}}" duration="300" style="height:{{scrollHeight}}px">
+<swiper class="tabbar-content" bindchange="swiperSwitchTab" current="{{tabsSliderIndex}}" duration="300" style="height:{{scrollHeight}}px">
   <block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
     <swiper-item>
-      <scroll-view  scroll-top="{{item.scrollTop}}"
-       scroll-y="true" data-reply-index="{{index}}" style="height:{{scrollHeight}}px" bindscrolltolower="loadMore" bindscrolltoupper="refesh"
-       bindscroll="scroll"
-       >
+      <scroll-view scroll-top="{{item.scrollTop}}" scroll-y="true" data-reply-index="{{index}}" style="height:{{scrollHeight}}px" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scroll">
 
         <view class='prd-list-1'>
           <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-            <view class='item'>
-              <view class='item-imgbox'>
-                <image class="item-imgurl" src="{{item2.mainImg}}"></image>
+
+            <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}}">
+              <view class='item item-{{index%2}}'>
+                <view class='item-imgbox'>
+                  <image class="item-imgurl" src="{{item2.mainImg}}"></image>
+                </view>
+                <text class="item-name font-gray">{{item2.name}}</text>
+                <text class="item-price font-black">{{item2.price}}</text>
               </view>
-              <text class="item-name font-black">{{item2.name}}</text>
-            </view>
+            </navigator>
           </block>
         </view>
-
-
-
-
 
       </scroll-view>
     </swiper-item>
@@ -63,4 +60,4 @@
 
 
 
-</swiper> 
+</swiper>

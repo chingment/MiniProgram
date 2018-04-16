@@ -2,7 +2,7 @@
 <template name="index">
   <view>
     <view>index</view>
-        <view style="background: red; width: 100px; height: 100px" ></view>
+    <view style="background: red; width: 100px; height: 100px" ></view>
     <view style="background: green; width: 100px; height: 100px"></view>
     <view style="background: blue; width: 100px; height: 100px"></view>
     <view style="background: yellow; width: 100px; height: 100px"></view>

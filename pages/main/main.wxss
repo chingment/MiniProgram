@@ -1,17 +1,4 @@
-.font-gray{
-  color: #9d9d9d;
-}
-.font-black{
-  color:  #303030;
-}
-
-.font-main{
-  color:  #f18d00;
-}
-
-.bg-main{
-  background:  #f18d00;
-}
+@import '../../common/common.wxss';
 
 .main-tabbar {
   position: fixed;
@@ -22,8 +9,7 @@
 .main-tabbar-container {
   display: flex;
   flex-direction: row;
-  padding: 10rpx;
-  margin-left: -4rpx;
+  padding: 10rpx 4px 1px 4px;
   font-size: 20rpx;
   color: #8a8a8a;
   box-shadow: 3rpx 3rpx 3rpx 3rpx #aaa;

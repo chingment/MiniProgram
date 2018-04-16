@@ -2,6 +2,7 @@
   "pages":[
     "pages/main/main",
     "pages/productlist/productlist",
+    "pages/productdetails/productdetails",
     "pages/logs/logs"
   ],
   "window":{

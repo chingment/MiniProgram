@@ -1,0 +1,14 @@
+.font-gray{
+  color: #9d9d9d;
+}
+.font-black{
+  color:  #303030;
+}
+
+.font-main{
+  color:  #f18d00;
+}
+
+.bg-main{
+  background:  #f18d00;
+}

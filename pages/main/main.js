@@ -26,8 +26,8 @@ Page({
       }, {
         "name": "productkind",
         "pagePath": "/pages/productkind/productkind.wxml",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_fill.png",
+        "iconPath": "/images/kind.png",
+        "selectedIconPath": "/images/kind_fill.png",
         "text": "分类",
         "selected": false,
         "number": 0
