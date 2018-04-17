@@ -76,7 +76,7 @@ App({
            setTimeout(function(){
 
              wx.setNavigationBarTitle({
-               title: s.text
+               title: s.navTitle
              })
            },1000)
           }

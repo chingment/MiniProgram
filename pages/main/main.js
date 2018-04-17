@@ -22,6 +22,7 @@ Page({
         "iconPath": "/images/home.png",
         "selectedIconPath": "/images/home_fill.png",
         "text": "首页",
+        "navTitle":"demo商城",
         "selected": true,
         "number": 0
       }, {
@@ -30,6 +31,7 @@ Page({
         "iconPath": "/images/kind.png",
         "selectedIconPath": "/images/kind_fill.png",
         "text": "分类",
+        "navTitle": "分类",
         "selected": false,
         "number": 0
       }, {
@@ -38,6 +40,7 @@ Page({
         "iconPath": "/images/cart.png",
         "selectedIconPath": "/images/cart_fill.png",
         "text": "购物车",
+        "navTitle": "购物车",
         "selected": false,
         "number": 0
       }, {
@@ -46,6 +49,7 @@ Page({
         "iconPath": "/images/personal.png",
         "selectedIconPath": "/images/personal_fill.png",
         "text": "个人",
+        "navTitle": "个人",
         "selected": false,
         "number": 0
       }
@@ -132,7 +136,11 @@ Page({
           tabBarContentHeight: res.windowHeight - 45
         });
       }
-    });
+    })
+
+    wx.setNavigationBarTitle({
+      title: _self.data.tabBar[0].navTitle
+    })
 
     wxutil.getAuthorize({
       success: function (e) {
@@ -143,8 +151,6 @@ Page({
         httpUtil.getRequest(config.apiUrl.globalDataSet, { userId: 1215, merchantId: 241, posMachineId: 148, datetime: '2018-03-30' }, {
           success: function (res) {
             console.log("config.apiUrl.home->success")
-
-
 
             var productKind = res.data.productKind
             var cart = res.data.cart
@@ -188,7 +194,7 @@ Page({
 
         //设置页面标题
         wx.setNavigationBarTitle({
-          title: tabBar[i].text
+          title: tabBar[i].navTitle
         })
 
       }

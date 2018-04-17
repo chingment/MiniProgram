@@ -19,9 +19,9 @@
 
 .details-nav .item-home {
   text-align: center;
-  align-items: center;
-  justify-content: center;
   width: 160rpx;
+  line-height: 100rpx;
+  height: 88rpx;
 }
 
 .details-nav .item-home image {
@@ -32,8 +32,8 @@
 .details-nav .item-cart {
   width: 160rpx;
   text-align: center;
-  align-items: center;
-  justify-content: center;
+    line-height: 100rpx;
+  height: 88rpx;
 }
 
 .details-nav .item-cart image {
@@ -43,7 +43,6 @@
 
 .details-nav .item-increase {
   flex: 1;
-  height: 100rpx;
   text-align: center;
   font-size: 16px;
   color: #fff;
@@ -51,7 +50,6 @@
 
 .details-nav .item-buy {
   flex: 1;
-  height: 100rpx;
   text-align: center;
   font-size: 16px;
   color: #fff;

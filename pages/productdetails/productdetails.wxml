@@ -16,16 +16,16 @@
 </scroll-view>
 
 <view class="details-nav">
-  <view bindtap="goHome"  class="item-home" >
+  <view bindtap="goHome" class="item-home">
     <image src="../../images/home.png" />
   </view>
-  <view bindtap="goCart"  class="item-cart">
+  <view bindtap="goCart" class="item-cart">
     <image src="../../images/cart.png" />
   </view>
-  <view bindtap="addToCart"  class='item-increase bg-blue' >
+  <view bindtap="addToCart" class='item-increase bg-blue'>
     <text>加入购物车</text>
   </view>
-  <view bindtap="immeBuy"  class="item-buy bg-main" >
+  <view bindtap="immeBuy" class="item-buy bg-main">
     <text>立即购买</text>
   </view>
 </view>
