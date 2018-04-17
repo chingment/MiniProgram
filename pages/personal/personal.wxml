@@ -4,15 +4,17 @@
     <view class="container">
       <view class='personal-userinfo'>
         <view class='item-left'>
-          <view class='item-nickname'>
-            <text>{{userInfo.nickName}}</text>
-          </view>
-          <view class='item-isvip'>
-            <image src='../../images/member.png'></image>
-          </view>
-          <view class='item-phone'>
-            <image src='../../images/icon_phone.png'></image>
-            <text>{{userInfo.phone}}</text>
+          <view class="container">
+            <view class='item-nickname'>
+              <text>{{userInfo.nickName}}</text>
+            </view>
+            <view class='item-isvip'>
+              <image src='../../images/member.png'></image>
+            </view>
+            <view class='item-phone'>
+              <image src='../../images/icon_phone.png'></image>
+              <text>{{userInfo.phone}}</text>
+            </view>
           </view>
         </view>
         <view class='item-right'>

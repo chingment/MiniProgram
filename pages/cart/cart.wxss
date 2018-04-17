@@ -78,7 +78,7 @@
 .cart-bottom {
   width: 100%;
   position: fixed;
-  bottom: 55px;
+  bottom: 45px;
   background: #fff;
   display: -webkit-box;
   height: 50px;

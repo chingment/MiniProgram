@@ -50,6 +50,7 @@ var getList = function (_this) {
 
 Page({
   data: {
+    tag: "productlist",
     scrollHeight: 0
   },
   onLoad: function (options) {
@@ -58,7 +59,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         _this.setData({
-          scrollHeight: res.windowHeight-41
+          scrollHeight: res.windowHeight - 41
         });
       }
     });

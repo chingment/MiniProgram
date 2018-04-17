@@ -8,6 +8,8 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 45px;
+  overflow: hidden;
 }
 
 .main-tabbar-container {
@@ -15,7 +17,7 @@
   flex-direction: row;
   font-size: 20rpx;
   color: #8a8a8a;
-  box-shadow: 3rpx 3rpx 3rpx 3rpx #aaa;
+  border-top: 1rpx #dbdbdb solid;
 }
 
 .main-tabbar-item {
@@ -24,7 +26,7 @@
   text-align: center;
   overflow: hidden;
   position: relative;
-  padding-top: 15rpx;
+  padding-top: 10rpx;
 }
 
 .hidden {

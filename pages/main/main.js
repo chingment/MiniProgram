@@ -12,6 +12,7 @@ var app = getApp()
 
 Page({
   data: {
+    tag:"main",
     tabBarContentHeight: 0,
     name: "index",
     tabBar: [
@@ -113,7 +114,12 @@ Page({
 
 
   },
-
+  changeData:function(data) {
+    console.log("main.changeData")
+    var _self = this;
+    _self.setData(data)
+  },
+  
   onLoad: function () {
     console.log("main.onLoad")
 
@@ -123,7 +129,7 @@ Page({
       success: function (res) {
         console.log("windowHeight:" + res.windowHeight)
         _self.setData({
-          tabBarContentHeight: res.windowHeight - 55
+          tabBarContentHeight: res.windowHeight - 45
         });
       }
     });
