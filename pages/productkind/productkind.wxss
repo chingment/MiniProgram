@@ -8,7 +8,7 @@
   left: 0;
   width: 25%;
   height: 100%;
-  font-size: 15px;
+  font-size: 28rpx;
   border-right: 1rpx #dbdbdb solid;
 }
 
@@ -23,9 +23,9 @@
 }
 
 .kind-left-navbar-selected {
-  background-color: #fff;
+
   color: #f18d00;
-  font-size: 17px;
+  font-size: 32rpx;
 }
 
 .kind-right-content {
@@ -51,7 +51,7 @@
   text-align: center;
   width: 100%;
   display: block;
-  font-size: 13px;
+  font-size: 28rpx;
   height: 30px;
 }
 
@@ -94,35 +94,8 @@
   padding: 10px 20px;
   width: 33.33333333%;
   box-sizing: border-box;
-  text-align: center;
-}
-
-.kind-lv2-item:before {
-  content: " ";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 1px;
-  bottom: 0;
-  color: #d9d9d9;
-  -webkit-transform-origin: 100% 0;
-  transform-origin: 100% 0;
-  -webkit-transform: scaleX(0.5);
-  transform: scaleX(0.5);
-}
-
-.kind-lv2-item:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 1px;
-  color: #d9d9d9;
-  -webkit-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
+  align-items: center;
+  justify-content: center;
 }
 
 .kind-lv2-imgurl {
@@ -133,7 +106,9 @@
 
 .kind-lv2-name {
   width: 120rpx;
-  height: 15px;
-  font-size: 12px;
-  line-height: 14px;
+  height: 24rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  display: block;
 }

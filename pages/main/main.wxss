@@ -8,7 +8,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 45px;
+  height: 81rpx;
   overflow: hidden;
 }
 

@@ -85,15 +85,14 @@
 }
 
 .personal-orderstatus .item-img {
-  width: 32px;
-  height: 32px;
+  width: 60rpx;
+  height: 60rpx;
   display: inline-block;
 }
 
 .personal-orderstatus .item-title {
-  widows: 32px;
   height: 60rpx;
   display: block;
   text-align: center;
-  font-size: 12px;
+  font-size: 24rpx;
 }
