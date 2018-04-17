@@ -204,6 +204,8 @@ Page({
 
   },
 
+
+  
   mainTabBarItemSetNumber(index, num) {
     console.log('tabbar.tabBarItemSetNumber')
     var _self = this

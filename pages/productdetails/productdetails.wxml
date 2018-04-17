@@ -1,2 +1,31 @@
-<!--pages/productdetails/productdetails.wxml-->
-<text>pages/productdetails/productdetails.wxml</text>
+<swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+  <block wx:for-items="{{dispalyImgs}}" wx:for-item="item" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item.imgUrl}}"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<scroll-view scroll-y="true">
+  <view class="detail">
+    <text class="name">{{name}}</text>
+    <text class="briefIntro">{{name}}</text>
+    <text class="unitPrice">{{unitPrice}}</text>
+    <text class="unitPrice">{{showPrice}}</text>
+  </view>
+</scroll-view>
+
+<view class="details-nav">
+  <view bindtap="goHome"  class="item-home" >
+    <image src="../../images/home.png" />
+  </view>
+  <view bindtap="goCart"  class="item-cart">
+    <image src="../../images/cart.png" />
+  </view>
+  <view bindtap="addToCart"  class='item-increase bg-blue' >
+    <text>加入购物车</text>
+  </view>
+  <view bindtap="immeBuy"  class="item-buy bg-main" >
+    <text>立即购买</text>
+  </view>
+</view>

@@ -1,3 +1,4 @@
+
 .font-gray {
   color: #9d9d9d;
 }
@@ -12,6 +13,10 @@
 
 .bg-main {
   background: #f18d00;
+}
+
+.bg-blue {
+  background: blue;
 }
 
 .col-nav {

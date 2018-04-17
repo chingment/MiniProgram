@@ -42,11 +42,11 @@ App({
     userInfo: null
   },
 
-  getProductKind:function() {
+  getProductKind: function () {
     console.log("app.getProductKind")
   },
 
-  changeData:function(tag,data){
+  changeData: function (tag, data) {
 
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
@@ -54,6 +54,41 @@ App({
       if (pages[i].data.tag == tag) {
         console.log("page->find:" + JSON.stringify(pages[i].data))
         pages[i].changeData(data)
+      }
+    }
+  },
+
+  switchTab: function (index) {
+
+    var pages = getCurrentPages();
+    for (var i = 0; i < pages.length; i++) {
+      if (pages[i].data.tag == "main") {
+    
+        wx.navigateBack({
+          delta: pages.length
+        })
+
+        var tabBar = pages[i].data.tabBar;
+        for (var j = 0; j < tabBar.length; j++) {
+          if (j == index) {
+            tabBar[j].selected = true
+            var s = tabBar[j];
+           setTimeout(function(){
+
+             wx.setNavigationBarTitle({
+               title: s.text
+             })
+           },1000)
+          }
+          else {
+            tabBar[j].selected = false
+          }
+        }
+
+        pages[i].setData({
+          tabBar: tabBar
+        })
+
       }
     }
   }

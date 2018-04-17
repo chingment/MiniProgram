@@ -17,7 +17,8 @@ var config = {
     home: `${host}/Account/Home`,
     globalDataSet: `${host}/Global/DataSet`,
     cartOperate: `${host}/Cart/Operate`,
-    productGetList: `${host}/Product/GetList`
+    productGetList: `${host}/Product/GetList`,
+    productGetSkuDetails: `${host}/Product/GetSkuDetails`
   }
 
 };

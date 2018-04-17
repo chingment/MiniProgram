@@ -41,7 +41,7 @@
         <view class='prd-list-1'>
           <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
 
-            <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}}">
+            <navigator url="/pages/productdetails/productdetails?skuId={{item2.skuId}}">
               <view class='item item-{{index%2}}'>
                 <view class='item-imgbox'>
                   <image class="item-imgurl" src="{{item2.mainImg}}"></image>
