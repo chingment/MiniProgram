@@ -3,16 +3,19 @@
 
   <view class="cart">
     <view class="container">
-      <view class="cart-list">
+      <view class="cart-list" >
         <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
           <view class="cart-list-item">
             <view class="cart-list-item-left" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-index="{{index}}">
+
               <image src='../../images/{{item.selected==false?"checkedoff":"checkedon"}}.png'></image>
             </view>
             <view class="cart-list-item-middle">
 
               <view class="cart-list-item-mainimgbox">
-                <image class='mainimg' src="{{item.skuMainImg}}"  />
+                <navigator url="/pages/productdetails/productdetails?skuId={{item.skuId}}" style='height:100%;width:100%'>
+                  <image class='mainimg' src="{{item.skuMainImg}}" />
+                </navigator>
               </view>
               <view class="cart-list-item-infobox">
                 <text class='skuname font-black'>{{item.skuName}}</text>
@@ -31,7 +34,7 @@
 
       <view class="cart-bottom">
         <view class="cart-selInfo-count">
-          <text class='font-gray' >已选({{countBySelected}})</text>
+          <text class='font-gray'>已选({{countBySelected}})</text>
         </view>
         <view class="cart-selInfo-sumprice">
           <text class="font-main" value="249" decimal="2">{{sumPriceBySelected}}</text>

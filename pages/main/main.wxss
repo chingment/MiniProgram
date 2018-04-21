@@ -1,4 +1,3 @@
-@import '../../common/common.wxss';
 @import '../index/index.wxss';
 @import '../productkind/productkind.wxss';
 @import '../cart/cart.wxss';
@@ -16,7 +15,6 @@
   display: flex;
   flex-direction: row;
   font-size: 20rpx;
-  color: #8a8a8a;
   border-top: 1rpx #dbdbdb solid;
 }
 
@@ -38,10 +36,8 @@
   height: 38rpx;
 }
 
-/*当前字体颜色*/
-
-.main-tabbar-item-text {
-  color: red;
+.main-tabbar-item-title {
+  color: #8a8a8a;
 }
 
 .main-tabbar-item-number {

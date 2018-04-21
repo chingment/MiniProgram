@@ -1,5 +1,9 @@
 /*购物车*/
 
+.cart-list {
+  margin-bottom: 81rpx;
+}
+
 .cart-list-item {
   display: flex;
   flex-direction: row;
@@ -78,49 +82,34 @@
 .cart-bottom {
   width: 100%;
   position: fixed;
-  bottom: 45px;
+  bottom: 81rpx;
   background: #fff;
   display: -webkit-box;
-  height: 50px;
-  line-height: 50px;
   border-top: 1px solid #f8f8f8;
-}
-
-.cart-item-bottom {
-  position: relative;
-  right: 0;
-  bottom: 0;
-  height: 34px;
-  line-height: 38px;
-}
-
-.cart-item-bottom wxc-stepper {
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 .cart-selInfo-count {
   margin-left: 12px;
   -webkit-box-flex: 1;
-  line-height: 50px;
-  height: 50px;
-  font-size: 16px;
+  line-height: 80rpx;
+  height: 80rpx;
+  font-size: 24rpx;
 }
 
 .cart-selInfo-sumprice {
-  line-height: 50px;
+  line-height: 80rpx;
   -webkit-box-flex: 1;
-  height: 50px;
+  height: 80rpx;
+  font-size: 32rpx;
 }
 
 .cart-selInfo-btnsettle {
   -webkit-box-flex: 1;
   position: relative;
-  font-size: 18px;
+  font-size: 32rpx;
   width: 127px;
-  height: 50px;
-  line-height: 50px;
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
   color: #fff;
 }

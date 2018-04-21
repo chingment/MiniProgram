@@ -1,12 +1,13 @@
 //index.js
 //获取应用实例
-const wxutil = require('../../utils/wxutil.js');
+const wxutil = require('../../utils/wxutil.js')
 const httpUtil = require("../../utils/apphttputil.js")
-const config = require('../../config');
-const cart = require('../../pages/cart/cart.js');
-const index = require('../../pages/index/index.js');
-const productkind = require('../../pages/productkind/productkind.js');
-const personal = require('../../pages/personal/personal.js');
+const config = require('../../config')
+const storeage = require('../../utils/storeageutil.js')
+const cart = require('../../pages/cart/cart.js')
+const index = require('../../pages/index/index.js')
+const productkind = require('../../pages/productkind/productkind.js')
+const personal = require('../../pages/personal/personal.js')
 
 var app = getApp()
 
@@ -22,7 +23,7 @@ Page({
         "iconPath": "/images/home.png",
         "selectedIconPath": "/images/home_fill.png",
         "text": "首页",
-        "navTitle":"demo商城",
+        "navTitle":"贩聚社团",
         "selected": true,
         "number": 0
       }, {
@@ -161,10 +162,9 @@ Page({
               personal: personal
             })
 
-            app.productKind = productKind;
-
-            _self.mainTabBarItemSetNumber(2, cart.count)
-
+            storeage.setProductKind(productKind)
+            storeage.setCart(cart)
+            
           },
           fail: function () {
             console.log("config.apiUrl.home->fail")
@@ -185,8 +185,6 @@ Page({
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
 
     var tabBar = _self.data.tabBar;
-
-
 
     for (var i = 0; i < tabBar.length; i++) {
       if (i == index) {
@@ -210,8 +208,6 @@ Page({
 
   },
 
-
-  
   mainTabBarItemSetNumber(index, num) {
     console.log('tabbar.tabBarItemSetNumber')
     var _self = this
@@ -263,10 +259,25 @@ Page({
 
     var operateList = new Array();
     operateList.push(list_item);
-    httpUtil.postRequest(config.apiUrl.cartOperate, { userId: 1215, operate: operate, list: operateList }, {
+
+
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '确定要删除吗？',
+    //   success: function (sm) {
+    //     if (sm.confirm) {
+    //       // 用户点击了确定 可以调用删除方法了
+    //     } else if (sm.cancel) {
+    //       console.log('用户点击取消')
+    //     }
+    //   }
+    // })
+
+    cart.operate({ userId: 1215, operate: operate, list: operateList }, {
       success: function (res) {
         console.log("config.apiUrl.cartOperate->success")
         _self.setData({ cart: res.data })
+        _self.mainTabBarItemSetNumber(2,res.data.count)
 
       },
       fail: function () {
@@ -274,7 +285,16 @@ Page({
       }
     })
 
+    // httpUtil.postRequest(config.apiUrl.cartOperate, { userId: 1215, operate: operate, list: operateList }, {
+    //   success: function (res) {
+    //     console.log("config.apiUrl.cartOperate->success")
+    //     _self.setData({ cart: res.data })
 
+    //   },
+    //   fail: function () {
+    //     console.log("config.apiUrl.cartOperate->fail")
+    //   }
+    // })
   }
 
 

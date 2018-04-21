@@ -68,6 +68,18 @@
         </view>
       </view>
 
+      <navigator url="/pages/shippingaddress/shippingaddress?operate=1" class="col-nav-item">
+        <view class="item-left">
+          <image src='../../images/col_nav_icon_personalinfo.png'></image>
+        </view>
+        <view class="item-middle">
+          <text class="title">地址管理</text>
+        </view>
+        <view class='item-right'>
+          <image src='../../images/col_nav_right.png'></image>
+        </view>
+      </navigator>
+
       <view class="col-nav-item">
         <view class="item-left">
           <image src='../../images/col_nav_icon_service.png'></image>

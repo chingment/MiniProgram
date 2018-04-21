@@ -1,16 +1,8 @@
-@import '../../common/common.wxss';
-
 page {
   overflow-y: hidden;
 }
 
-.show {
-  display: block;
-}
 
-.hide {
-  display: none;
-}
 
 .scroll-tabbar {
   position: fixed;
@@ -23,7 +15,7 @@ page {
 }
 
 .tabbar {
-  height: 62rpx;
+  height: 61rpx;
   line-height: 42rpx;
   width: 1900px;
   transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
@@ -31,11 +23,11 @@ page {
 }
 
 .tabbar-content {
-  margin-top: 41rpx;
+  margin-top: 62rpx;
 }
 
 .tabbar-item {
-  height: 61rpx;
+  height: 60rpx;
   line-height: 42rpx;
   width: 100px;
   float: left;
@@ -43,12 +35,12 @@ page {
   overflow: hidden;
   background: #fff;
   text-align: center;
-  font-size: 32rpx;
+  font-size: 28rpx;
   z-index: 999
 }
 
 .tabbar .selected {
-  border-bottom: 1rpx solid #f18d00;
+  /* border-bottom: 2rpx solid #f18d00; */
 }
 
 .prd-list-1 {

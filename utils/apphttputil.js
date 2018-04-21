@@ -23,8 +23,10 @@ function getSign(key, secret, timestamp, params) {
     }
   }
   var str = arr.join("");
+  console.log("str:" + str)
   var strArr = str.split('');
   str = strArr.sort().join("");
+  console.log("str:" + str)
   return sha256_digest(str);
 }
 

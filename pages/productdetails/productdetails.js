@@ -1,7 +1,9 @@
-var httpUtil = require("../../utils/apphttputil.js")
-const config = require('../../config');
-
-var app = getApp()
+const httpUtil = require("../../utils/apphttputil.js")
+const config = require('../../config')
+const storeage = require('../../utils/storeageutil.js')
+const wxparse = require("../../wxParse/wxParse.js")
+const cart = require('../../pages/cart/cart.js')
+const app = getApp()
 
 Page({
 
@@ -25,22 +27,41 @@ Page({
       success: function (res) {
         console.log("config.apiUrl.productGetSkuDetails->success")
         console.log("config.apiUrl.productGetSkuDetails->success:" + JSON.stringify(res.data))
-      
 
-        _this.setData(res.data)
 
-        
+        _this.setData({ sku: res.data, cart: storeage.getCart() })
+
+        wxparse.wxParse('dkcontent', 'html', res.data.details, _this, 0);
+
       },
       fail: function () {
         console.log("config.apiUrl.productGetSkuDetails->fail")
       }
     })
   },
-  goHome:function(e) {
+  goHome: function (e) {
     app.switchTab(0)
   },
   goCart: function (e) {
     app.switchTab(2)
+  },
+  addToCart: function (e) {
+
+    var _self = this
+    var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
+    console.log("skuId:" + skuId)
+    var operateList = new Array();
+    operateList.push({ skuId: skuId, quantity: 1, selected: true });
+
+    cart.operate({ userId: 1215, operate: 2, list: operateList }, {
+      success: function (res) {
+        console.log("config.apiUrl.cartOperate->success")
+      },
+      fail: function () {
+        console.log("config.apiUrl.cartOperate->fail")
+      }
+    })
+
   }
 
 })

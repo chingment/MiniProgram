@@ -42,12 +42,7 @@ App({
     userInfo: null
   },
 
-  getProductKind: function () {
-    console.log("app.getProductKind")
-  },
-
   changeData: function (tag, data) {
-
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
       console.log("page:" + JSON.stringify(pages[i].data))
@@ -57,7 +52,14 @@ App({
       }
     }
   },
-
+  mainTabBarItemSetNumber(index, num) {
+    var pages = getCurrentPages();
+    for (var i = 0; i < pages.length; i++) {
+      if (pages[i].data.tag == "main") {
+        pages[i].mainTabBarItemSetNumber(index,num)
+      }
+    }
+  },
   switchTab: function (index) {
 
     var pages = getCurrentPages();

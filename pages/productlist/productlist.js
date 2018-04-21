@@ -1,7 +1,7 @@
-var httpUtil = require("../../utils/apphttputil.js")
-const config = require('../../config');
-
-var app = getApp()
+const httpUtil = require("../../utils/apphttputil.js")
+const config = require('../../config')
+const storeage = require('../../utils/storeageutil.js')
+const app = getApp()
 
 var getList = function (_this) {
   console.log("getList")
@@ -68,8 +68,9 @@ Page({
     var pKindId = options.pKindId == undefined ? "0" : options.pKindId
     console.log("当前选择->pKindId:" + pKindId + "，kindId:" + kindId)
 
-    //加载tab数据，从全局对象app.productKind获取
-    var productKinds = app.productKind.list
+    //加载tab数据，从缓存对象获取
+    var productKinds = storeage.getProductKind().list
+
     var tabs = new Array()
     var tabsSliderIndex = -1 //默认未选择tab
     for (var i = 0; i < productKinds.length; i++) {

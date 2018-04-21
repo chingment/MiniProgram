@@ -3,6 +3,8 @@
     "pages/main/main",
     "pages/productlist/productlist",
     "pages/productdetails/productdetails",
+    "pages/shippingaddress/shippingaddress",
+    "pages/shippingaddressedit/shippingaddressedit",
     "pages/logs/logs"
   ],
   "window":{

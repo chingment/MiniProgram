@@ -1,0 +1,9 @@
+
+<view wx:if="{{list.length}}">true</view>
+<view wx:else>false</view>
+
+<navigator url="/pages/shippingaddressedit/shippingaddressedit?id=0"  class="bottom-btn bg-main">
+  <view class="container">
+    <text>添加新地址</text>
+  </view>
+</navigator>
