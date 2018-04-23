@@ -70,7 +70,7 @@
 
       <navigator url="/pages/shippingaddress/shippingaddress?operate=1" class="col-nav-item">
         <view class="item-left">
-          <image src='../../images/col_nav_icon_personalinfo.png'></image>
+          <image src='../../images/col_nav_icon_address.png'></image>
         </view>
         <view class="item-middle">
           <text class="title">地址管理</text>

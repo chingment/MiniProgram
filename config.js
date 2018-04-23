@@ -18,7 +18,9 @@ var config = {
     globalDataSet: `${host}/Global/DataSet`,
     cartOperate: `${host}/Cart/Operate`,
     productGetList: `${host}/Product/GetList`,
-    productGetSkuDetails: `${host}/Product/GetSkuDetails`
+    productGetSkuDetails: `${host}/Product/GetSkuDetails`,
+    shippingAddressEdit: `${host}/ShippingAddress/Edit`,
+    shippingAddressGetList: `${host}/ShippingAddress/GetList`
   }
 
 };

@@ -62,6 +62,22 @@ Page({
       }
     })
 
+  },
+
+  immeBuy: function (e) {
+    var _this = this
+    var skus = []
+    skus.push({
+      carId: 0,
+      productSkuId: _this.data.sku.id,
+      quantity: 1
+    })
+    wx.navigateTo({
+      url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
+      success: function (res) {
+        // success
+      },
+    })
   }
 
 })

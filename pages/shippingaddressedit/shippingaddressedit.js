@@ -1,11 +1,12 @@
-
+const app = getApp()
+const httpUtil = require("../../utils/apphttputil.js")
+const config = require('../../config')
 const cityList = require('./cityList').cityList;
 const toastUtil = require('../../utils/showtoastutil');//引入消息提醒暴露的接口  
 
 Page({
   data: {
-    address: {},
-
+    address: {area: ""},
     showArea: false,
     currentTab: 1,
     country: [],
@@ -15,6 +16,15 @@ Page({
     curr_pro: '',
     curr_cit: '',
     curr_cou: '',
+    shippingAddress: {
+      id: 0,
+      receiver: "",
+      phoneNumber: "",
+      area: "",
+      address: "",
+      isDefault: false
+    },
+    shippingAddress_isDefault: false
   },
 
   choosearea: function () {
@@ -154,7 +164,7 @@ Page({
     this.data.address.residecity = this.data.curr_cit;
     this.data.address.country = this.data.curr_cou;
 
-    this.data.address.name = this.data.curr_pro + "-" + this.data.curr_cit + '-' + this.data.curr_cou
+    this.data.address.area = this.data.curr_pro + "-" + this.data.curr_cit + '-' + this.data.curr_cou
 
 
     this.setData({
@@ -162,6 +172,7 @@ Page({
       curr_cou: this.data.curr_cou,
       address: this.data.address
     });
+
   },
   // 滑动切换tab
   bindChange: function (e) {
@@ -170,16 +181,36 @@ Page({
       currentTab: e.detail.current + 1
     });
   },
+  isDefaultEvent: function (e) {
+    this.setData({
+      shippingAddress_isDefault: !this.data.shippingAddress_isDefault
+    })
+  },
+  onLoad: function (options) {
+    var _this = this
+    var id = options.id;
+    if (id != "0") {
+      console.log(options.shippingAddress)
+      var shippingAddress = JSON.parse(options.shippingAddress)
+      _this.data.address.area = shippingAddress.area
+      _this.data.shippingAddress_isDefault = shippingAddress.isDefault
+      _this.setData({
+        shippingAddress: shippingAddress,
+        address: _this.data.address,
+        shippingAddress_isDefault: _this.data.shippingAddress_isDefault
+      })
+    }
 
+  },
   formSubmit: function (e) {
+    var id = e.detail.value.shippingAddress_id
+    var receiver = e.detail.value.shippingAddress_receiver
+    var phoneNumber = e.detail.value.shippingAddress_phoneNumber
+    var area = e.detail.value.shippingAddress_area
+    var address = e.detail.value.shippingAddress_address
+    var isDefault = e.detail.value.shippingAddress_isDefault
 
-    var receiver = e.detail.value.model_receiver
-    var phoneNumber = e.detail.value.model_phoneNumber
-    var area = e.detail.value.model_area
-    var address = e.detail.value.model_address
-    var isDefault = e.detail.value.model_isDefault
-
-    if (receiver.length== 0) {
+    if (receiver.length == 0) {
       toastUtil.showToast({ title: '请输入姓名' })
       return
     }
@@ -195,6 +226,18 @@ Page({
       toastUtil.showToast({ title: '请输入详细地址' })
       return
     }
+
+    httpUtil.postRequest(config.apiUrl.shippingAddressEdit, { id: id, userId: 1215, receiver: receiver, phoneNumber: phoneNumber, area: area, address: address, isDefault: isDefault }, {
+      success: function (res) {
+        console.log("config.apiUrl.shippingAddressEdit->success")
+
+        //toastUtil.showToast({ title: res.message })
+        wx.navigateBack()
+      },
+      fail: function () {
+        console.log("config.apiUrl.shippingAddressEdit->fail")
+      }
+    })
 
   }
 

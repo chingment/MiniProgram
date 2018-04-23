@@ -1,1 +1,65 @@
-/* pages/shippingaddress/shippingaddress.wxss */
+.col-nav-shippingaddress {
+  margin-bottom: 81rpx;
+  padding-bottom: 81rpx;
+}
+
+.col-nav-shippingaddress .item-left {
+  height: 120rpx;
+  width: 140rpx;
+  font-size: 28rpx;
+}
+
+.col-nav-shippingaddress .item-receiver {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+
+.col-nav-shippingaddress .item-isDefault {
+  height: 70rpx;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  overflow: hidden;
+  
+}
+
+.col-nav-shippingaddress .item-isDefault text {
+  color: red;
+  border: 1px solid red;
+  padding: 3rpx 8rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.col-nav-shippingaddress .item-middle {
+  height: 120rpx;
+  font-size: 28rpx;
+}
+
+.col-nav-shippingaddress .item-phoneNumber {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+
+.col-nav-shippingaddress .item-area {
+  height: 70rpx;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.col-nav-shippingaddress .item-right {
+  height: 120rpx;
+  width: 100rpx;
+  text-align: right;
+}
+
+.col-nav-shippingaddress .item-right image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 32rpx;
+}

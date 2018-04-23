@@ -13,7 +13,7 @@ var app = getApp()
 
 Page({
   data: {
-    tag:"main",
+    tag: "main",
     tabBarContentHeight: 0,
     name: "index",
     tabBar: [
@@ -23,7 +23,7 @@ Page({
         "iconPath": "/images/home.png",
         "selectedIconPath": "/images/home_fill.png",
         "text": "首页",
-        "navTitle":"贩聚社团",
+        "navTitle": "贩聚社团",
         "selected": true,
         "number": 0
       }, {
@@ -119,12 +119,12 @@ Page({
 
 
   },
-  changeData:function(data) {
+  changeData: function (data) {
     console.log("main.changeData")
     var _self = this;
     _self.setData(data)
   },
-  
+
   onLoad: function () {
     console.log("main.onLoad")
 
@@ -164,7 +164,7 @@ Page({
 
             storeage.setProductKind(productKind)
             storeage.setCart(cart)
-            
+
           },
           fail: function () {
             console.log("config.apiUrl.home->fail")
@@ -277,25 +277,41 @@ Page({
       success: function (res) {
         console.log("config.apiUrl.cartOperate->success")
         _self.setData({ cart: res.data })
-        _self.mainTabBarItemSetNumber(2,res.data.count)
+        _self.mainTabBarItemSetNumber(2, res.data.count)
 
       },
       fail: function () {
         console.log("config.apiUrl.cartOperate->fail")
       }
     })
+  },
 
-    // httpUtil.postRequest(config.apiUrl.cartOperate, { userId: 1215, operate: operate, list: operateList }, {
-    //   success: function (res) {
-    //     console.log("config.apiUrl.cartOperate->success")
-    //     _self.setData({ cart: res.data })
+  cartBarImmeBuy: function (e) {
+    var _this = this
 
-    //   },
-    //   fail: function () {
-    //     console.log("config.apiUrl.cartOperate->fail")
-    //   }
-    // })
+    var cartSkus = _this.data.cart.list
+
+    var skus = []
+
+    for (var i = 0; i < cartSkus.length; i++) {
+      if (cartSkus[i].selected) {
+        skus.push({
+          carId: cartSkus[i].cartId,
+          productSkuId: cartSkus[i].skuId,
+          quantity: cartSkus[i].quantity
+        })
+      }
+    }
+
+    wx.navigateTo({
+      url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
+      success: function (res) {
+        // success
+      },
+    })
   }
+
+
 
 
 })
