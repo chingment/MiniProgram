@@ -3,11 +3,6 @@ const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const app = getApp()
 
-
-
-
-
-
 var getList = function (_this) {
 
   httpUtil.getRequest(config.apiUrl.shippingAddressGetList, { userId: 1215 }, {
@@ -31,6 +26,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    operate: 0,
+    operateIndex: 0,
     list: [{
       receiver: "邱庆文",
       phoneNumber: "1598927032",
@@ -44,6 +41,23 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
+    var operate = parseInt(options.operate)
+    var operateIndex = parseInt(options.operateIndex)
+    console.log("operateIndex:" + operateIndex)
+    var title = ""
+    switch (operate) {
+      case 1:
+        title = "地址管理";
+        break;
+      case 2:
+        title = "选择地址";
+        break;
+    }
+    wx.setNavigationBarTitle({
+      title: title,
+    })
+
+    _this.setData({ operate: operate, operateIndex: operateIndex })
     getList(_this)
   },
 
@@ -96,7 +110,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goEdit:function(e){
+  goEdit: function (e) {
     var _this = this
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
     var shippingaddress = _this.data.list[index]
@@ -106,5 +120,29 @@ Page({
         // success
       },
     })
+  },
+  goSelect: function (e) {
+    var _this = this
+    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
+    var shippingaddress = _this.data.list[index]
+
+    if (_this.data.operate == 2) {
+
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];
+      prevPage.data.shippingAddress[_this.data.operateIndex].id = shippingaddress.id
+      prevPage.data.shippingAddress[_this.data.operateIndex].receiver = shippingaddress.receiver
+      prevPage.data.shippingAddress[_this.data.operateIndex].phoneNumber = shippingaddress.phoneNumber
+      prevPage.data.shippingAddress[_this.data.operateIndex].address = shippingaddress.address
+      prevPage.data.shippingAddress[_this.data.operateIndex].area = shippingaddress.area
+      prevPage.data.shippingAddress[_this.data.operateIndex].isDefault = shippingaddress.isDefault
+
+      prevPage.setData({
+        shippingAddress: prevPage.data.shippingAddress
+      })
+
+      wx.navigateBack()
+    }
+
   }
 })

@@ -2,6 +2,9 @@
 <import src="/pages/cart/cart.wxml" />
 <import src="/pages/productkind/productkind.wxml" />
 <import src="/pages/personal/personal.wxml" />
+<import src="/template/showToast.wxml" />
+<template is="showToast" data="{{showToast: showToast}}" />
+
 
 <!-- <scroll-view   style="height: 200px" scroll-y="true"  bindscrolltoupper="refresh" bindscrolltolower="loadMore" >
   <view  style="background: red; width: 100%; height: 200px">dsadadddd</view>

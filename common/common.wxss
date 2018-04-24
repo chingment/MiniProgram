@@ -22,6 +22,10 @@ page {
   border-bottom: 2rpx solid #f18d00;
 }
 
+.border-main {
+  border: 1rpx solid #f18d00;
+}
+
 .col-nav {
   padding: 0px 16px;
 }
@@ -134,7 +138,7 @@ page {
 }
 
 .col-form-item .radio {
-  display:flex;
+  display: flex;
   height: 70rpx;
   align-items: center;
 }
@@ -227,6 +231,66 @@ page {
 .toast .toast-icon {
   display: block;
   margin: 0 auto 10rpx auto;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.col-nav-shippingaddress .item-left {
+  height: 100rpx;
+  width: 140rpx;
+  font-size: 28rpx;
+}
+
+.col-nav-shippingaddress .item-receiver {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+
+.col-nav-shippingaddress .item-isDefault {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+
+.col-nav-shippingaddress .item-isDefault text {
+  padding: 3rpx 8rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.col-nav-shippingaddress .item-middle {
+  height: 100rpx;
+  font-size: 28rpx;
+}
+
+.col-nav-shippingaddress .item-phoneNumber {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+
+.col-nav-shippingaddress .item-area {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.col-nav-shippingaddress .item-right {
+  height: 100rpx;
+  width: 100rpx;
+  text-align: right;
+  line-height: 100rpx;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.col-nav-shippingaddress .item-right .img-edit {
   width: 50rpx;
   height: 50rpx;
 }

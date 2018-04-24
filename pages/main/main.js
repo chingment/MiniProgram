@@ -8,6 +8,7 @@ const cart = require('../../pages/cart/cart.js')
 const index = require('../../pages/index/index.js')
 const productkind = require('../../pages/productkind/productkind.js')
 const personal = require('../../pages/personal/personal.js')
+const toastUtil = require('../../utils/showtoastutil')
 
 var app = getApp()
 
@@ -132,9 +133,10 @@ Page({
 
     wx.getSystemInfo({
       success: function (res) {
-        console.log("windowHeight:" + res.windowHeight)
+        var height = res.windowHeight - res.screenWidth / 750 * 81
+        console.log("windowHeight:" + height)
         _self.setData({
-          tabBarContentHeight: res.windowHeight - 45
+          tabBarContentHeight: height
         });
       }
     })
@@ -301,6 +303,10 @@ Page({
           quantity: cartSkus[i].quantity
         })
       }
+    }
+    if (skus.length == 0) {
+      toastUtil.showToast({ title: '至少选择一件商品' })
+      return
     }
 
     wx.navigateTo({

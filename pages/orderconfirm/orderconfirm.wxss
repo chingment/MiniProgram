@@ -1,1 +1,8 @@
-/* pages/orderconfirm/orderconfirm.wxss */
+.tag-address {
+  height: 2px;
+}
+.tag-address image{
+  width: 100%;
+  height: 2px;
+  display: block;
+}

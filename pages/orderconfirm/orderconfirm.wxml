@@ -1,2 +1,31 @@
-<!--pages/orderconfirm/orderconfirm.wxml-->
-<text>pages/orderconfirm/orderconfirm.wxml</text>
+<view class='tag-address'>
+  <image src="../../images/tag_address.png"></image>
+</view>
+<view>
+  <view wx:if="{{shippingAddress.length>0}}" class="col-nav col-nav-shippingaddress">
+    <block wx:for="{{shippingAddress}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+      <view class="col-nav-item" bindtap="shippingAddressSelect" data-reply-index="{{index}}"  >
+        <view class="item-left">
+          <view class="item-receiver">
+            <text>{{item.receiver}}</text>
+          </view>
+          <view class="item-isDefault" wx:if="{{item.isDefault}}">
+            <text class="font-main border-main">默认</text>
+          </view>
+        </view>
+        <view class="item-middle">
+          <view class='item-phoneNumber'>
+            <text>{{item.phoneNumber}}</text>
+          </view>
+          <view class='item-area'>
+            <text>{{item.area}} {{item.address}}</text>
+          </view>
+        </view>
+        <view wx:if="{{item.canSelectElse}}" class='item-right' bindtap="goSelect">
+          <image class="img-nav" src='../../images/col_nav_right.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:else>false</view>
+</view>

@@ -1,8 +1,8 @@
 const app = getApp()
 const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
-const cityList = require('./cityList').cityList;
-const toastUtil = require('../../utils/showtoastutil');//引入消息提醒暴露的接口  
+const cityList = require('./cityList').cityList
+const toastUtil = require('../../utils/showtoastutil')  
 
 Page({
   data: {
@@ -192,7 +192,12 @@ Page({
     if (id != "0") {
       console.log(options.shippingAddress)
       var shippingAddress = JSON.parse(options.shippingAddress)
+
       _this.data.address.area = shippingAddress.area
+      _this.data.address.resideprovince = shippingAddress.area.split('-')[0];
+      _this.data.address.residecity = shippingAddress.area.split('-')[1];
+      _this.data.address.country = shippingAddress.area.split('-')[2];
+
       _this.data.shippingAddress_isDefault = shippingAddress.isDefault
       _this.setData({
         shippingAddress: shippingAddress,
