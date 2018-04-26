@@ -1,31 +1,91 @@
 <view class='tag-address'>
   <image src="../../images/tag_address.png"></image>
 </view>
-<view>
-  <view wx:if="{{shippingAddress.length>0}}" class="col-nav col-nav-shippingaddress">
-    <block wx:for="{{shippingAddress}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-      <view class="col-nav-item" bindtap="shippingAddressSelect" data-reply-index="{{index}}"  >
+
+<view class="orderconfirm">
+  <block wx:for="{{block}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+    <view class="col-nav col-nav-shippingaddress">
+      <view class="col-nav-item" bindtap="shippingAddressSelect" data-reply-index="{{index}}">
         <view class="item-left">
           <view class="item-receiver">
-            <text>{{item.receiver}}</text>
+            <text>{{item.shippingAddress.receiver}}</text>
           </view>
-          <view class="item-isDefault" wx:if="{{item.isDefault}}">
+          <view class="item-isDefault" wx:if="{{item.shippingAddress.isDefault}}">
             <text class="font-main border-main">默认</text>
           </view>
         </view>
         <view class="item-middle">
           <view class='item-phoneNumber'>
-            <text>{{item.phoneNumber}}</text>
+            <text>{{item.shippingAddress.phoneNumber}}</text>
           </view>
           <view class='item-area'>
-            <text>{{item.area}} {{item.address}}</text>
+            <text>{{item.shippingAddress.area}} {{item.shippingAddress.address}}</text>
           </view>
         </view>
-        <view wx:if="{{item.canSelectElse}}" class='item-right' bindtap="goSelect">
+        <view wx:if="{{item.shippingAddress.canSelectElse}}" class='item-right' bindtap="goSelect">
           <image class="img-nav" src='../../images/col_nav_right.png'></image>
         </view>
       </view>
-    </block>
+    </view>
+
+    <view class="sku-list">
+      <block wx:for="{{item.skus}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
+        <view class="item">
+          <view class="item-mainImg">
+            <image src="{{skusitem.skuMainImg}}"></image>
+          </view>
+          <view class="item-skuname">
+            {{skusitem.skuName}}
+          </view>
+          <view class="item-quantity">
+            {{skusitem.quantity}}
+          </view>
+          <view class="item-price">
+            {{skusitem.price}}
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </block>
+
+
+  <view class="col-nav">
+    <view class="container">
+      <view class="col-nav-item" bindtap="couponSelect">
+        <view class="item-left">
+          <image src='../../images/col_nav_icon_coupon.png'></image>
+        </view>
+        <view class="item-middle">
+          <text class="title">优惠卷</text>
+        </view>
+        <view class='item-right'>
+          <image src='../../images/col_nav_right.png'></image>
+        </view>
+      </view>
+
+      <block wx:for="{{subtotalItem}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+        <view class="col-nav-item">
+          <view class="item-left">
+            <image src='../../images/col_nav_icon_coupon.png'></image>
+          </view>
+          <view class="item-middle">
+            <text class="title">{{item.name}}</text>
+          </view>
+          <view class="item-right" style="width:300rpx">
+            {{item.amount}}
+          </view>
+        </view>
+      </block>
+
+
+    </view>
   </view>
-  <view wx:else>false</view>
+
+
+
+
 </view>
+
+
+<button class="bottom-btn bg-main" form-type="submit">立即支付({{actualAmount}})({{originalAmount}})</button>

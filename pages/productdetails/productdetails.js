@@ -69,7 +69,7 @@ Page({
     var skus = []
     skus.push({
       carId: 0,
-      productSkuId: _this.data.sku.id,
+      skuId: _this.data.sku.id,
       quantity: 1
     })
     wx.navigateTo({

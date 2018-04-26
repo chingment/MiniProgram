@@ -1,4 +1,4 @@
-<view style='margin-bottom:81rpx'>
+<view class="details-main" >
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <block wx:for-items="{{sku.dispalyImgs}}" wx:for-item="item" wx:key="{{index}}">
       <swiper-item>

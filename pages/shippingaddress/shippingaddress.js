@@ -130,15 +130,15 @@ Page({
 
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2];
-      prevPage.data.shippingAddress[_this.data.operateIndex].id = shippingaddress.id
-      prevPage.data.shippingAddress[_this.data.operateIndex].receiver = shippingaddress.receiver
-      prevPage.data.shippingAddress[_this.data.operateIndex].phoneNumber = shippingaddress.phoneNumber
-      prevPage.data.shippingAddress[_this.data.operateIndex].address = shippingaddress.address
-      prevPage.data.shippingAddress[_this.data.operateIndex].area = shippingaddress.area
-      prevPage.data.shippingAddress[_this.data.operateIndex].isDefault = shippingaddress.isDefault
+      prevPage.data.block[_this.data.operateIndex].shippingAddress.id = shippingaddress.id
+      prevPage.data.block[_this.data.operateIndex].shippingAddress.receiver = shippingaddress.receiver
+      prevPage.data.block[_this.data.operateIndex].shippingAddress.phoneNumber = shippingaddress.phoneNumber
+      prevPage.data.block[_this.data.operateIndex].shippingAddress.address = shippingaddress.address
+      prevPage.data.block[_this.data.operateIndex].shippingAddress.area = shippingaddress.area
+      prevPage.data.block[_this.data.operateIndex].shippingAddress.isDefault = shippingaddress.isDefault
 
       prevPage.setData({
-        shippingAddress: prevPage.data.shippingAddress
+        block: prevPage.data.block
       })
 
       wx.navigateBack()

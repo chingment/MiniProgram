@@ -1,0 +1,99 @@
+.coupon > .item {
+  border-radius: 5.21px;
+  height: 180rpx;
+  position: relative;
+  box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
+  margin: 22rpx;
+  padding: 12rpx 25rpx;
+}
+
+.item-top {
+  height: 120rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.item-top > view {
+  height: 120rpx;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.item-top  .item-left {
+  width: 200rpx;
+}
+
+.item-top  .item-right {
+  flex: 1;
+  text-align: right;
+}
+
+.item-top .amount, .item-top .name {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.item-top .discounttip, .item-top .validdate {
+  height: 20rpx;
+  line-height: 20rpx;
+}
+
+.item-bottom {
+  height: 60rpx;
+  overflow: hidden;
+  border-top: 1px dashed #f5f5f5;
+}
+
+.item-bottom > view {
+  height: 60rpx;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 60rpx;
+}
+
+.item-bottom  .item-left {
+  width: 200rpx;
+}
+
+.item-bottom  .item-right {
+  flex: 1;
+  float: right;
+}
+
+.discount {
+  color: #f50;
+  font-size: 68rpx;
+}
+
+.discountunit {
+  color: #f50;
+  font-size: 32rpx;
+}
+
+.discounttip, .validdate {
+  color: #555;
+  font-size: 22rpx;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 52rpx;
+}
+
+.description {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.btn {
+  height: 52rpx;
+  width: 4.625rem;
+  background: #f50;
+  color: #fff;
+  line-height: 52rpx;
+  border-radius: 50px;
+  text-align: center;
+  display: inline-block;
+  font-size: 28rpx;
+}

@@ -20,7 +20,9 @@ var config = {
     productGetList: `${host}/Product/GetList`,
     productGetSkuDetails: `${host}/Product/GetSkuDetails`,
     shippingAddressEdit: `${host}/ShippingAddress/Edit`,
-    shippingAddressGetList: `${host}/ShippingAddress/GetList`
+    shippingAddressGetList: `${host}/ShippingAddress/GetList`,
+    orderConfirm: `${host}/Order/Confirm`,
+    couponGetList: `${host}/Coupon/GetList`,
   }
 
 };

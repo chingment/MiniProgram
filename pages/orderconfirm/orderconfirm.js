@@ -1,40 +1,51 @@
-// pages/orderconfirm/orderconfirm.js
+const httpUtil = require("../../utils/apphttputil.js")
+const config = require('../../config')
+
+var skus
+
+var getData = function (_this) {
+
+  var couponId = _this.data.couponId
+
+  httpUtil.postRequest(config.apiUrl.orderConfirm, { userId: 1215, skus: skus, couponId: couponId }, {
+    success: function (res) {
+      console.log("config.apiUrl.orderConfirm->success")
+      console.log("config.apiUrl.orderConfirm->success:" + res)
+
+
+      _this.setData({
+        block: res.data.block,
+        subtotalItem: res.data.subtotalItem,
+        actualAmount: res.data.actualAmount,
+        originalAmount: res.data.originalAmount
+      })
+    },
+    fail: function () {
+      console.log("config.apiUrl.orderConfirm->fail")
+    }
+  })
+}
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shippingAddress: [
-      {
-        id: 0,
-        receiver: "邱庆文",
-        phoneNumber: "15989287032",
-        area: "广东升",
-        address: "花都区",
-        tagName: "快递地址",
-        isDefault: true,
-        canSelectElse: true
-      },
-      {
-        id: 0,
-        receiver: "邱庆文",
-        phoneNumber: "15989287032",
-        area: "广东升",
-        address: "花都区",
-        tagName: "快递地址",
-        isDefault: false,
-        canSelectElse: false
-      }
-    ]
+    orderBlock: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var skus = JSON.parse(options.skus);
+    var _this = this
+    skus = JSON.parse(options.skus);
     console.log(options.skus)
+
+    getData(_this)
+
   },
 
   /**
@@ -48,7 +59,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var _this = this
+    getData(_this)
   },
 
   /**
@@ -87,8 +99,8 @@ Page({
   },
   shippingAddressSelect: function (e) {
     var _this = this
-    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-    var shippingaddress = _this.data.shippingAddress[index]
+    var index = e.currentTarget.dataset.replyIndex
+    var shippingaddress = _this.data.block[index].shippingAddress
     if (!shippingaddress.canSelectElse)
       return
     wx.navigateTo({
@@ -97,5 +109,15 @@ Page({
         // success
       },
     })
+  },
+  couponSelect: function (e) {
+    var _this = this
+    wx.navigateTo({
+      url: "/pages/mycoupon/mycoupon?operate=2&isGetHis=false&skus=" + JSON.stringify(skus),
+      success: function (res) {
+        // success
+      },
+    })
   }
+
 })

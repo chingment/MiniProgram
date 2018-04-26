@@ -6,6 +6,7 @@
     "pages/shippingaddress/shippingaddress",
     "pages/shippingaddressedit/shippingaddressedit",
     "pages/orderconfirm/orderconfirm",
+    "pages/mycoupon/mycoupon",
     "pages/logs/logs"
   ],
   "window":{

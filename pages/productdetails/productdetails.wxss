@@ -1,3 +1,8 @@
+.details-main{
+   margin-bottom:88rpx;
+   padding-bottom: 88rpx;
+}
+
 swiper {
   height: 500rpx;
 }
@@ -57,12 +62,12 @@ swiper-item image {
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 1;
   width: 100%;
   height: 88rpx;
   line-height: 88rpx;
   border-top: 1rpx #dbdbdb solid;
   overflow: hidden;
+  z-index: 999
 }
 
 .details-nav .item-home {

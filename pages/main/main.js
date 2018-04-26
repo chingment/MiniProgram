@@ -240,40 +240,28 @@ Page({
   cartBarListItemOperate(e) {
     console.log('cartBarListItemCheck');
     var _self = this
-    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-    var operate = e.currentTarget.dataset.replyOperate //对应页面data-reply-index
-    console.log('cartBarListItemCheck.index' + index)
+    var pIndex = e.currentTarget.dataset.replyPindex
+    var cIndex = e.currentTarget.dataset.replyCindex
+    var operate = e.currentTarget.dataset.replyOperate
+    console.log('cartBarListItemCheck.pIndex:' + pIndex)
+    console.log('cartBarListItemCheck.cIndex:' + cIndex)
     console.log('cartBarListItemCheck.operate' + operate)
-    var list = _self.data.cart.list;
 
-    var list_item = _self.data.cart.list[index];
+    var sku = _self.data.cart.block[pIndex].skus[cIndex];
 
     switch (operate) {
       case "1":
-        if (list_item.selected) {
-          list_item.selected = false
+        if (sku.selected) {
+          sku.selected = false
         }
         else {
-          list_item.selected = true
+          sku.selected = true
         }
         break;
     }
 
     var operateList = new Array();
-    operateList.push(list_item);
-
-
-    // wx.showModal({
-    //   title: '提示',
-    //   content: '确定要删除吗？',
-    //   success: function (sm) {
-    //     if (sm.confirm) {
-    //       // 用户点击了确定 可以调用删除方法了
-    //     } else if (sm.cancel) {
-    //       console.log('用户点击取消')
-    //     }
-    //   }
-    // })
+    operateList.push(sku);
 
     cart.operate({ userId: 1215, operate: operate, list: operateList }, {
       success: function (res) {
@@ -291,19 +279,24 @@ Page({
   cartBarImmeBuy: function (e) {
     var _this = this
 
-    var cartSkus = _this.data.cart.list
+    var block = _this.data.cart.block
 
     var skus = []
 
-    for (var i = 0; i < cartSkus.length; i++) {
-      if (cartSkus[i].selected) {
-        skus.push({
-          carId: cartSkus[i].cartId,
-          productSkuId: cartSkus[i].skuId,
-          quantity: cartSkus[i].quantity
-        })
+    for (var i = 0; i < block.length; i++) {
+      for (var j = 0; j < block[i].skus.length; j++) {
+        if (block[i].skus[j].selected) {
+          skus.push({
+            carId: block[i].skus[j].cartId,
+            skuId: block[i].skus[j].skuId,
+            quantity: block[i].skus[j].quantity,
+            channelId: block[i].skus[j].channelId,
+            channelType: block[i].skus[j].channelType
+          })
+        }
       }
     }
+
     if (skus.length == 0) {
       toastUtil.showToast({ title: '至少选择一件商品' })
       return

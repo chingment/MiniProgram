@@ -44,7 +44,7 @@
 
   <view class="col-nav">
     <view class="container">
-      <view class="col-nav-item">
+      <navigator url="/pages/mycoupon/mycoupon?operate=1&isGetHis=false" class="col-nav-item" >
         <view class="item-left">
           <image src='../../images/col_nav_icon_coupon.png'></image>
         </view>
@@ -54,7 +54,7 @@
         <view class='item-right'>
           <image src='../../images/col_nav_right.png'></image>
         </view>
-      </view>
+      </navigator>
 
       <view class="col-nav-item">
         <view class="item-left">

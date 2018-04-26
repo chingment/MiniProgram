@@ -1,32 +1,34 @@
 <template name="cart">
-
-
   <view class="cart">
     <view class="container">
       <view class="cart-list">
-        <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-          <view class="cart-list-item">
-            <view class="cart-list-item-left" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-index="{{index}}">
-
-              <image src='../../images/{{item.selected==false?"checkedoff":"checkedon"}}.png'></image>
-            </view>
-            <view class="cart-list-item-middle">
-
-              <view class="cart-list-item-mainimgbox">
-                <navigator url="/pages/productdetails/productdetails?skuId={{item.skuId}}" style='height:100%;width:100%'>
-                  <image class='mainimg' src="{{item.skuMainImg}}" />
-                </navigator>
-              </view>
-              <view class="cart-list-item-infobox">
-                <text class='skuname font-black'>{{item.skuName}}</text>
-                <text class='sumprice font-gray'>{{item.sumPrice}}</text>
-              </view>
-            </view>
-            <view class="cart-list-item-right">
-              <image bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-index="{{index}}" src='../../images/increase.png'></image>
-              <text class="quantity">{{item.quantity}}</text>
-              <image bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-index="{{index}}" src='../../images/decrease.png'></image>
-
+        <block wx:for="{{block}}" wx:for-index="pindex" wx:for-item="item" wx:key="list">
+          <view>
+            <view class="cart-tagname">{{item.tagName}}</view>
+            <view class="cart-skus">
+              <block wx:for="{{item.skus}}" wx:for-index="cindex" wx:for-item="itemsku" wx:key="list">
+                <view class="item">
+                  <view class="item-left" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}">
+                    <image src='../../images/{{itemsku.selected==false?"checkedoff":"checkedon"}}.png'></image>
+                  </view>
+                  <view class="item-middle">
+                    <view class="item-mainimgbox">
+                      <navigator url="/pages/productdetails/productdetails?skuId={{itemsku.skuId}}" style='height:100%;width:100%'>
+                        <image class='mainimg' src="{{itemsku.skuMainImg}}" />
+                      </navigator>
+                    </view>
+                    <view class="item-infobox">
+                      <text class='skuname font-black'>{{itemsku.skuName}}</text>
+                      <text class='sumprice font-gray'>{{itemsku.sumPrice}}</text>
+                    </view>
+                  </view>
+                  <view class="item-right">
+                    <image bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='../../images/increase.png'></image>
+                    <text class="quantity">{{itemsku.quantity}}</text>
+                    <image bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='../../images/decrease.png'></image>
+                  </view>
+                </view>
+              </block>
             </view>
           </view>
         </block>
@@ -43,6 +45,7 @@
           <text>下单</text>
         </view>
       </view>
+
     </view>
   </view>
 

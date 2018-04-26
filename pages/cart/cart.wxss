@@ -1,71 +1,72 @@
 /*购物车*/
 
-.cart-list {
-  margin-bottom: 81rpx;
+.cart-list{
+
+  padding-bottom: 81rpx;
 }
 
-.cart-list-item {
+.cart-skus >.item {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #f8f8f8;
   padding: 5px 11px 5px 13px;
 }
 
-.cart-list-item-left {
-  width: 80rpx;
+.cart-skus >.item > view {
   height: 150rpx;
   display: inline-block;
   line-height: 150rpx;
+}
+
+.cart-skus .item-left {
+  width: 80rpx;
   text-align: left;
 }
 
-.cart-list-item-left image {
+.cart-skus .item-left image {
   width: 38rpx;
   height: 38rpx;
 }
 
-.cart-list-item-middle {
+.cart-skus .item-middle {
   flex: 1;
-  height: 150rpx;
-  overflow: hidden;
 }
 
-.cart-list-item-mainimgbox {
+.cart-skus .item-mainimgbox {
   float: left;
   width: 150rpx;
   height: 150rpx;
 }
 
-.cart-list-item-mainimgbox .mainimg {
+.cart-skus .item-mainimgbox .mainimg {
   width: 100%;
   height: 100%;
 }
 
-.cart-list-item-infobox {
+.cart-skus .item-infobox {
   float: left;
   flex: 1;
 }
 
-.cart-list-item-infobox .skuname {
+.cart-skus .item-infobox .skuname {
   display: block;
   height: 80rpx;
   line-height: 80rpx;
 }
 
-.cart-list-item-infobox .sumprice {
+.cart-skus .item-infobox .sumprice {
   display: block;
   font-size: 24rpx;
+  height: 70rpx;
+  line-height: 70rpx;
 }
 
-.cart-list-item-right {
+.cart-skus .item-right {
   width: 150rpx;
-  height: 150rpx;
-  display: inline-block;
-  line-height: 150rpx;
   text-align: center;
 }
 
-.cart-list-item-right image {
+.cart-skus .item-right image {
   width: 45rpx;
   height: 45rpx;
   float: right;
@@ -73,7 +74,7 @@
   top: 38%;
 }
 
-.cart-list-item-right .quantity {
+.cart-skus .item-right .quantity {
   width: 32rpx;
   float: right;
   font-size: 24rpx;
@@ -84,7 +85,7 @@
   position: fixed;
   bottom: 81rpx;
   background: #fff;
-  display:flex;
+  display: flex;
   border-top: 1px solid #f8f8f8;
 }
 
