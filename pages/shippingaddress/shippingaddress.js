@@ -7,13 +7,11 @@ var getList = function (_this) {
 
   httpUtil.getRequest(config.apiUrl.shippingAddressGetList, { userId: 1215 }, {
     success: function (res) {
-      console.log("config.apiUrl.productList->success")
       _this.setData({
         list: res.data
       })
     },
     fail: function () {
-      console.log("config.apiUrl.productList->fail")
     }
   })
 }

@@ -234,13 +234,9 @@ Page({
 
     httpUtil.postRequest(config.apiUrl.shippingAddressEdit, { id: id, userId: 1215, receiver: receiver, phoneNumber: phoneNumber, area: area, address: address, isDefault: isDefault }, {
       success: function (res) {
-        console.log("config.apiUrl.shippingAddressEdit->success")
-
-        //toastUtil.showToast({ title: res.message })
         wx.navigateBack()
       },
       fail: function () {
-        console.log("config.apiUrl.shippingAddressEdit->fail")
       }
     })
 

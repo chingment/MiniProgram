@@ -26,6 +26,10 @@
   line-height: 100rpx;
 }
 
+.sku-list .item:last-child{
+  border-bottom: 0px solid #f8f8f8;
+}
+
 .sku-list .item >view {
   height: 100rpx;
   line-height: 100rpx;
@@ -51,9 +55,21 @@
 .sku-list .item-quantity {
   width: 100rpx;
   font-size: 30rpx;
+  text-align: right;
 }
 
 .sku-list .item-price {
   width: 100rpx;
   font-size: 32rpx;
+  text-align: right;
+}
+
+.coupontip {
+  padding: 5rpx 10rpx;
+  font-size: 32rpx;
+}
+
+.coupontip2 {
+  background: #f50;
+  color: #fff;
 }

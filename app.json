@@ -7,6 +7,7 @@
     "pages/shippingaddressedit/shippingaddressedit",
     "pages/orderconfirm/orderconfirm",
     "pages/mycoupon/mycoupon",
+    "pages/personalinfo/personalinfo",
     "pages/logs/logs"
   ],
   "window":{

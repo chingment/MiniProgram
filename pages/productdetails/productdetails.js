@@ -25,17 +25,12 @@ Page({
 
     httpUtil.getRequest(config.apiUrl.productGetSkuDetails, { userId: 1215, productSkuId }, {
       success: function (res) {
-        console.log("config.apiUrl.productGetSkuDetails->success")
-        console.log("config.apiUrl.productGetSkuDetails->success:" + JSON.stringify(res.data))
-
-
         _this.setData({ sku: res.data, cart: storeage.getCart() })
 
         wxparse.wxParse('dkcontent', 'html', res.data.details, _this, 0);
 
       },
       fail: function () {
-        console.log("config.apiUrl.productGetSkuDetails->fail")
       }
     })
   },
@@ -51,14 +46,14 @@ Page({
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
     console.log("skuId:" + skuId)
     var operateList = new Array();
-    operateList.push({ skuId: skuId, quantity: 1, selected: true });
+    operateList.push({ skuId: skuId, quantity: 1, selected: true, channelId: 1, channelType:1 });
 
     cart.operate({ userId: 1215, operate: 2, list: operateList }, {
       success: function (res) {
-        console.log("config.apiUrl.cartOperate->success")
+
       },
       fail: function () {
-        console.log("config.apiUrl.cartOperate->fail")
+
       }
     })
 

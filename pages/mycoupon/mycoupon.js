@@ -1,5 +1,6 @@
 const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
+const app = getApp()
 
 Page({
 
@@ -16,10 +17,11 @@ Page({
   onLoad: function (options) {
     var _this = this
     var operate = parseInt(options.operate)
- 
+
     var operateIndex = parseInt(options.operateIndex)
     var skus = options.skus == undefined ? [] : JSON.parse(options.skus)
     var isGetHis = options.isGetHis
+    var couponId = options.couponId == undefined ? [] : JSON.parse(options.couponId)
     var title = ""
     switch (operate) {
       case 1:
@@ -37,12 +39,8 @@ Page({
     })
 
     var isGetHis = false
-    httpUtil.postRequest(config.apiUrl.couponGetList, { userId: 1215, isGetHis: isGetHis, skus: skus }, {
+    httpUtil.postRequest(config.apiUrl.couponGetList, { userId: 1215, isGetHis: isGetHis, couponId: couponId, skus: skus }, {
       success: function (res) {
-        console.log("config.apiUrl.couponGetList->success")
-        console.log("config.apiUrl.couponGetList->success:" + res)
-
-
         _this.setData({
           coupon: res.data,
           operate: operate
@@ -50,7 +48,7 @@ Page({
 
       },
       fail: function () {
-        console.log("config.apiUrl.couponGetList->fail")
+
       }
     })
 
@@ -58,21 +56,32 @@ Page({
   goSelect: function (e) {
     var _this = this
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-    var couponId = _this.data.coupon[index].id
-    console.log("couponId:" + couponId)
+    var coupon = _this.data.coupon[index]
+    var operate = _this.data.operate
 
-    var coupons = []
-    coupons.push(couponId)
+    if (operate == 1) {
+      app.switchTab(0)
+    }
+    else if (operate == 2) {
+      var couponId = []
+      if (coupon.isSelected) {
+        coupon.isSelected = false
+      }
+      else {
+        coupon.isSelected = true
+      }
 
-    if (_this.data.operate == 2) {
+      if (coupon.isSelected) {
+        couponId.push(coupon.id)
+      }
+
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2];
       prevPage.setData({
-        couponId: coupons
+        couponId: couponId
       })
       wx.navigateBack()
     }
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -4,7 +4,7 @@
   position: relative;
   box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
   margin: 22rpx;
-  padding: 12rpx 25rpx;
+  padding: 12rpx 20rpx;
 }
 
 .item-top {
@@ -24,9 +24,14 @@
   width: 200rpx;
 }
 
-.item-top  .item-right {
+.item-top  .item-middle {
   flex: 1;
+}
+
+.item-top  .item-right {
+  width: 200rpx;
   text-align: right;
+  line-height: 120rpx;
 }
 
 .item-top .amount, .item-top .name {
@@ -35,8 +40,8 @@
 }
 
 .item-top .discounttip, .item-top .validdate {
-  height: 20rpx;
-  line-height: 20rpx;
+  height: 40rpx;
+  line-height: 22rpx;
 }
 
 .item-bottom {
@@ -63,12 +68,14 @@
 
 .discount {
   color: #f50;
-  font-size: 68rpx;
+  font-weight: bold;
+  font-size: 48rpx;
 }
 
 .discountunit {
   color: #f50;
   font-size: 32rpx;
+  margin-left: 10rpx;
 }
 
 .discounttip, .validdate {
@@ -78,7 +85,7 @@
 
 .name {
   font-weight: bold;
-  font-size: 52rpx;
+  font-size: 32rpx;
 }
 
 .description {
@@ -88,12 +95,12 @@
 
 .btn {
   height: 52rpx;
-  width: 4.625rem;
+  width: 130rpx;
   background: #f50;
   color: #fff;
   line-height: 52rpx;
   border-radius: 50px;
   text-align: center;
   display: inline-block;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }

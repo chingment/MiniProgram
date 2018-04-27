@@ -23,10 +23,10 @@ function getSign(key, secret, timestamp, params) {
     }
   }
   var str = arr.join("");
-  console.log("str:" + str)
+  //console.log("str:" + str)
   var strArr = str.split('');
   str = strArr.sort().join("");
-  console.log("str:" + str)
+  //console.log("str:" + str)
   return sha256_digest(str);
 }
 
@@ -56,9 +56,9 @@ function parseUrlParam(param, key) {
 
   function request(url, method, params, requestHandler) {
 
-    console.log("apphttpUtil.request")
-    console.log("apphttpUtil.url:" + url)
-    console.log("apphttpUtil.method:" + method)
+    //console.log("apphttpUtil.request")
+    //console.log("apphttpUtil.url:" + url)
+    //console.log("apphttpUtil.method:" + method)
     console.log("apphttpUtil.params:" + JSON.stringify(params))
 
     let timestamp = getSecondTimestamp();
@@ -66,8 +66,8 @@ function parseUrlParam(param, key) {
     header.key = config.key;
     header.timestamp = timestamp;
 
-    console.log("apphttpUtil.key:" + config.key)
-    console.log("apphttpUtil.timestamp:" + timestamp)
+    //console.log("apphttpUtil.key:" + config.key)
+    //console.log("apphttpUtil.timestamp:" + timestamp)
 
     if (method == "GET") {
       if (url.indexOf("?") < 0) {
@@ -82,7 +82,7 @@ function parseUrlParam(param, key) {
     let hexSign = getSign(config.key, config.secret, timestamp, params);
     let base64Sign = base64Encode(hexSign);
     header.sign = base64Sign;
-    console.log("apphttpUtil.sign:" + base64Sign)
+    //console.log("apphttpUtil.sign:" + base64Sign)
     httpUtil.wxRequest(url, method, header, params, {
       success: function (res) {
         console.log("apphttpUtil->sucees:" +JSON.stringify(res))

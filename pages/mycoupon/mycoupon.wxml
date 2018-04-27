@@ -10,19 +10,22 @@
             </view>
             <view class="discounttip">{{item.discountTip}}</view>
           </view>
-          <view class="item-right">
+          <view class="item-middle">
             <view class="name">{{item.name}}</view>
             <view class="validdate">{{item.validDate}}</view>
+          </view>
+          <view class="item-right" bindtap="goSelect"  data-reply-index="{{index}}" data-reply-operate="{{operate}}"  >
+            <text wx:if="{{operate==1}}" class="btn">立即使用</text>
+            <label wx:elif="{{operate==2}}" class="radio">
+              <image src='../../images/{{item.isSelected==false?"checkedoff":"checkedon"}}.png'></image>
+            </label>
           </view>
         </view>
         <view class="item-bottom">
           <view class="item-left">
             <view class="description">{{item.description}}</view>
           </view>
-          <view class="item-right" bindtap="goSelect" data-reply-index="{{index}}" >
-           
-              <text class="btn"   >立即使用</text>
-            
+          <view class="item-right" bindtap="goSelect" data-reply-index="{{index}}">
           </view>
         </view>
       </view>

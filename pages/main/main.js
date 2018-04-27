@@ -57,44 +57,10 @@ Page({
       }
     ],
     "productKind": {
-      "list": [{
-        "id": 1,
-        "name": "女装1",
-        "imgUrl": "http://120.79.233.231:8087/upload/CarInsuranceCompany/tpybx.png",
-        "selected": true,
-        "child": [{
-          "id": 5,
-          "name": "上衣",
-          "imgUrl": "http://120.79.233.231:8087/upload/CarInsuranceCompany/tpybx.png"
-        }]
-      }, {
-        "id": 1,
-        "name": "女装2",
-        "imgUrl": "http://120.79.233.231:8087/upload/CarInsuranceCompany/tpybx.png",
-        "selected": false
-      }, {
-        "id": 1,
-        "name": "女装3",
-        "imgUrl": "http://120.79.233.231:8087/upload/CarInsuranceCompany/tpybx.png",
-        "selected": false
-      }]
+      "list": []
     },
     "cart": {
-      "list": [
-        {
-          "skuId": 1,
-          "skuName": "产品1",
-          "skuMainImg": "http://120.79.233.231:8087/upload/CarInsuranceCompany/tpybx.png",
-          "quantity": 1,
-          "selected": false
-        }, {
-          "skuId": 2,
-          "skuName": "产品2",
-          "skuMainImg": "http://120.79.233.231:8087/upload/CarInsuranceCompany/tpybx.png",
-          "quantity": 3,
-          "selected": true
-        }
-      ]
+      "list": []
     }
   },
 
@@ -153,8 +119,6 @@ Page({
 
         httpUtil.getRequest(config.apiUrl.globalDataSet, { userId: 1215, merchantId: 241, posMachineId: 148, datetime: '2018-03-30' }, {
           success: function (res) {
-            console.log("config.apiUrl.home->success")
-
             var productKind = res.data.productKind
             var cart = res.data.cart
             var personal = res.data.personal
@@ -169,7 +133,6 @@ Page({
 
           },
           fail: function () {
-            console.log("config.apiUrl.home->fail")
           }
         })
 
@@ -265,13 +228,11 @@ Page({
 
     cart.operate({ userId: 1215, operate: operate, list: operateList }, {
       success: function (res) {
-        console.log("config.apiUrl.cartOperate->success")
         _self.setData({ cart: res.data })
         _self.mainTabBarItemSetNumber(2, res.data.count)
 
       },
       fail: function () {
-        console.log("config.apiUrl.cartOperate->fail")
       }
     })
   },

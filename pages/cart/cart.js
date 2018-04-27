@@ -7,13 +7,10 @@ function operate(params, requestHandler) {
    
   httpUtil.postRequest(config.apiUrl.cartOperate, params, {
     success: function (res) {
-      console.log("config.apiUrl.cartOperate->success")
-      
       requestHandler.success(res)
       storeage.setCart(res.data)
     },
     fail: function () {
-      console.log("config.apiUrl.cartOperate->fail")
     }
   })
 }

@@ -1,4 +1,4 @@
-page {
+.col-nav-item .item-right page {
   color: #303030;
 }
 
@@ -24,6 +24,23 @@ page {
 
 .border-main {
   border: 1rpx solid #f18d00;
+}
+
+
+.radio {
+  display:inline-block;
+}
+
+ .radio image {
+  width: 38rpx;
+  height: 38rpx;
+  line-height: 42rpx;
+  display: block;
+}
+
+.line-space{
+  height:20rpx;
+  background-color:#f4f4f4;
 }
 
 .col-nav {
@@ -69,13 +86,14 @@ page {
 .col-nav-item .item-right {
   width: 12px;
   height: 70rpx;
-  line-height: 54rpx;
+  line-height: 70rpx;
   text-align: right;
 }
 
 .col-nav-item .item-right image {
   width: 12rpx;
   height: 16rpx;
+  margin-left: 8rpx;
 }
 
 .col-form {

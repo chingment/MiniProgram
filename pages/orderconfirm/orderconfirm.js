@@ -9,19 +9,17 @@ var getData = function (_this) {
 
   httpUtil.postRequest(config.apiUrl.orderConfirm, { userId: 1215, skus: skus, couponId: couponId }, {
     success: function (res) {
-      console.log("config.apiUrl.orderConfirm->success")
-      console.log("config.apiUrl.orderConfirm->success:" + res)
-
-
+      var d = res.data
       _this.setData({
-        block: res.data.block,
-        subtotalItem: res.data.subtotalItem,
-        actualAmount: res.data.actualAmount,
-        originalAmount: res.data.originalAmount
+        block:  d.block,
+        subtotalItem: d.subtotalItem,
+        actualAmount: d.actualAmount,
+        originalAmount: d.originalAmount,
+        coupon: d.coupon
       })
     },
     fail: function () {
-      console.log("config.apiUrl.orderConfirm->fail")
+
     }
   })
 }
@@ -33,7 +31,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderBlock: []
+    block: [],
+    couponId: []
   },
 
   /**
@@ -41,11 +40,8 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
+    console.log("sku:" + JSON.stringify(options.skus))
     skus = JSON.parse(options.skus);
-    console.log(options.skus)
-
-    getData(_this)
-
   },
 
   /**
@@ -112,8 +108,11 @@ Page({
   },
   couponSelect: function (e) {
     var _this = this
+
+    var couponId = _this.data.couponId
+
     wx.navigateTo({
-      url: "/pages/mycoupon/mycoupon?operate=2&isGetHis=false&skus=" + JSON.stringify(skus),
+      url: "/pages/mycoupon/mycoupon?operate=2&isGetHis=false&skus=" + JSON.stringify(skus) + "&couponId=" + JSON.stringify(couponId),
       success: function (res) {
         // success
       },
