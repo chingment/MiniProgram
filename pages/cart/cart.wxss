@@ -47,14 +47,21 @@
 }
 
 .cart-skus .item-infobox {
-  float: left;
   flex: 1;
 }
 
 .cart-skus .item-infobox .skuname {
-  display: block;
-  height: 80rpx;
-  line-height: 80rpx;
+  min-height: 35rpx;
+  max-height: 70rpx;
+  line-height: 38rpx;
+  font-size: 28rpx;
+  padding-top: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .cart-skus .item-infobox .sumprice {

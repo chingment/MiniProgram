@@ -38,7 +38,7 @@
               <image src="{{skusitem.skuMainImg}}"></image>
             </view>
             <view class="item-skuname">
-              {{skusitem.skuName}}
+            <text>{{skusitem.skuName}}</text>
             </view>
             <view class="item-quantity">
               {{skusitem.quantity}}

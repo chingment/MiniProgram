@@ -2,8 +2,6 @@ page {
   overflow-y: hidden;
 }
 
-
-
 .scroll-tabbar {
   position: fixed;
   top: 0;
@@ -36,7 +34,7 @@ page {
   background: #fff;
   text-align: center;
   font-size: 28rpx;
-  z-index: 999
+  z-index: 999;
 }
 
 .tabbar .selected {
@@ -141,8 +139,13 @@ page {
   height: 48rpx;
   line-height: 48rpx;
   font-size: 16px;
-  display: block;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .prd-list-1 .item-price {
