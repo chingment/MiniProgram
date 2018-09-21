@@ -48,16 +48,16 @@
 
 .sku-list .item-skuname {
   flex: 1;
+}
+
+.sku-list .item-skuname text {
   font-size: 30rpx;
-  padding-left: 10rpx;
-  line-height: 30rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  
 }
 
 .sku-list .item-quantity {

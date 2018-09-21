@@ -22,22 +22,22 @@
         </view>
       </view>
       <view class='personal-orderstatus'>
-        <view class='item'>
+        <navigator url="/pages/orderlist/orderlist" class='item'>
           <image class='item-img' src='../../images/order_status_waitpay.png'></image>
           <text class='item-title'>待支付</text>
-        </view>
-        <view class='item'>
+        </navigator>
+         <navigator url="/pages/orderlist/orderlist" class='item'>
           <image class='item-img' src='../../images/order_status_pickup.png'></image>
           <text class='item-title'>待取货</text>
-        </view>
-        <view class='item'>
+        </navigator>
+        <navigator url="/pages/orderlist/orderlist" class='item'>
           <image class='item-img' src='../../images/order_status_complete.png'></image>
           <text class='item-title'>已完成</text>
-        </view>
-        <view class='item'>
+        </navigator>
+         <navigator url="/pages/orderlist/orderlist" class='item'>
           <image class='item-img' src='../../images/order_status_cancel.png'></image>
           <text class='item-title'>已失效</text>
-        </view>
+        </navigator>
       </view>
     </view>
   </view>
