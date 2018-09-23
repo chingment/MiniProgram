@@ -10,15 +10,15 @@ Page({
     curr_pro: '',
     curr_cit: '',
     curr_cou: '',
-    shippingAddress: {
+    deliveryAddress: {
       id: 0,
-      receiver: "",
+      consignee: "",
       phoneNumber: "",
       area: "",
       address: "",
       isDefault: false
     },
-    shippingAddress_isDefault: false
+    deliveryAddress_isDefault: false
   },
 
   choosearea: function () {
@@ -177,39 +177,39 @@ Page({
   },
   isDefaultEvent: function (e) {
     this.setData({
-      shippingAddress_isDefault: !this.data.shippingAddress_isDefault
+      deliveryAddress_isDefault: !this.data.deliveryAddress_isDefault
     })
   },
   onLoad: function (options) {
     var _this = this
     var id = options.id;
     if (id != "0") {
-      console.log(options.shippingAddress)
-      var shippingAddress = JSON.parse(options.shippingAddress)
+      console.log(options.deliveryAddress)
+      var deliveryAddress = JSON.parse(options.deliveryAddress)
 
-      _this.data.address.area = shippingAddress.area
-      _this.data.address.resideprovince = shippingAddress.area.split('-')[0];
-      _this.data.address.residecity = shippingAddress.area.split('-')[1];
-      _this.data.address.country = shippingAddress.area.split('-')[2];
+      _this.data.address.area = deliveryAddress.area
+      _this.data.address.resideprovince = deliveryAddress.area.split('-')[0];
+      _this.data.address.residecity = deliveryAddress.area.split('-')[1];
+      _this.data.address.country = deliveryAddress.area.split('-')[2];
 
-      _this.data.shippingAddress_isDefault = shippingAddress.isDefault
+      _this.data.deliveryAddress_isDefault = deliveryAddress.isDefault
       _this.setData({
-        shippingAddress: shippingAddress,
+        deliveryAddress: deliveryAddress,
         address: _this.data.address,
-        shippingAddress_isDefault: _this.data.shippingAddress_isDefault
+        deliveryAddress_isDefault: _this.data.deliveryAddress_isDefault
       })
     }
 
   },
   formSubmit: function (e) {
-    var id = e.detail.value.shippingAddress_id
-    var receiver = e.detail.value.shippingAddress_receiver
-    var phoneNumber = e.detail.value.shippingAddress_phoneNumber
-    var area = e.detail.value.shippingAddress_area
-    var address = e.detail.value.shippingAddress_address
-    var isDefault = e.detail.value.shippingAddress_isDefault
+    var id = e.detail.value.deliveryAddress_id
+    var consignee = e.detail.value.deliveryAddress_consignee
+    var phoneNumber = e.detail.value.deliveryAddress_phoneNumber
+    var areaName = e.detail.value.deliveryAddress_areaName
+    var address = e.detail.value.deliveryAddress_address
+    var isDefault = e.detail.value.deliveryAddress_isDefault
 
-    if (receiver.length == 0) {
+    if (consignee.length == 0) {
       toastUtil.showToast({ title: '请输入姓名' })
       return
     }
@@ -217,7 +217,7 @@ Page({
       toastUtil.showToast({ title: '请输入手机号码' })
       return
     }
-    if (area.length == 0) {
+    if (areaName.length == 0) {
       toastUtil.showToast({ title: '请选择身份，城市，区县' })
       return
     }
@@ -226,7 +226,7 @@ Page({
       return
     }
 
-    httpUtil.postRequest(config.apiUrl.shippingAddressEdit, { id: id, userId: 1215, receiver: receiver, phoneNumber: phoneNumber, area: area, address: address, isDefault: isDefault }, {
+    httpUtil.postRequest(config.apiUrl.deliveryAddressEdit, { id: id, userId: '00000000000000000000000000000000', consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault }, {
       success: function (res) {
         wx.navigateBack()
       },

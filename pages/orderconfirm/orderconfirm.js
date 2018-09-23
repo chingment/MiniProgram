@@ -7,11 +7,11 @@ var getData = function (_this) {
 
   var couponId = _this.data.couponId
 
-  httpUtil.postRequest(config.apiUrl.orderConfirm, { userId: 1215, skus: skus, couponId: couponId }, {
+  httpUtil.postRequest(config.apiUrl.orderConfirm, { userId: '00000000000000000000000000000000', storeId: 'BE9AE32C554D4942BE4A42FA48446210', skus: skus, couponId: couponId }, {
     success: function (res) {
       var d = res.data
       _this.setData({
-        block:  d.block,
+        block: d.block,
         subtotalItem: d.subtotalItem,
         actualAmount: d.actualAmount,
         originalAmount: d.originalAmount,
@@ -93,14 +93,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  shippingAddressSelect: function (e) {
+  deliveryAddressSelect: function (e) {
     var _this = this
     var index = e.currentTarget.dataset.replyIndex
-    var shippingaddress = _this.data.block[index].shippingAddress
-    if (!shippingaddress.canSelectElse)
+    var deliveryAddress = _this.data.block[index].deliveryAddress
+    if (!deliveryAddress.canSelectElse)
       return
     wx.navigateTo({
-      url: "/pages/shippingaddress/shippingaddress?operate=2&operateIndex=" + index,
+      url: "/pages/deliveryAddress/deliveryAddress?operate=2&operateIndex=" + index,
       success: function (res) {
         // success
       },

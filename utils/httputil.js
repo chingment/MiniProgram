@@ -8,7 +8,9 @@ var requestHandler = {
 }
 
 function wxRequest(url,method,header,data,requestHandler) {
+
   wx.showNavigationBarLoading();  
+
   wx.request({
     url: url,
     data: data,

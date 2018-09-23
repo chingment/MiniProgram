@@ -15,8 +15,11 @@ function getSign(key, secret, timestamp, params) {
   arr.push(secret);
   arr.push(timestamp);
   if (params) {
+ 
     if (typeof (params) == "object") {
-      arr.push(JSON.stringify(params));
+      var s1 = JSON.stringify(params);
+      console.log('s1:' + s1 )
+      arr.push(s1);
     }
     else if (typeof (params) == "string") {
       arr.push(encodeURI(params));
@@ -26,6 +29,8 @@ function getSign(key, secret, timestamp, params) {
   //console.log("str:" + str)
   var strArr = str.split('');
   str = strArr.sort().join("");
+
+
   //console.log("str:" + str)
   return sha256_digest(str);
 }
@@ -36,14 +41,14 @@ function parseUrlParam(param, key) {
 
   if (param instanceof String || param instanceof Number || param instanceof Boolean) {
 
-    paramStr += "&" + key + "=" + encodeURIComponent(param);
+    paramStr += "&" + key + "=" + encodeURIComponent(param).toUpperCase();
 
   }
   else {
 
 
     for (var p in param) {//遍历json对象的每个key/value对,p为key
-      paramStr +=p+'=' + encodeURIComponent(param[p]) + '&';
+      paramStr += p + '=' + encodeURIComponent(param[p]).toUpperCase() + '&';
 
     }
 
@@ -59,22 +64,31 @@ function parseUrlParam(param, key) {
     //console.log("apphttpUtil.request")
     //console.log("apphttpUtil.url:" + url)
     //console.log("apphttpUtil.method:" + method)
-    console.log("apphttpUtil.params:" + JSON.stringify(params))
+
 
     let timestamp = getSecondTimestamp();
     let header = {};
     header.key = config.key;
     header.timestamp = timestamp;
 
-    //console.log("apphttpUtil.key:" + config.key)
-    //console.log("apphttpUtil.timestamp:" + timestamp)
+    console.log("apphttpUtil.key:" + config.key)
+    console.log("apphttpUtil.timestamp:" + timestamp)
 
+    var body=[];
     if (method == "GET") {
       if (url.indexOf("?") < 0) {
         url += "?"
       }
       params = parseUrlParam(params);
+      console.log("apphttpUtil.params:" + params)
       url += params;
+
+      
+    }
+    else
+    {
+      body = params;
+      console.log("apphttpUtil.params:" + JSON.stringify(params))
     }
 
     console.log("apphttpUtil.url:" + url)
@@ -82,8 +96,8 @@ function parseUrlParam(param, key) {
     let hexSign = getSign(config.key, config.secret, timestamp, params);
     let base64Sign = base64Encode(hexSign);
     header.sign = base64Sign;
-    //console.log("apphttpUtil.sign:" + base64Sign)
-    httpUtil.wxRequest(url, method, header, params, {
+    console.log("apphttpUtil.sign:" + base64Sign)
+    httpUtil.wxRequest(url, method, header, body, {
       success: function (res) {
         console.log("apphttpUtil->sucees:" +JSON.stringify(res))
         requestHandler.success(res.data);

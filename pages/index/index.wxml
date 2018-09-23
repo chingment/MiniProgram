@@ -1,6 +1,7 @@
 
 <template name="index">
   <view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户信息</button>
     <view>index</view>
     <view style="background: red; width: 100px; height: 100px" ></view>
     <view style="background: green; width: 100px; height: 100px"></view>

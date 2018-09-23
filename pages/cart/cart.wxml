@@ -23,13 +23,13 @@
                   </view>
                   <view class="item-middle">
                     <view class="item-mainimgbox">
-                      <navigator url="/pages/productdetails/productdetails?skuId={{itemsku.skuId}}" style='height:100%;width:100%'>
-                        <image class='mainimg' src="{{itemsku.skuMainImg}}" />
+                      <navigator url="/pages/productdetails/productdetails?skuId={{itemsku.id}}" style='height:100%;width:100%'>
+                        <image class='mainimg' src="{{itemsku.imgUrl}}" />
                       </navigator>
                     </view>
                     <view class="item-infobox">
-                      <text class='skuname font-black'>{{itemsku.skuName}}</text>
-                      <text class='sumprice font-gray'>{{itemsku.sumPrice}}</text>
+                      <text class='skuname font-black'>{{itemsku.name}}</text>
+                      <text class='sumprice font-gray'>{{itemsku.salePrice}}</text>
                     </view>
                   </view>
                   <view class="item-right">

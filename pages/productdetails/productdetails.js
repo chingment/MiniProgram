@@ -19,15 +19,15 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
-    var productSkuId = options.skuId == undefined ? "0" : options.skuId
+    var skuId = options.skuId == undefined ? "0" : options.skuId
 
     //app.changeData("main", { cart: cart })
 
-    httpUtil.getRequest(config.apiUrl.productGetSkuDetails, { userId: 1215, productSkuId }, {
+    httpUtil.getRequest(config.apiUrl.productGetSkuDetails, { userId: "00000000000000000000000000000000", skuId: skuId }, {
       success: function (res) {
         _this.setData({ sku: res.data, cart: storeage.getCart() })
 
-        wxparse.wxParse('dkcontent', 'html', res.data.details, _this, 0);
+        wxparse.wxParse('dkcontent', 'html', res.data.detailsDes, _this, 0);
 
       },
       fail: function () {
@@ -45,10 +45,10 @@ Page({
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
     console.log("skuId:" + skuId)
-    var operateList = new Array();
-    operateList.push({ skuId: skuId, quantity: 1, selected: true, channelId: 1, channelType:1 });
+    var skus = new Array();
+    skus.push({ skuId: skuId, quantity: 1, selected: true, channelId: 1, channelType:1 });
 
-    cart.operate({ userId: 1215, operate: 2, list: operateList }, {
+    cart.operate({ userId: '00000000000000000000000000000000', storeId: 'BE9AE32C554D4942BE4A42FA48446210', operate: 2, skus: skus }, {
       success: function (res) {
 
       },
@@ -64,7 +64,7 @@ Page({
     var skus = []
     skus.push({
       carId: 0,
-      skuId: _this.data.sku.id,
+      id: _this.data.sku.id,
       quantity: 1
     })
     wx.navigateTo({

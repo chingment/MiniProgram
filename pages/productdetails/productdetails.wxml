@@ -1,6 +1,6 @@
 <view class="details-main" >
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-    <block wx:for-items="{{sku.dispalyImgs}}" wx:for-item="item" wx:key="{{index}}">
+    <block wx:for-items="{{sku.dispalyImgUrls}}" wx:for-item="item" wx:key="{{index}}">
       <swiper-item>
         <image src="{{item.imgUrl}}"></image>
       </swiper-item>
@@ -18,7 +18,7 @@
             <text>{{sku.briefIntro}}</text>
           </view>
           <view class="item-price">
-            <text class="unitPrice">{{sku.unitPrice}}</text>
+            <text class="unitPrice">{{sku.salePrice}}</text>
             <text class="showPrice">{{sku.showPrice}}</text>
           </view>
         </view>

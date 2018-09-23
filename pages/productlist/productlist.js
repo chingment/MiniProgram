@@ -24,7 +24,7 @@ var getList = function (_this) {
   var pageIndex = currentTab.pageIndex
   var kindId = currentTab.kindId
 
-  httpUtil.getRequest(config.apiUrl.productGetList, { userId: 1215, merchantId: 241, posMachineId: 148, pageIndex: pageIndex, "type": 0, categoryId: 0, kindId: kindId, name: "" }, {
+  httpUtil.getRequest(config.apiUrl.productGetList, { userId: '00000000000000000000000000000000', storeId: 'BE9AE32C554D4942BE4A42FA48446210', pageIndex: pageIndex, kindId: kindId, name: "" }, {
     success: function (res) {
       console.log("config.apiUrl.productList->success")
 

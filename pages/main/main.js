@@ -117,7 +117,11 @@ Page({
         console.log("main.onload.wxutil.getAuthorize.success")
         //_self.tabBarItemSetNumber(2,22);//设置tabar number提示
 
-        httpUtil.getRequest(config.apiUrl.globalDataSet, { userId: 1215, merchantId: 241, posMachineId: 148, datetime: '2018-03-30' }, {
+        httpUtil.getRequest(config.apiUrl.globalDataSet, {
+          userId: '00000000000000000000000000000000',
+          storeId: 'be9ae32c554d4942be4a42fa48446210',
+          datetime: '2018-03-30' 
+          }, {
           success: function (res) {
             var productKind = res.data.productKind
             var cart = res.data.cart
@@ -223,10 +227,11 @@ Page({
         break;
     }
 
-    var operateList = new Array();
-    operateList.push(sku);
+    var operateSkus = new Array();
+    operateSkus.push({ skuId: sku.id, quantity: 1, selected: sku.selected, channelId: sku.channelId, channelType: sku.channelType });
 
-    cart.operate({ userId: 1215, operate: operate, list: operateList }, {
+
+    cart.operate({ userId: '00000000000000000000000000000000', storeId: 'BE9AE32C554D4942BE4A42FA48446210', operate: operate, skus: operateSkus }, {
       success: function (res) {
         _self.setData({ cart: res.data })
         _self.mainTabBarItemSetNumber(2, res.data.count)
