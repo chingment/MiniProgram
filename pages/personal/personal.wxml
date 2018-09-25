@@ -22,19 +22,19 @@
         </view>
       </view>
       <view class='personal-orderstatus'>
-        <navigator url="/pages/orderlist/orderlist" class='item'>
+        <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
           <image class='item-img' src='../../images/order_status_waitpay.png'></image>
           <text class='item-title'>待支付</text>
         </navigator>
-         <navigator url="/pages/orderlist/orderlist" class='item'>
+         <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
           <image class='item-img' src='../../images/order_status_pickup.png'></image>
           <text class='item-title'>待取货</text>
         </navigator>
-        <navigator url="/pages/orderlist/orderlist" class='item'>
+        <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
           <image class='item-img' src='../../images/order_status_complete.png'></image>
           <text class='item-title'>已完成</text>
         </navigator>
-         <navigator url="/pages/orderlist/orderlist" class='item'>
+         <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
           <image class='item-img' src='../../images/order_status_cancel.png'></image>
           <text class='item-title'>已失效</text>
         </navigator>
@@ -44,7 +44,7 @@
 
   <view class="col-nav">
     <view class="container">
-      <navigator url="/pages/mycoupon/mycoupon?operate=1&isGetHis=false" class="col-nav-item">
+      <navigator url="/pages/mycoupon/mycoupon?operate=1&isGetHis=false" class="col-nav-item" hover-class="none">
         <view class="item-left">
           <image src='../../images/col_nav_icon_coupon.png'></image>
         </view>
@@ -56,7 +56,7 @@
         </view>
       </navigator>
 
-      <navigator url="/pages/personalinfo/personalinfo" class="col-nav-item">
+      <navigator url="/pages/personalinfo/personalinfo" class="col-nav-item" hover-class="none">
         <view class="item-left">
           <image src='../../images/col_nav_icon_personalinfo.png'></image>
         </view>
@@ -68,7 +68,7 @@
         </view>
       </navigator>
 
-      <navigator url="/pages/deliveryaddress/deliveryaddress?operate=1" class="col-nav-item">
+      <navigator url="/pages/deliveryaddress/deliveryaddress?operate=1" class="col-nav-item" hover-class="none">
         <view class="item-left">
           <image src='../../images/col_nav_icon_address.png'></image>
         </view>
@@ -80,7 +80,7 @@
         </view>
       </navigator>
 
-      <view class="col-nav-item">
+      <view class="col-nav-item" hover-class="none">
         <view class="item-left">
           <image src='../../images/col_nav_icon_service.png'></image>
         </view>

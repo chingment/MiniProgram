@@ -21,7 +21,7 @@
 
 
   <scroll-view class='main-tabbar-content {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}" >
-      <template is="{{tabBar[0].name}}" data="" />
+      <template is="{{tabBar[0].name}}" data="{{...index}}" />
   </scroll-view>
    <scroll-view class='main-tabbar-content {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}" >
       <template is="{{tabBar[1].name}}" data="{{...productKind}}" />

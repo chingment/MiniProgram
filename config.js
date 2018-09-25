@@ -22,7 +22,7 @@ var config = {
     deliveryAddressEdit: `${host}/DeliveryAddress/Edit`,
     deliveryAddressMy: `${host}/DeliveryAddress/My`,
     orderConfirm: `${host}/Order/Confirm`,
-    couponGetList: `${host}/Coupon/My`,
+    couponMy: `${host}/Coupon/My`,
   }
 
 };

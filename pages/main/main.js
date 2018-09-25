@@ -17,45 +17,50 @@ Page({
     tag: "main",
     tabBarContentHeight: 0,
     name: "index",
-    tabBar: [
-      {
-        "name": "index",
-        "pagePath": "/pages/index/index.wxml",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_fill.png",
-        "text": "首页",
-        "navTitle": "贩聚社团",
-        "selected": true,
-        "number": 0
-      }, {
-        "name": "productkind",
-        "pagePath": "/pages/productkind/productkind.wxml",
-        "iconPath": "/images/kind.png",
-        "selectedIconPath": "/images/kind_fill.png",
-        "text": "分类",
-        "navTitle": "分类",
-        "selected": false,
-        "number": 0
-      }, {
-        "name": "cart",
-        "pagePath": "/pages/cart/cart.wxml",
-        "iconPath": "/images/cart.png",
-        "selectedIconPath": "/images/cart_fill.png",
-        "text": "购物车",
-        "navTitle": "购物车",
-        "selected": false,
-        "number": 0
-      }, {
-        "name": "personal",
-        "pagePath": "/pages/personal/personal.wxml",
-        "iconPath": "/images/personal.png",
-        "selectedIconPath": "/images/personal_fill.png",
-        "text": "个人",
-        "navTitle": "个人",
-        "selected": false,
-        "number": 0
+    tabBar: [{
+      "name": "index",
+      "pagePath": "/pages/index/index.wxml",
+      "iconPath": "/images/home.png",
+      "selectedIconPath": "/images/home_fill.png",
+      "text": "首页",
+      "navTitle": "贩聚社团",
+      "selected": true,
+      "number": 0
+    }, {
+      "name": "productkind",
+      "pagePath": "/pages/productkind/productkind.wxml",
+      "iconPath": "/images/kind.png",
+      "selectedIconPath": "/images/kind_fill.png",
+      "text": "分类",
+      "navTitle": "分类",
+      "selected": false,
+      "number": 0
+    }, {
+      "name": "cart",
+      "pagePath": "/pages/cart/cart.wxml",
+      "iconPath": "/images/cart.png",
+      "selectedIconPath": "/images/cart_fill.png",
+      "text": "购物车",
+      "navTitle": "购物车",
+      "selected": false,
+      "number": 0
+    }, {
+      "name": "personal",
+      "pagePath": "/pages/personal/personal.wxml",
+      "iconPath": "/images/personal.png",
+      "selectedIconPath": "/images/personal_fill.png",
+      "text": "个人",
+      "navTitle": "个人",
+      "selected": false,
+      "number": 0
+    }],
+    "index": {
+      banner: {
+        imgs: [],
+        currentSwiper: 0,
+        autoplay: true
       }
-    ],
+    },
     "productKind": {
       "list": []
     },
@@ -63,8 +68,16 @@ Page({
       "list": []
     }
   },
+  indexBarBannerSwiperChange: function(e) {
 
-  loadMore: function (e) {
+    var _index = this.data.index;
+    _index.banner.currentSwiper = e.detail.current;
+
+    this.setData({
+      index: _index
+    })
+  },
+  loadMore: function(e) {
     console.log("main.loadMore")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -75,7 +88,7 @@ Page({
 
   },
 
-  refresh: function (e) {
+  refresh: function(e) {
     console.log("main.refresh")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -86,19 +99,19 @@ Page({
 
 
   },
-  changeData: function (data) {
+  changeData: function(data) {
     console.log("main.changeData")
     var _self = this;
     _self.setData(data)
   },
 
-  onLoad: function () {
+  onLoad: function() {
     console.log("main.onLoad")
 
     var _self = this;
 
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         var height = res.windowHeight - res.screenWidth / 750 * 81
         console.log("windowHeight:" + height)
         _self.setData({
@@ -112,7 +125,7 @@ Page({
     })
 
     wxutil.getAuthorize({
-      success: function (e) {
+      success: function(e) {
         //处理授权成功后
         console.log("main.onload.wxutil.getAuthorize.success")
         //_self.tabBarItemSetNumber(2,22);//设置tabar number提示
@@ -120,13 +133,15 @@ Page({
         httpUtil.getRequest(config.apiUrl.globalDataSet, {
           userId: '00000000000000000000000000000000',
           storeId: 'be9ae32c554d4942be4a42fa48446210',
-          datetime: '2018-03-30' 
-          }, {
-          success: function (res) {
+          datetime: '2018-03-30'
+        }, {
+          success: function(res) {
+            var index = res.data.index
             var productKind = res.data.productKind
             var cart = res.data.cart
             var personal = res.data.personal
             _self.setData({
+              index: index,
               productKind: productKind,
               cart: cart,
               personal: personal
@@ -136,12 +151,11 @@ Page({
             storeage.setCart(cart)
 
           },
-          fail: function () {
-          }
+          fail: function() {}
         })
 
       },
-      fail: function (e) {
+      fail: function(e) {
         //处理授权失败
         console.log("main.onload.wxutil.getAuthorize.fail")
       }
@@ -164,8 +178,7 @@ Page({
           title: tabBar[i].navTitle
         })
 
-      }
-      else {
+      } else {
         tabBar[i].selected = false
       }
     }
@@ -181,7 +194,9 @@ Page({
     console.log('tabbar.tabBarItemSetNumber')
     var _self = this
     _self.data.tabBar[index].number = num
-    this.setData({ tabBar: _self.data.tabBar })
+    this.setData({
+      tabBar: _self.data.tabBar
+    })
   },
 
   kindBarItemClick(e) {
@@ -193,14 +208,15 @@ Page({
     for (var i = 0; i < list.length; i++) {
       if (i == index) {
         list[i].selected = true
-      }
-      else {
+      } else {
         list[i].selected = false
       }
     }
 
     _self.data.productKind.list = list
-    this.setData({ productKind: _self.data.productKind })
+    this.setData({
+      productKind: _self.data.productKind
+    })
   },
 
 
@@ -220,29 +236,40 @@ Page({
       case "1":
         if (sku.selected) {
           sku.selected = false
-        }
-        else {
+        } else {
           sku.selected = true
         }
         break;
     }
 
     var operateSkus = new Array();
-    operateSkus.push({ skuId: sku.id, quantity: 1, selected: sku.selected, channelId: sku.channelId, channelType: sku.channelType });
+    operateSkus.push({
+      skuId: sku.id,
+      quantity: 1,
+      selected: sku.selected,
+      channelId: sku.channelId,
+      channelType: sku.channelType
+    });
 
 
-    cart.operate({ userId: '00000000000000000000000000000000', storeId: 'BE9AE32C554D4942BE4A42FA48446210', operate: operate, skus: operateSkus }, {
-      success: function (res) {
-        _self.setData({ cart: res.data })
+    cart.operate({
+      userId: '00000000000000000000000000000000',
+      storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+      operate: operate,
+      skus: operateSkus
+    }, {
+      success: function(res) {
+        _self.setData({
+          cart: res.data
+        })
         _self.mainTabBarItemSetNumber(2, res.data.count)
 
       },
-      fail: function () {
-      }
+      fail: function() {}
     })
   },
 
-  cartBarImmeBuy: function (e) {
+  cartBarImmeBuy: function(e) {
     var _this = this
 
     var block = _this.data.cart.block
@@ -254,7 +281,7 @@ Page({
         if (block[i].skus[j].selected) {
           skus.push({
             carId: block[i].skus[j].cartId,
-            skuId: block[i].skus[j].skuId,
+            id: block[i].skus[j].id,
             quantity: block[i].skus[j].quantity,
             channelId: block[i].skus[j].channelId,
             channelType: block[i].skus[j].channelType
@@ -264,13 +291,15 @@ Page({
     }
 
     if (skus.length == 0) {
-      toastUtil.showToast({ title: '至少选择一件商品' })
+      toastUtil.showToast({
+        title: '至少选择一件商品'
+      })
       return
     }
 
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
-      success: function (res) {
+      success: function(res) {
         // success
       },
     })
@@ -280,4 +309,3 @@ Page({
 
 
 })
-
