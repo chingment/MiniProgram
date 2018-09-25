@@ -5,7 +5,7 @@ const app = getApp()
 
 var getList = function (_this) {
 
-  httpUtil.getRequest(config.apiUrl.shippingAddressGetList, { userId: 1215 }, {
+  httpUtil.getRequest(config.apiUrl.deliveryAddressMy, { userId: '00000000000000000000000000000000' }, {
     success: function (res) {
       _this.setData({
         list: res.data
@@ -111,9 +111,9 @@ Page({
   goEdit: function (e) {
     var _this = this
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-    var shippingaddress = _this.data.list[index]
+    var deliveryAddress = _this.data.list[index]
     wx.navigateTo({
-      url: '/pages/shippingaddressedit/shippingaddressedit?id=' + shippingaddress.id + "&shippingAddress=" + JSON.stringify(shippingaddress),
+      url: '/pages/deliveryaddressedit/deliveryaddressedit?id=' + deliveryAddress.id + "&deliveryAddress=" + JSON.stringify(deliveryAddress),
       success: function (res) {
         // success
       },
@@ -122,18 +122,18 @@ Page({
   goSelect: function (e) {
     var _this = this
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-    var shippingaddress = _this.data.list[index]
+    var deliveryAddress = _this.data.list[index]
 
     if (_this.data.operate == 2) {
 
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2];
-      prevPage.data.block[_this.data.operateIndex].shippingAddress.id = shippingaddress.id
-      prevPage.data.block[_this.data.operateIndex].shippingAddress.receiver = shippingaddress.receiver
-      prevPage.data.block[_this.data.operateIndex].shippingAddress.phoneNumber = shippingaddress.phoneNumber
-      prevPage.data.block[_this.data.operateIndex].shippingAddress.address = shippingaddress.address
-      prevPage.data.block[_this.data.operateIndex].shippingAddress.area = shippingaddress.area
-      prevPage.data.block[_this.data.operateIndex].shippingAddress.isDefault = shippingaddress.isDefault
+      prevPage.data.block[_this.data.operateIndex].deliveryAddress.id = deliveryAddress.id
+      prevPage.data.block[_this.data.operateIndex].deliveryAddress.consignee = deliveryAddress.consignee
+      prevPage.data.block[_this.data.operateIndex].deliveryAddress.phoneNumber = deliveryAddress.phoneNumber
+      prevPage.data.block[_this.data.operateIndex].deliveryAddress.address = deliveryAddress.address
+      prevPage.data.block[_this.data.operateIndex].deliveryAddress.areaName = deliveryAddress.areaName
+      prevPage.data.block[_this.data.operateIndex].deliveryAddress.isDefault = deliveryAddress.isDefault
 
       prevPage.setData({
         block: prevPage.data.block

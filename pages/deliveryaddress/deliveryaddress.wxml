@@ -2,12 +2,12 @@
   <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
       <view class="col-nav-item">
         <view class="item-left">
-         <view class="item-receiver" ><text>{{item.receiver}}</text></view>
+         <view class="item-receiver" ><text>{{item.consignee}}</text></view>
          <view  class="item-isDefault"  wx:if="{{item.isDefault}}" ><text class="font-main border-main" >默认</text></view>
         </view>
         <view class="item-middle" bindtap="goSelect"  data-reply-index="{{index}}"  >
           <view class='item-phoneNumber'><text>{{item.phoneNumber}}</text></view>
-          <view class='item-area'><text>{{item.area}} {{item.address}}</text></view>
+          <view class='item-area'><text>{{item.areaName}} {{item.address}}</text></view>
         </view>
         <view class='item-right' bindtap="goEdit"  data-reply-index="{{index}}" >
             <image class="img-edit" src='../../images/icon_edit.png'  ></image>
@@ -17,7 +17,7 @@
 </view>
 <view wx:else>false</view>
 
-<navigator url="/pages/shippingaddressedit/shippingaddressedit?id=0" class="bottom-btn bg-main">
+<navigator url="/pages/deliveryaddressedit/deliveryaddressedit?id=" class="bottom-btn bg-main">
   <view class="container">
     <text>添加新地址</text>
   </view>

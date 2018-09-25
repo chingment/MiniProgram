@@ -68,7 +68,7 @@
         </view>
       </navigator>
 
-      <navigator url="/pages/shippingaddress/shippingaddress?operate=1" class="col-nav-item">
+      <navigator url="/pages/deliveryaddress/deliveryaddress?operate=1" class="col-nav-item">
         <view class="item-left">
           <image src='../../images/col_nav_icon_address.png'></image>
         </view>

@@ -19,8 +19,8 @@ var config = {
     cartOperate: `${host}/Cart/Operate`,
     productGetList: `${host}/ProductSku/List`,
     productGetSkuDetails: `${host}/ProductSku/Details`,
-    shippingAddressEdit: `${host}/DeliveryAddress/Edit`,
-    shippingAddressGetList: `${host}/DeliveryAddress/My`,
+    deliveryAddressEdit: `${host}/DeliveryAddress/Edit`,
+    deliveryAddressMy: `${host}/DeliveryAddress/My`,
     orderConfirm: `${host}/Order/Confirm`,
     couponGetList: `${host}/Coupon/My`,
   }

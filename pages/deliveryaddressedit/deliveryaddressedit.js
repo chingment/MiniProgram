@@ -1,3 +1,11 @@
+const httpUtil = require("../../utils/apphttputil.js")
+const config = require('../../config')
+const storeage = require('../../utils/storeageutil.js')
+const app = getApp()
+
+const cityList = require('./cityList').cityList;
+const toastUtil = require('../../utils/showtoastutil');//引入消息提醒暴露的接口
+
 Page({
   data: {
     address: { area: "" },
@@ -182,15 +190,15 @@ Page({
   },
   onLoad: function (options) {
     var _this = this
-    var id = options.id;
-    if (id != "0") {
+
+    if (typeof options.deliveryAddress != 'undefined') {
       console.log(options.deliveryAddress)
       var deliveryAddress = JSON.parse(options.deliveryAddress)
 
-      _this.data.address.area = deliveryAddress.area
-      _this.data.address.resideprovince = deliveryAddress.area.split('-')[0];
-      _this.data.address.residecity = deliveryAddress.area.split('-')[1];
-      _this.data.address.country = deliveryAddress.area.split('-')[2];
+      _this.data.address.area = deliveryAddress.areaName
+      _this.data.address.resideprovince = deliveryAddress.areaName.split('-')[0];
+      _this.data.address.residecity = deliveryAddress.areaName.split('-')[1];
+      _this.data.address.country = deliveryAddress.areaName.split('-')[2];
 
       _this.data.deliveryAddress_isDefault = deliveryAddress.isDefault
       _this.setData({
