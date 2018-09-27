@@ -42,17 +42,26 @@
       <scroll-view scroll-top="{{item.scrollTop}}" scroll-y="true" data-reply-index="{{index}}" style="height:{{scrollHeight}}px" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scroll">
        
           <view class='list-data prd-list-1' wx:if="{{item.list.length>0}}">
-            <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-              <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}">
+              <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
                 <view class='item item-{{index%2}}'>
-                  <view class='item-imgbox'>
-                    <image class="item-imgurl" src="{{item2.imgUrl}}"></image>
+                  <view class='imgbox'>
+                    <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}">
+                      <image class="imgurl" src="{{item2.imgUrl}}"></image>
+                    </navigator>
                   </view>
-                  <text class="item-name font-gray">{{item2.name}}</text>
-                  <text class="item-price font-black">{{item2.salePrice}}</text>
+                  <text class="name font-gray">{{item2.name}}</text>
+                  <text class="briefInfo font-gray">{{item2.briefInfo}}</text>
+                  <view class="area2">
+                    <view class="price">
+                      <text class="saleprice font-black">{{item2.salePrice}}</text>
+                      <text class="showprice font-gray">{{item2.showPrice}}</text>
+                    </view>
+                    <view class="operate">
+                      <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='../../images/increase.png'></image>
+                    </view>
+                  </view>
                 </view>
-              </navigator>
-            </block>
+              </block>
           </view>
         <view class="list-emptytips" wx:else>
         

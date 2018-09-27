@@ -43,8 +43,8 @@
 .main-tabbar-items .number {
   width: 45rpx;
   height: 32srpx;
-  border: 0 solid #f00;
-  background-color: #f10b2e;
+  border: 0 solid #fff;
+  background-color: #f00;
   color: #fff;
   position: absolute;
   right: 40rpx;

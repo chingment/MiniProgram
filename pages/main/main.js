@@ -395,6 +395,35 @@ Page({
       },
     })
   },
+  addToCart: function (e) {
+
+    var _self = this
+    var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
+    console.log("skuId:" + skuId)
+    var skus = new Array();
+    skus.push({
+      skuId: skuId,
+      quantity: 1,
+      selected: true,
+      channelId: 1,
+      channelType: 1
+    });
+
+    cart.operate({
+      userId: '00000000000000000000000000000000',
+      storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+      operate: 2,
+      skus: skus
+    }, {
+        success: function (res) {
+
+        },
+        fail: function () {
+
+        }
+      })
+
+  },
   userAuthorize: function(e) {
     console.log("userAuthorize")
     // wx.getUserInfo({

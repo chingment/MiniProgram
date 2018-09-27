@@ -9,7 +9,7 @@
 
 .banner-swipers {
   width: 100%;
-  height: 350rpx;
+  height: 260rpx;
   text-align: center;
 }
 
@@ -33,7 +33,7 @@
   flex-direction: row;
   position: absolute;
   left: 0;
-  bottom: 58rpx;
+  bottom: 16rpx;
 }
 
 /*未选中时的小圆点样式 */
@@ -84,8 +84,8 @@
 }
 
 .fc {
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
   padding: 18rpx 0rpx;
   display: flex;
   flex-direction: row;
@@ -99,18 +99,18 @@
 
 .fc .item {
   flex: 1;
-  height: 100rpx;
   text-align: center;
 }
 
 .fc .item-img {
-  width: 60rpx;
-  height: 60rpx;
+  width: 80rpx;
+  height: 80rpx;
   display: inline-block;
 }
 
 .fc .item-title {
-  height: 60rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   display: block;
   text-align: center;
   font-size: 24rpx;
@@ -131,16 +131,14 @@
   transition-duration: 0ms;
 }
 
-.tabbar-items .container{
+.tabbar-items .container {
   display: flex;
 }
 
 .tabbar-items .item {
   height: 60rpx;
   line-height: 42rpx;
-
   flex: 1;
-
   overflow: hidden;
   background: #fff;
   text-align: center;
@@ -151,10 +149,15 @@
 .tabbar-contents {
 }
 
+.tabbar-items .item {
+  font-size: 24rpx;
+}
+
 .tabbar-items .item-seleced .title {
   display: block;
   margin-bottom: 10rpx;
   color: #ffb101;
+  font-size: 28rpx;
 }
 
 .tabbar-items .item-seleced .seleced-bottom {
@@ -170,66 +173,7 @@
   margin: auto;
 }
 
-
-.item-bannerImgUrl image{
-  height: 167rpx;
+.tabbar-contents .item-bannerImgUrl image {
+  height: 132rpx;
   width: 100%;
-}
-
-.prd-list-1 {
-  position: relative;
-  overflow: hidden;
-}
-
-.prd-list-1 .item {
-  position: relative;
-  float: left;
-  width: 50%;
-  box-sizing: border-box;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.prd-list-1 .item-0 {
-  padding-left: 20px;
-  padding-right: 10px;
-}
-
-.prd-list-1 .item-1 {
-  padding-left: 10px;
-  padding-right: 20px;
-}
-
-.prd-list-1 .item-imgbox {
-  text-align: center;
-  height: 320rpx;
-}
-
-.prd-list-1 .item-imgurl {
-  width: 100%;
-  height: 100%;
-}
-
-.prd-list-1 .item-name {
-  width: 100%;
-  height: 48rpx;
-  line-height: 48rpx;
-  font-size: 16px;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  word-break: break-all;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.prd-list-1 .item-price {
-  width: 100%;
-  height: 62rpx;
-  line-height: 62rpx;
-  font-size: 18px;
-  display: block;
-  text-align: left;
 }
