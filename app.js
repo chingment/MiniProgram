@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -38,14 +38,13 @@ App({
 
 
   },
-  onShow: function () { 
+  onShow: function() {
     console.log("App.onShow")
   },
   globalData: {
     userInfo: null
   },
-
-  changeData: function (tag, data) {
+  changeData: function(tag, data) {
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
       console.log("page:" + JSON.stringify(pages[i].data))
@@ -55,47 +54,42 @@ App({
       }
     }
   },
-  mainTabBarItemSetNumber(index, num) {
+  mainTabBarSetNumber(index, num) {
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
       if (pages[i].data.tag == "main") {
-        pages[i].mainTabBarItemSetNumber(index, num)
+        pages[i].data.tabBar[index].number = num
+        pages[i].setData({
+          tabBar: pages[i].data.tabBar
+        })
       }
     }
   },
-  switchTab: function (index) {
-
+  mainTabBarSwitch: function(index) {
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
       if (pages[i].data.tag == "main") {
-
         wx.navigateBack({
           delta: pages.length
         })
-
         var tabBar = pages[i].data.tabBar;
         for (var j = 0; j < tabBar.length; j++) {
           if (j == index) {
             tabBar[j].selected = true
             var s = tabBar[j];
-            setTimeout(function () {
-
+            setTimeout(function() {
               wx.setNavigationBarTitle({
                 title: s.navTitle
               })
             }, 1000)
-          }
-          else {
+          } else {
             tabBar[j].selected = false
           }
         }
-
         pages[i].setData({
           tabBar: tabBar
         })
-
       }
     }
   }
-
 })

@@ -253,14 +253,6 @@ Page({
 
   },
 
-  mainTabBarItemSetNumber(index, num) {
-    console.log('tabbar.tabBarItemSetNumber')
-    var _self = this
-    _self.data.tabBar[index].number = num
-    this.setData({
-      tabBar: _self.data.tabBar
-    })
-  },
   indexBarBannerSwiperChange: function(e) {
     var _index = this.data.index;
     _index.banner.currentSwiper = e.detail.current;
@@ -363,8 +355,7 @@ Page({
         _self.setData({
           cart: res.data
         })
-        _self.mainTabBarItemSetNumber(2, res.data.count)
-
+        app.mainTabBarSetNumber(2, res.data.count)
       },
       fail: function() {}
     })
