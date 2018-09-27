@@ -1,48 +1,83 @@
 <template name="index">
-
-  <view class="banner">
-    <swiper class="banner-swipers" autoplay="{{banner.autoplay}}" current="{{banner.currentSwiper}}" bindchange="indexBarBannerSwiperChange">
-      <block wx:for="{{banner.imgs}}">
-        <swiper-item>
-          <image src="{{item.url}}"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-    <!--重置小圆点的样式  -->
-    <view class="banner-dots flex alignC flexC">
-      <block wx:for="{{banner.imgs}}">
-        <view class="banner-dot{{index == banner.currentSwiper ? ' banner-active' : ''}}"></view>
-      </block>
+  <view class="index">
+    <view class="banner">
+      <swiper class="banner-swipers" autoplay="{{banner.autoplay}}" current="{{banner.currentSwiper}}" bindchange="indexBarBannerSwiperChange">
+        <block wx:for="{{banner.imgs}}">
+          <swiper-item>
+            <image src="{{item.url}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!--重置小圆点的样式  -->
+      <view class="banner-dots flex alignC flexC">
+        <block wx:for="{{banner.imgs}}">
+          <view class="banner-dot{{index == banner.currentSwiper ? ' banner-active' : ''}}"></view>
+        </block>
+      </view>
     </view>
-  </view>
+
+    <view class='fc'>
+      <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
+        <image class='item-img' src='../../images/index-fc-newuser.png'></image>
+        <text class='item-title'>新人专享</text>
+      </navigator>
+      <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
+        <image class='item-img' src='../../images/index-fc-seckill.png'></image>
+        <text class='item-title'>限时秒杀</text>
+      </navigator>
+      <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
+        <image class='item-img' src='../../images/index-fc-member.png'></image>
+        <text class='item-title'>会员专区</text>
+      </navigator>
+      <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
+        <image class='item-img' src='../../images/index-fc-coupon.png'></image>
+        <text class='item-title'>优惠券</text>
+      </navigator>
+    </view>
 
 
-  <view class='fc'>
-    <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-      <image class='item-img' src='../../images/index-fc-newuser.png'></image>
-      <text class='item-title'>新人专享</text>
-    </navigator>
-    <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-      <image class='item-img' src='../../images/index-fc-seckill.png'></image>
-      <text class='item-title'>限时秒杀</text>
-    </navigator>
-    <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-      <image class='item-img' src='../../images/index-fc-member.png' ></image>
-      <text class='item-title'>会员专区</text>
-    </navigator>
-    <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-      <image class='item-img' src='../../images/index-fc-coupon.png'></image>
-      <text class='item-title'>优惠券</text>
-    </navigator>
-  </view>
+    <view class="pdArea">
+
+      <view>
+        <view class="tabbar-items">
+          <view class="container">
+            <block wx:for-items="{{pdArea.tabs}}" wx:for-item="item" wx:key="{{index}}">
+              <view id="{{index}}" class="item {{item.selected==true?'item-seleced':''}}" data-reply-index="{{index}}" bindtap="indexBarPdAreatabBarClick">
+                <view class="title">{{item.name}}</view>
+                <view class='seleced-bottom'></view>
+              </view>
+            </block>
+          </view>
+        </view>
+
+        <block wx:for="{{pdArea.tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
 
 
-  <view>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户信息</button>
-    <view>index</view>
-    <view style="background: red; width: 100px; height: 100px"></view>
-    <view style="background: green; width: 100px; height: 100px"></view>
-    <view style="background: blue; width: 100px; height: 100px"></view>
-    <view style="background: yellow; width: 100px; height: 100px"></view>
+          <view class='item-bannerImgUrl'>
+            <image src="{{item.bannerImgUrl}}"></image>
+          </view>
+
+          <view class='prd-list-1'>
+            <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
+
+              <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}">
+                <view class='item item-{{index%2}}'>
+                  <view class='item-imgbox'>
+                    <image class="item-imgurl" src="{{item2.imgUrl}}"></image>
+                  </view>
+                  <text class="item-name font-gray">{{item2.name}}</text>
+                  <text class="item-price font-black">{{item2.salePrice}}</text>
+                </view>
+              </navigator>
+            </block>
+          </view>
+        </block>
+
+      </view>
+    </view>
+
+
+    <!-- <button bindtap="userAuthorize">授权登录</button>
+    <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">开始使用</button> -->
   </view>
 </template>

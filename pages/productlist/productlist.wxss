@@ -2,17 +2,16 @@ page {
   overflow-y: hidden;
 }
 
-.scroll-tabbar {
+.tabbar-scroll {
   position: fixed;
   top: 0;
   z-index: 9999;
   height: 62rpx;
   background: #fff;
   overflow: hidden;
-  border-bottom: 1rpx #dbdbdb solid;
 }
 
-.tabbar {
+.tabbar-items {
   height: 61rpx;
   line-height: 42rpx;
   width: 1900px;
@@ -20,11 +19,8 @@ page {
   transition-duration: 0ms;
 }
 
-.tabbar-content {
-  margin-top: 62rpx;
-}
 
-.tabbar-item {
+.tabbar-items .item {
   height: 60rpx;
   line-height: 42rpx;
   width: 100px;
@@ -37,8 +33,27 @@ page {
   z-index: 999;
 }
 
-.tabbar .selected {
-  /* border-bottom: 2rpx solid #f18d00; */
+.tabbar-items .item-seleced .title {
+  display: block;
+  margin-bottom: 10rpx;
+  color: #ffb101;
+}
+
+.tabbar-items .item-seleced .seleced-bottom {
+  display: block;
+  width: 80rpx;
+  text-align: center;
+  margin-top: 5rpx;
+  line-height: 20rpx;
+  background: #ffb101;
+  box-shadow: 0px 2px 3px rgba(255, 176, 0, 0.55);
+  border-radius: 3px;
+  height: 4rpx;
+  margin: auto;
+}
+
+.tabbar-contents {
+  margin-top: 62rpx;
 }
 
 .prd-list-1 {
@@ -156,3 +171,20 @@ page {
   display: block;
   text-align: left;
 }
+
+
+.list-emptytips{
+   text-align: center;
+   margin-top: 200rpx;
+}
+
+.list-emptytips image{
+   width: 264rpx;
+   height: 196rpx;
+}
+
+.list-emptytips text{
+  font-size: 24rpx;
+  color:#9d9d9d;
+}
+

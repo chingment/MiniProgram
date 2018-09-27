@@ -18,39 +18,42 @@
     <view style="background: yellow; width: 100px; height: 100px"></view>
 </scroll-view>  -->
 
+<view>
+  <view class="main-tabbar-contents">
+    <view class="container">
+      <scroll-view class='item {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}">
+        <template is="{{tabBar[0].name}}" data="{{...index}}" />
+      </scroll-view>
+      <scroll-view class='item {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}">
+        <template is="{{tabBar[1].name}}" data="{{...productKind}}" />
+      </scroll-view>
+      <scroll-view class='item {{tabBar[2].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{2}}" data-reply-name="{{tabBar[2].name}}">
+        <template is="{{tabBar[2].name}}" data="{{...cart}}" />
+      </scroll-view>
+      <scroll-view class='item {{tabBar[3].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{3}}" data-reply-name="{{tabBar[3].name}}">
+        <template is="{{tabBar[3].name}}" data="{{...personal}}" />
+      </scroll-view>
+    </view>
+  </view>
 
-
-  <scroll-view class='main-tabbar-content {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}" >
-      <template is="{{tabBar[0].name}}" data="{{...index}}" />
-  </scroll-view>
-   <scroll-view class='main-tabbar-content {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}" >
-      <template is="{{tabBar[1].name}}" data="{{...productKind}}" />
-  </scroll-view>
-   <scroll-view class='main-tabbar-content {{tabBar[2].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{2}}" data-reply-name="{{tabBar[2].name}}" >
-      <template is="{{tabBar[2].name}}" data="{{...cart}}" />
-  </scroll-view>
-   <scroll-view class='main-tabbar-content {{tabBar[3].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{3}}" data-reply-name="{{tabBar[3].name}}" >
-      <template is="{{tabBar[3].name}}" data="{{...personal}}" />
-  </scroll-view>
-
-
-<!-- <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
+  <!-- <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
   <scroll-view class='main-tabbar-content {{item.selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{index}}" data-reply-name="{{name}}" >
       <template is="{{item.name}}" data="{{...this.data}}" />
   </scroll-view>
 </block> -->
 
 
-<view class="main-tabbar">
-  <view class="main-tabbar-container">
-    <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
-      <view class="main-tabbar-item" catchtap='mainTabBarItemClick' data-reply-index="{{index}}">
-        <view class='main-tabbar-item-number {{item.number==0?"hidden":""}}'>{{item.number}}</view>
-        <view>
-          <image class="main-tabbar-item-icon" src='{{item.selected==false?item.iconPath:item.selectedIconPath}}'></image>
+  <view class="main-tabbar-items">
+    <view class="container">
+      <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
+        <view class="item" catchtap='mainTabBarItemClick' data-reply-index="{{index}}">
+          <view class='number {{item.number==0?"hidden":""}}'>{{item.number}}</view>
+          <view>
+            <image class="icon" src='{{item.selected==false?item.iconPath:item.selectedIconPath}}'></image>
+          </view>
+          <view class="title">{{item.text}}</view>
         </view>
-        <view class="main-tabbar-item-title">{{item.text}}</view>
-      </view>
-    </block>
+      </block>
+    </view>
   </view>
 </view>

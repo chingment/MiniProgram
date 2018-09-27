@@ -9,74 +9,137 @@ const index = require('../../pages/index/index.js')
 const productkind = require('../../pages/productkind/productkind.js')
 const personal = require('../../pages/personal/personal.js')
 const toastUtil = require('../../utils/showtoastutil')
-
+const ownRequest = require('../../own/ownRequest.js')
 var app = getApp()
+
+
+var pdAreaGetList = function(_this) {
+  console.log("pdAreaGetList")
+
+  var currentTab;
+  var currentTabIndex = -1;
+  for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
+    if (_this.data.index.pdArea.tabs[i].selected == true) {
+      currentTab = _this.data.index.pdArea.tabs[i];
+      currentTabIndex = i;
+    }
+  }
+
+  if (currentTabIndex == -1) {
+    currentTabIndex = 0;
+    currentTab = _this.data.index.pdArea.tabs[currentTabIndex];
+  }
+
+  var pageIndex = currentTab.pageIndex
+  var kindId = currentTab.kindId
+
+  httpUtil.getRequest(config.apiUrl.productGetList, {
+    userId: ownRequest.getCurrentUserId(),
+    storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+    pageIndex: pageIndex,
+    kindId: "",
+    name: ""
+  }, {
+    success: function(res) {
+      console.log("config.apiUrl.productList->success")
+
+      var list
+      if (currentTab.pageIndex == 0) {
+        list = res.data
+      } else {
+        list = _this.data.index.pdArea.tabs[currentTabIndex].list.concat(res.data)
+      }
+
+      _this.data.index.pdArea.tabBarContentHeight = _this.data.tabBarContentHeight
+      _this.data.index.pdArea.tabs[currentTabIndex].list = list;
+      //_this.data.index.pdArea.tabsSliderIndex = currentTabIndex;
+      _this.setData(_this.data)
+    },
+    fail: function() {
+      console.log("config.apiUrl.productList->fail")
+    }
+  })
+}
 
 Page({
   data: {
+    scrollHeight: 500,
     tag: "main",
     tabBarContentHeight: 0,
     name: "index",
     tabBar: [{
-      "name": "index",
-      "pagePath": "/pages/index/index.wxml",
-      "iconPath": "/images/home.png",
-      "selectedIconPath": "/images/home_fill.png",
-      "text": "首页",
-      "navTitle": "贩聚社团",
-      "selected": true,
-      "number": 0
+      name: "index",
+      pagePath: "/pages/index/index.wxml",
+      iconPath: "/images/home.png",
+      selectedIconPath: "/images/home_fill.png",
+      text: "首页",
+      navTitle: "贩聚社团",
+      selected: true,
+      number: 0
     }, {
-      "name": "productkind",
-      "pagePath": "/pages/productkind/productkind.wxml",
-      "iconPath": "/images/kind.png",
-      "selectedIconPath": "/images/kind_fill.png",
-      "text": "分类",
-      "navTitle": "分类",
-      "selected": false,
-      "number": 0
+      name: "productkind",
+      pagePath: "/pages/productkind/productkind.wxml",
+      iconPath: "/images/kind.png",
+      selectedIconPath: "/images/kind_fill.png",
+      text: "分类",
+      navTitle: "分类",
+      selected: false,
+      number: 0
     }, {
-      "name": "cart",
-      "pagePath": "/pages/cart/cart.wxml",
-      "iconPath": "/images/cart.png",
-      "selectedIconPath": "/images/cart_fill.png",
-      "text": "购物车",
-      "navTitle": "购物车",
-      "selected": false,
-      "number": 0
+      name: "cart",
+      pagePath: "/pages/cart/cart.wxml",
+      iconPath: "/images/cart.png",
+      selectedIconPath: "/images/cart_fill.png",
+      text: "购物车",
+      navTitle: "购物车",
+      selected: false,
+      number: 0
     }, {
-      "name": "personal",
-      "pagePath": "/pages/personal/personal.wxml",
-      "iconPath": "/images/personal.png",
-      "selectedIconPath": "/images/personal_fill.png",
-      "text": "个人",
-      "navTitle": "个人",
-      "selected": false,
-      "number": 0
+      name: "personal",
+      pagePath: "/pages/personal/personal.wxml",
+      iconPath: "/images/personal.png",
+      selectedIconPath: "/images/personal_fill.png",
+      text: "个人",
+      navTitle: "个人",
+      selected: false,
+      number: 0
     }],
-    "index": {
+    index: {
       banner: {
         imgs: [],
         currentSwiper: 0,
         autoplay: true
+      },
+      pdArea: {
+        tabs: [{
+          name: "热门推荐",
+          selected: true,
+          list: []
+        }, {
+          name: "休闲零食",
+          selected: false,
+          list: []
+        }, {
+          name: "营养食品",
+          selected: false,
+          list: []
+        }, {
+          name: "百货用品",
+          selected: false,
+          list: []
+        }],
+        tabsSliderIndex: 0
       }
     },
-    "productKind": {
-      "list": []
+    productKind: {
+      list: []
     },
-    "cart": {
-      "list": []
+    cart: {
+      list: []
     }
   },
-  indexBarBannerSwiperChange: function(e) {
 
-    var _index = this.data.index;
-    _index.banner.currentSwiper = e.detail.current;
 
-    this.setData({
-      index: _index
-    })
-  },
   loadMore: function(e) {
     console.log("main.loadMore")
     var _self = this
@@ -131,7 +194,7 @@ Page({
         //_self.tabBarItemSetNumber(2,22);//设置tabar number提示
 
         httpUtil.getRequest(config.apiUrl.globalDataSet, {
-          userId: '00000000000000000000000000000000',
+          userId: ownRequest.getCurrentUserId(),
           storeId: 'be9ae32c554d4942be4a42fa48446210',
           datetime: '2018-03-30'
         }, {
@@ -198,6 +261,47 @@ Page({
       tabBar: _self.data.tabBar
     })
   },
+  indexBarBannerSwiperChange: function(e) {
+    var _index = this.data.index;
+    _index.banner.currentSwiper = e.detail.current;
+    this.setData({
+      index: _index
+    })
+  },
+  indexBarPdAreatabBarClick: function(e) {
+    console.log("indexBarPdAreatabBarClick");
+    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
+    var kindId = e.currentTarget.dataset.replykindId //对应页面data-reply-index
+    var _this = this
+
+    for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
+      if (i == index) {
+        _this.data.index.pdArea.tabs[i].selected = true;
+        _this.data.index.pdArea.tabsSliderIndex=i;
+      } else {
+        _this.data.index.pdArea.tabs[i].selected = false;
+      }
+    }
+    _this.setData(_this.data)
+    pdAreaGetList(_this)
+  },
+  indexBarPdAreatabBarSwitch: function (e) {
+    console.log("indexBarPdAreatabBarClick");
+    var index = e.detail.current //对应页面data-reply-index
+    //var kindId = e.currentTarget.dataset.replykindId //对应页面data-reply-index
+    var _this = this
+
+    for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
+      if (i == index) {
+        _this.data.index.pdArea.tabs[i].selected = true;
+        _this.data.index.pdArea.tabsSliderIndex = i;
+      } else {
+        _this.data.index.pdArea.tabs[i].selected = false;
+      }
+    }
+    _this.setData(_this.data)
+    pdAreaGetList(_this)
+  },
 
   kindBarItemClick(e) {
     console.log('kindBarItemClick');
@@ -218,8 +322,6 @@ Page({
       productKind: _self.data.productKind
     })
   },
-
-
   cartBarListItemOperate(e) {
     console.log('cartBarListItemCheck');
     var _self = this
@@ -251,9 +353,8 @@ Page({
       channelType: sku.channelType
     });
 
-
     cart.operate({
-      userId: '00000000000000000000000000000000',
+      userId: ownRequest.getCurrentUserId(),
       storeId: 'BE9AE32C554D4942BE4A42FA48446210',
       operate: operate,
       skus: operateSkus
@@ -268,7 +369,6 @@ Page({
       fail: function() {}
     })
   },
-
   cartBarImmeBuy: function(e) {
     var _this = this
 
@@ -303,9 +403,63 @@ Page({
         // success
       },
     })
+  },
+  userAuthorize: function(e) {
+    console.log("userAuthorize")
+    // wx.getUserInfo({
+    //   success: function (res) {
+    //     console.log(JSON.stringify(res))
+    //     //that.setData({
+    //      // nickName: res.userInfo.nickName,
+    //      // avatarUrl: res.userInfo.avatarUrl,
+    //     //})
+    //   }
+    // })
+
+    wx.login({
+      success: function(res) {
+        console.log(res.code)
+        if (res.code) {
+
+          wx.getUserInfo({
+            withCredentials: true,
+            success: function(res_user) {
+              console.log(JSON.stringify(res_user))
+
+            },
+            fail: function() {
+
+
+              wx.showModal({
+                title: '警告通知',
+                content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
+                success: function(res) {
+                  console.log(JSON.stringify(res))
+                  if (res.confirm) {
+                    wx.openSetting({
+                      success: (res2) => {
+                        console.log("sdad:" + JSON.stringify(res2))
+                        // if (res2.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
+                        //   wx.login({
+                        //     success: function (res_login) {
+                        //     }
+                        //   })
+                        // }
+                      }
+                    })
+                  }
+                }
+              })
+
+            }
+          })
+
+        }
+      }
+    })
+  },
+  bindgetuserinfo: function(e) {
+    console.log(JSON.stringify(e))
   }
-
-
-
 
 })

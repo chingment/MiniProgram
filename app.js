@@ -38,6 +38,9 @@ App({
 
 
   },
+  onShow: function () { 
+    console.log("App.onShow")
+  },
   globalData: {
     userInfo: null
   },
@@ -56,7 +59,7 @@ App({
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
       if (pages[i].data.tag == "main") {
-        pages[i].mainTabBarItemSetNumber(index,num)
+        pages[i].mainTabBarItemSetNumber(index, num)
       }
     }
   },
@@ -65,7 +68,7 @@ App({
     var pages = getCurrentPages();
     for (var i = 0; i < pages.length; i++) {
       if (pages[i].data.tag == "main") {
-    
+
         wx.navigateBack({
           delta: pages.length
         })
@@ -75,12 +78,12 @@ App({
           if (j == index) {
             tabBar[j].selected = true
             var s = tabBar[j];
-           setTimeout(function(){
+            setTimeout(function () {
 
-             wx.setNavigationBarTitle({
-               title: s.navTitle
-             })
-           },1000)
+              wx.setNavigationBarTitle({
+                title: s.navTitle
+              })
+            }, 1000)
           }
           else {
             tabBar[j].selected = false

@@ -1,6 +1,7 @@
 const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
+const ownRequest = require('../../own/ownRequest.js')
 const app = getApp()
 
 const cityList = require('./cityList').cityList;
@@ -234,7 +235,7 @@ Page({
       return
     }
 
-    httpUtil.postRequest(config.apiUrl.deliveryAddressEdit, { id: id, userId: '00000000000000000000000000000000', consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault }, {
+    httpUtil.postRequest(config.apiUrl.deliveryAddressEdit, { id: id, userId: ownRequest.getCurrentUserId(), consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault }, {
       success: function (res) {
         wx.navigateBack()
       },

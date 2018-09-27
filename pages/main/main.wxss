@@ -3,7 +3,7 @@
 @import '../cart/cart.wxss';
 @import '../personal/personal.wxss';
 
-.main-tabbar {
+.main-tabbar-items {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -11,14 +11,14 @@
   overflow: hidden;
 }
 
-.main-tabbar-container {
+.main-tabbar-items > .container {
   display: flex;
   flex-direction: row;
   font-size: 20rpx;
   border-top: 1rpx #dbdbdb solid;
 }
 
-.main-tabbar-item {
+.main-tabbar-items .item {
   float: left;
   flex: 1;
   text-align: center;
@@ -31,16 +31,16 @@
   display: none;
 }
 
-.main-tabbar-item-icon {
+.main-tabbar-items .icon {
   width: 38rpx;
   height: 38rpx;
 }
 
-.main-tabbar-item-title {
+.main-tabbar-items .title {
   color: #8a8a8a;
 }
 
-.main-tabbar-item-number {
+.main-tabbar-items .number {
   width: 45rpx;
   height: 32srpx;
   border: 0 solid #f00;

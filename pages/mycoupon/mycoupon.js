@@ -1,5 +1,6 @@
 const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
+const ownRequest = require('../../own/ownRequest.js')
 const app = getApp()
 
 Page({
@@ -39,7 +40,7 @@ Page({
     })
 
     var isGetHis = false
-    httpUtil.postRequest(config.apiUrl.couponMy, { userId: '00000000000000000000000000000000', isGetHis: isGetHis, couponId: couponId, skus: skus }, {
+    httpUtil.postRequest(config.apiUrl.couponMy, { userId: ownRequest.getCurrentUserId(), isGetHis: isGetHis, couponId: couponId, skus: skus }, {
       success: function (res) {
         _this.setData({
           coupon: res.data,

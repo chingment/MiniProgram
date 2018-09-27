@@ -1,6 +1,7 @@
 const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
+const ownRequest = require('../../own/ownRequest.js')
 const app = getApp()
 
 var getList = function (_this) {
@@ -24,7 +25,7 @@ var getList = function (_this) {
   var pageIndex = currentTab.pageIndex
   var kindId = currentTab.kindId
 
-  httpUtil.getRequest(config.apiUrl.productGetList, { userId: '00000000000000000000000000000000', storeId: 'BE9AE32C554D4942BE4A42FA48446210', pageIndex: pageIndex, kindId: kindId, name: "" }, {
+  httpUtil.getRequest(config.apiUrl.productGetList, { userId: ownRequest.getCurrentUserId(), storeId: 'BE9AE32C554D4942BE4A42FA48446210', pageIndex: pageIndex, kindId: kindId, name: "" }, {
     success: function (res) {
       console.log("config.apiUrl.productList->success")
 

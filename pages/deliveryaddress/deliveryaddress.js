@@ -1,11 +1,12 @@
 const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
+const ownRequest = require('../../own/ownRequest.js')
 const app = getApp()
 
 var getList = function (_this) {
 
-  httpUtil.getRequest(config.apiUrl.deliveryAddressMy, { userId: '00000000000000000000000000000000' }, {
+  httpUtil.getRequest(config.apiUrl.deliveryAddressMy, { userId: ownRequest.getCurrentUserId() }, {
     success: function (res) {
       _this.setData({
         list: res.data

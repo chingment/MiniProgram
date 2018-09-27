@@ -3,6 +3,7 @@ const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const wxparse = require("../../wxParse/wxParse.js")
 const cart = require('../../pages/cart/cart.js')
+const ownRequest = require('../../own/ownRequest.js')
 const app = getApp()
 
 Page({
@@ -23,7 +24,7 @@ Page({
 
     //app.changeData("main", { cart: cart })
 
-    httpUtil.getRequest(config.apiUrl.productGetSkuDetails, { userId: "00000000000000000000000000000000", skuId: skuId }, {
+    httpUtil.getRequest(config.apiUrl.productGetSkuDetails, { userId: ownRequest.getCurrentUserId(), skuId: skuId }, {
       success: function (res) {
         _this.setData({ sku: res.data, cart: storeage.getCart() })
 

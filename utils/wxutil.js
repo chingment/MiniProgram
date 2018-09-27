@@ -9,7 +9,8 @@ function getAuthorize(options) {
     success: res => {
       console.log('wxutil.success->确定授权')
       var userInfo = res.userInfo
-      console.log("can get userInfo")
+      console.log("can get userInfo:" + JSON.stringify(userInfo))
+
       _success(res)
     },
     fail: res => {
