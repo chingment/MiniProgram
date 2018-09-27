@@ -26,6 +26,9 @@ function setCart(cart) {
     else if (pages[i].data.tag == "productdetails") {
       pages[i].setData({ cart: cart })
     }
+    else if (pages[i].data.tag == "productlist") {
+      pages[i].setData({ cart: cart })
+    }
   }
 
 }

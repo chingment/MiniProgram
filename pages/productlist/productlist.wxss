@@ -19,7 +19,6 @@ page {
   transition-duration: 0ms;
 }
 
-
 .tabbar-items .item {
   height: 60rpx;
   line-height: 42rpx;
@@ -56,19 +55,60 @@ page {
   margin-top: 62rpx;
 }
 
-
-.list-emptytips{
-   text-align: center;
-   margin-top: 200rpx;
+.list-emptytips {
+  text-align: center;
+  margin-top: 200rpx;
 }
 
-.list-emptytips image{
-   width: 264rpx;
-   height: 196rpx;
+.list-emptytips image {
+  width: 264rpx;
+  height: 196rpx;
 }
 
-.list-emptytips text{
+.list-emptytips text {
   font-size: 24rpx;
-  color:#9d9d9d;
+  color: #9d9d9d;
 }
 
+.carttips {
+  width: 120rpx;
+  height: 120rpx;
+  float: right;
+  background-color: #fff;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  border: 0 solid #fff;
+  border-radius: 500px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;  
+  display: flex;
+  -webkit-box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.carttips .icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.carttips .title {
+  color: #8a8a8a;
+}
+
+.carttips .number {
+  width: 45rpx;
+  height: 32rpx;
+  border: 0 solid #fff;
+  background-color: #f00;
+  color: #fff;
+  position: absolute;
+  right: -10rpx;
+  border-radius: 30rpx;
+  line-height: 34rpx;
+  z-index: 999;
+  top: 8rpx;
+  font-size: 24rpx;
+}
