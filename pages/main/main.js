@@ -90,9 +90,7 @@ Page({
       list: []
     }
   },
-
-
-  loadMore: function(e) {
+  loadMore: function (e) {
     console.log("main.loadMore")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -101,8 +99,7 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-
-  refresh: function(e) {
+  refresh: function (e) {
     console.log("main.refresh")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -110,22 +107,23 @@ Page({
     var name = _dataset.replyName //对应页面data-reply-name
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
-
-
   },
-  changeData: function(data) {
+  changeData: function (data) {
     console.log("main.changeData")
     var _self = this;
     _self.setData(data)
   },
-
-  onLoad: function() {
+  onLoad: function () {
     console.log("main.onLoad")
 
     var _self = this;
 
+    if (!ownRequest.isLogin()) {
+      return;
+    }
+
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         var height = res.windowHeight - res.screenWidth / 750 * 81
         console.log("windowHeight:" + height)
         _self.setData({
@@ -138,55 +136,39 @@ Page({
       title: _self.data.tabBar[0].navTitle
     })
 
-    wxutil.getAuthorize({
-      success: function(e) {
-        //处理授权成功后
-        console.log("main.onload.wxutil.getAuthorize.success")
-        //_self.tabBarItemSetNumber(2,22);//设置tabar number提示
+    console.log("main.onload.wxutil.getAuthorize.success")
 
-        httpUtil.getRequest(config.apiUrl.globalDataSet, {
-          userId: ownRequest.getCurrentUserId(),
-          storeId: 'be9ae32c554d4942be4a42fa48446210',
-          datetime: '2018-03-30'
-        }, {
-          success: function(res) {
-            var index = res.data.index
-            var productKind = res.data.productKind
-            var cart = res.data.cart
-            var personal = res.data.personal
-            _self.setData({
-              index: index,
-              productKind: productKind,
-              cart: cart,
-              personal: personal
-            })
+    httpUtil.getRequest(config.apiUrl.globalDataSet, {
+      userId: ownRequest.getCurrentUserId(),
+      storeId: 'be9ae32c554d4942be4a42fa48446210',
+      datetime: '2018-03-30'
+    }, {
+        success: function (res) {
+          var index = res.data.index
+          var productKind = res.data.productKind
+          var cart = res.data.cart
+          var personal = res.data.personal
+          _self.setData({
+            index: index,
+            productKind: productKind,
+            cart: cart,
+            personal: personal
+          })
 
-            storeage.setProductKind(productKind)
-            storeage.setCart(cart)
+          storeage.setProductKind(productKind)
+          storeage.setCart(cart)
 
-          },
-          fail: function() {}
-        })
-
-      },
-      fail: function(e) {
-        //处理授权失败
-        console.log("main.onload.wxutil.getAuthorize.fail")
-      }
-    })
+        }
+      })
   },
-
   mainTabBarItemClick(e) {
     console.log('tabbar.tabBarItemClick')
     var _self = this
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-
     var tabBar = _self.data.tabBar;
-
     for (var i = 0; i < tabBar.length; i++) {
       if (i == index) {
         tabBar[i].selected = true
-
         //设置页面标题
         wx.setNavigationBarTitle({
           title: tabBar[i].navTitle
@@ -196,56 +178,17 @@ Page({
         tabBar[i].selected = false
       }
     }
-
-
     this.setData({
       tabBar: tabBar
     })
-
   },
-
-  indexBarBannerSwiperChange: function(e) {
+  indexBarBannerSwiperChange: function (e) {
     var _index = this.data.index;
     _index.banner.currentSwiper = e.detail.current;
     this.setData({
       index: _index
     })
   },
-  indexBarPdAreatabBarClick: function(e) {
-    console.log("indexBarPdAreatabBarClick");
-    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
-    var kindId = e.currentTarget.dataset.replykindId //对应页面data-reply-index
-    var _this = this
-
-    for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
-      if (i == index) {
-        _this.data.index.pdArea.tabs[i].selected = true;
-        _this.data.index.pdArea.tabsSliderIndex = i;
-      } else {
-        _this.data.index.pdArea.tabs[i].selected = false;
-      }
-    }
-    _this.setData(_this.data)
-    pdAreaGetList(_this)
-  },
-  indexBarPdAreatabBarSwitch: function(e) {
-    console.log("indexBarPdAreatabBarClick");
-    var index = e.detail.current //对应页面data-reply-index
-    //var kindId = e.currentTarget.dataset.replykindId //对应页面data-reply-index
-    var _this = this
-
-    for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
-      if (i == index) {
-        _this.data.index.pdArea.tabs[i].selected = true;
-        _this.data.index.pdArea.tabsSliderIndex = i;
-      } else {
-        _this.data.index.pdArea.tabs[i].selected = false;
-      }
-    }
-    _this.setData(_this.data)
-    pdAreaGetList(_this)
-  },
-
   kindBarItemClick(e) {
     console.log('kindBarItemClick');
     var _self = this
@@ -259,7 +202,6 @@ Page({
         list[i].selected = false
       }
     }
-
     _self.data.productKind.list = list
     this.setData({
       productKind: _self.data.productKind
@@ -302,16 +244,16 @@ Page({
       operate: operate,
       skus: operateSkus
     }, {
-      success: function(res) {
-        _self.setData({
-          cart: res.data
-        })
-        app.mainTabBarSetNumber(2, res.data.count)
-      },
-      fail: function() {}
-    })
+        success: function (res) {
+          _self.setData({
+            cart: res.data
+          })
+          app.mainTabBarSetNumber(2, res.data.count)
+        },
+        fail: function () { }
+      })
   },
-  cartBarImmeBuy: function(e) {
+  cartBarImmeBuy: function (e) {
     var _this = this
 
     var block = _this.data.cart.block
@@ -341,13 +283,12 @@ Page({
 
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
-      success: function(res) {
+      success: function (res) {
         // success
       },
     })
   },
-  addToCart: function(e) {
-
+  addToCart: function (e) {
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
     console.log("skuId:" + skuId)
@@ -366,71 +307,10 @@ Page({
       operate: 2,
       skus: skus
     }, {
-      success: function(res) {
-
-      },
-      fail: function() {
-
-      }
-    })
-
-  },
-  userAuthorize: function(e) {
-    console.log("userAuthorize")
-    // wx.getUserInfo({
-    //   success: function (res) {
-    //     console.log(JSON.stringify(res))
-    //     //that.setData({
-    //      // nickName: res.userInfo.nickName,
-    //      // avatarUrl: res.userInfo.avatarUrl,
-    //     //})
-    //   }
-    // })
-
-    wx.login({
-      success: function(res) {
-        console.log(res.code)
-        if (res.code) {
-
-          wx.getUserInfo({
-            withCredentials: true,
-            success: function(res_user) {
-              console.log(JSON.stringify(res_user))
-
-            },
-            fail: function() {
-
-
-              wx.showModal({
-                title: '警告通知',
-                content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
-                success: function(res) {
-                  console.log(JSON.stringify(res))
-                  if (res.confirm) {
-                    wx.openSetting({
-                      success: (res2) => {
-                        console.log("sdad:" + JSON.stringify(res2))
-                        // if (res2.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
-                        //   wx.login({
-                        //     success: function (res_login) {
-                        //     }
-                        //   })
-                        // }
-                      }
-                    })
-                  }
-                }
-              })
-
-            }
-          })
-
+        success: function (res) {
+        },
+        fail: function () {
         }
-      }
-    })
-  },
-  bindgetuserinfo: function(e) {
-    console.log(JSON.stringify(e))
+      })
   }
-
 })

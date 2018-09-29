@@ -91,9 +91,5 @@
         </block>
       </view>
     </view>
-
-
-    <!-- <button bindtap="userAuthorize">授权登录</button>
-    <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">开始使用</button> -->
   </view>
 </template>
