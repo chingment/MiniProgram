@@ -23,7 +23,8 @@ var config = {
     deliveryAddressMy: `${host}/DeliveryAddress/My`,
     orderConfirm: `${host}/Order/Confirm`,
     couponMy: `${host}/Coupon/My`,
-    storeList: `${host}/Store/List`
+    storeList: `${host}/Store/List`,
+    userLoginByMinProgram: `${host}/User/LoginByMinProgram`
   }
 
 };

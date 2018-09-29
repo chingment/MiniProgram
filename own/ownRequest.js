@@ -1,3 +1,8 @@
+const httpUtil = require("../utils/apphttputil.js")
+const config = require('../config')
+const storeage = require('../utils/storeageutil.js')
+
+
 var loginPage='../login/login'
 
 function getAccessonToken() {
@@ -46,13 +51,31 @@ function getUserInfo(code, callback) {
   wx.getUserInfo({
     // 获取成功，全局存储用户信息，开发者服务器登录
     success(res) {
-      console.log("code:" + code)
-      console.log("iv:" + res.iv)
-      console.log("encryptedData:" + res.encryptedData)
-      console.log("encryptedData:" + JSON.stringify(res))
+      //console.log("code:" + code)
+      //console.log("iv:" + res.iv)
+      //console.log("encryptedData:" + res.encryptedData)
+      console.log("userInfo:" + JSON.stringify(res))
       // 全局存储用户信息
       //store.commit('storeUpdateWxUser', res.userInfo)
-      //postLogin(code, res.iv, res.encryptedData, callback)
+      // postLogin(code, res.iv, res.encryptedData, callback)
+
+
+      let params = {
+        code: code,
+        iv: res.iv,
+        encryptedData: res.encryptedData
+      }
+
+      httpUtil.postRequest(config.apiUrl.userLoginByMinProgram, params, {
+        success: function (res) {
+          callback && callback()
+        },
+        fail: function () {
+          showToast()
+        }
+      })
+
+
     },
     // 获取失败，弹窗提示一键登录
     fail() {
@@ -67,28 +90,6 @@ function getUserInfo(code, callback) {
   })
 }
 
-// 开发者服务端登录
-function postLogin(code, iv, encryptedData, callback) {
-  let params = {
-    code: code,
-    iv: iv,
-    encryptedData: encryptedData
-  }
-  request(apiUrl.postLogin, params, 'post').then((res) => {
-    if (res.code == 1) {
-      wx.hideLoading()
-      // 登录成功，
-      // 使用token管理登录态的，存储全局token，用于当做登录态判断，
-      // 使用cookie管理登录态的，可以存任意变量当做已登录状态
-      store.commit('storeUpdateToken', res.data.token)
-      callback && callback()
-    } else {
-      showToast()
-    }
-  }).catch((err) => {
-    showToast()
-  })
-}
 
 function showLoginModal() {
   wx.showModal({
