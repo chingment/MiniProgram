@@ -91,19 +91,15 @@ function parseUrlParam(param, key) {
       console.log("apphttpUtil.params:" + JSON.stringify(params))
     }
 
-    console.log("apphttpUtil.url:" + url)
-
     let hexSign = getSign(config.key, config.secret, timestamp, params);
     let base64Sign = base64Encode(hexSign);
     header.sign = base64Sign;
     console.log("apphttpUtil.sign:" + base64Sign)
     httpUtil.wxRequest(url, method, header, body, {
       success: function (res) {
-        console.log("apphttpUtil->sucees:" +JSON.stringify(res))
         requestHandler.success(res.data);
       },
       fail: function () {
-        console.log("apphttpUtil->fail")
         requestHandler.fail();
       }
     });

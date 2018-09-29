@@ -1,0 +1,23 @@
+<view class="col-nav2">
+  <view class="container">
+    <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
+      <navigator url="/pages/main/main?storeId={{item.id}}" class="item {{item.id==curStoreId?'item-selected':''}}" hover-class="none">
+        <view class="item-icon hidden">
+          <view class="icon-box">
+            <image src='../../images/list_icon_withdraw.png'></image>
+          </view>
+        </view>
+        <view class="item-left">
+          <text class="txt-h1">{{item.name}}</text>
+          <text class="txt-h2">{{item.address}}</text>
+        </view>
+        <view class="item-right">
+          <text class="txt">{{item.distanceMsg}}</text>
+        </view>
+        <view class="item-more hidden">
+          <image src='../../images/col_nav_right.png'></image>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

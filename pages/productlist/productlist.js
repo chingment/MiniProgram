@@ -5,7 +5,7 @@ const cart = require('../../pages/cart/cart.js')
 const ownRequest = require('../../own/ownRequest.js')
 const app = getApp()
 
-var getList = function (_this) {
+var getList = function(_this) {
   console.log("getList")
   //console.log("getList.pageIndex:" + _this.data.pageIndex)
 
@@ -23,18 +23,26 @@ var getList = function (_this) {
     currentTab = _this.data.tabs[currentTabIndex];
   }
 
+  console.log("getList.currentTabIndex:" + currentTabIndex)
+
   var pageIndex = currentTab.pageIndex
   var kindId = currentTab.kindId
-
-  httpUtil.getRequest(config.apiUrl.productGetList, { userId: ownRequest.getCurrentUserId(), storeId: 'BE9AE32C554D4942BE4A42FA48446210', pageIndex: pageIndex, kindId: kindId, name: "" }, {
-    success: function (res) {
+  var subjectId = currentTab.subjectId
+  httpUtil.getRequest(config.apiUrl.productGetList, {
+    userId: ownRequest.getCurrentUserId(),
+    storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+    pageIndex: pageIndex,
+    kindId: kindId,
+    subjectId: subjectId,
+    name: ""
+  }, {
+    success: function(res) {
       console.log("config.apiUrl.productList->success")
 
       var list
       if (currentTab.pageIndex == 0) {
         list = res.data
-      }
-      else {
+      } else {
         list = _this.data.tabs[currentTabIndex].list.concat(res.data)
       }
 
@@ -44,7 +52,7 @@ var getList = function (_this) {
         tabs: _this.data.tabs
       })
     },
-    fail: function () {
+    fail: function() {
       console.log("config.apiUrl.productList->fail")
     }
   })
@@ -55,51 +63,68 @@ Page({
     tag: "productlist",
     scrollHeight: 0
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var _this = this
 
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           scrollHeight: res.windowHeight - 41
         });
       }
     });
 
-    var kindId = options.kindId == undefined ? "0" : options.kindId
-    var pKindId = options.pKindId == undefined ? "0" : options.pKindId
-    console.log("当前选择->pKindId:" + pKindId + "，kindId:" + kindId)
+    var kindId = options.kindId == undefined ? "" : options.kindId
+    var pKindId = options.pKindId == undefined ? "" : options.pKindId
+    var subjectId = options.subjectId == undefined ? "" : options.subjectId
+    var navName = options.navName == undefined ? "" : options.navName
+
+    wx.setNavigationBarTitle({
+      title: navName
+    })
 
     //加载tab数据，从缓存对象获取
     var productKinds = storeage.getProductKind().list
 
     var tabs = new Array()
     var tabsSliderIndex = -1 //默认未选择tab
-    for (var i = 0; i < productKinds.length; i++) {
-      if (productKinds[i].id == pKindId) {
 
-        wx.setNavigationBarTitle({
-          title: productKinds[i].name
-        })
+    if (productKinds.length.length > 0) {
+      for (var i = 0; i < productKinds.length; i++) {
+        if (productKinds[i].id == pKindId) {
 
-        for (var j = 0; j < productKinds[i].child.length; j++) {
-          var selected = false
-          if (productKinds[i].child[j].id == kindId) {
-            selected = true
-            tabsSliderIndex = j
+          for (var j = 0; j < productKinds[i].child.length; j++) {
+            var selected = false
+            if (productKinds[i].child[j].id == kindId) {
+              selected = true
+              tabsSliderIndex = j
+            }
+            var tab = {
+              kindId: productKinds[i].child[j].id,
+              name: productKinds[i].child[j].name,
+              pageIndex: 0,
+              selected: selected,
+              list: null,
+              scrollTop: 0
+            }
+            tabs.push(tab)
           }
-          var tab = {
-            kindId: productKinds[i].child[j].id,
-            name: productKinds[i].child[j].name,
-            pageIndex: 0,
-            selected: selected,
-            list: null,
-            scrollTop: 0
-          }
-          tabs.push(tab)
         }
       }
+    } else {
+      tabsSliderIndex = 0;
+      var tab = {
+        kindId: kindId,
+        subjectId: subjectId,
+        name: navName,
+        pageIndex: 0,
+        selected: true,
+        list: null,
+        scrollTop: 0
+      }
+      tabs.push(tab)
     }
+
 
     _this.setData({
       tabs: tabs,
@@ -111,7 +136,7 @@ Page({
 
   },
   //加载更多
-  loadMore: function (e) {
+  loadMore: function(e) {
     var _this = this
     console.log("loadMore");
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
@@ -122,7 +147,7 @@ Page({
     getList(_this)
   },
   //刷新处理
-  refesh: function (e) {
+  refesh: function(e) {
     var _this = this
     console.log("refesh")
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
@@ -135,7 +160,7 @@ Page({
     getList(_this)
   },
 
-  scroll: function (e) {
+  scroll: function(e) {
     var _this = this
     console.log("scroll")
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
@@ -151,7 +176,7 @@ Page({
   },
 
   //tab点击
-  tabBarClick: function (e) {
+  tabBarClick: function(e) {
     console.log("tabBarClick");
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
     var kindId = e.currentTarget.dataset.replykindId //对应页面data-reply-index
@@ -160,8 +185,7 @@ Page({
     for (var i = 0; i < _this.data.tabs.length; i++) {
       if (i == index) {
         _this.data.tabs[i].selected = true;
-      }
-      else {
+      } else {
         _this.data.tabs[i].selected = false;
       }
     }
@@ -173,7 +197,7 @@ Page({
     getList(_this)
   },
   // 滚动切换标签样式
-  swiperSwitchTab: function (e) {
+  swiperSwitchTab: function(e) {
 
     var index = e.detail.current //对应页面data-reply-index
     var _this = this
@@ -181,8 +205,7 @@ Page({
     for (var i = 0; i < _this.data.tabs.length; i++) {
       if (i == index) {
         _this.data.tabs[i].selected = true;
-      }
-      else {
+      } else {
         _this.data.tabs[i].selected = false;
       }
     }
@@ -194,10 +217,10 @@ Page({
     getList(_this)
 
   },
-  goCart: function (e) {
+  goCart: function(e) {
     app.mainTabBarSwitch(2)
   },
-  addToCart: function (e) {
+  addToCart: function(e) {
 
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
@@ -217,13 +240,13 @@ Page({
       operate: 2,
       skus: skus
     }, {
-        success: function (res) {
+      success: function(res) {
 
-        },
-        fail: function () {
+      },
+      fail: function() {
 
-        }
-      })
+      }
+    })
 
   }
 })

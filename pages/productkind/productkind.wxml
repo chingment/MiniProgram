@@ -15,7 +15,7 @@
         <text class="kind-lv1-name">{{item.name}}分类</text>
         <view class='kind-lv2-list'>
           <block wx:for="{{item.child}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-            <navigator url="/pages/productlist/productlist?pKindId={{item.id}}&kindId={{item2.id}}">
+            <navigator hover-class="none" url="/pages/productlist/productlist?pKindId={{item.id}}&kindId={{item2.id}}&&navName={{item2.name}}">
               <view class='kind-lv2-item'>
                 
                 <image class="kind-lv2-imgurl" src="{{item2.imgUrl}}"></image>

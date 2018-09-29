@@ -26,21 +26,24 @@
   border: 1rpx solid #f18d00;
 }
 
-
 .radio {
-  display:inline-block;
+  display: inline-block;
 }
 
- .radio image {
+.hidden {
+  display: none;
+}
+
+.radio image {
   width: 38rpx;
   height: 38rpx;
   line-height: 42rpx;
   display: block;
 }
 
-.line-space{
-  height:20rpx;
-  background-color:#f4f4f4;
+.line-space {
+  height: 20rpx;
+  background-color: #f4f4f4;
 }
 
 .col-nav {
@@ -315,7 +318,6 @@ col-form-item > view {
   width: 50rpx;
 }
 
-
 .prd-list-1 {
   position: relative;
   overflow: hidden;
@@ -348,7 +350,7 @@ col-form-item > view {
   margin: auto;
 }
 
-.prd-list-1 navigator{
+.prd-list-1 navigator {
   display: inline;
 }
 
@@ -415,11 +417,11 @@ col-form-item > view {
 .prd-list-1 .operate {
   flex: 1;
   text-align: right;
-    align-items: center;
-  justify-content: center;  
-    height: 62rpx;
+  align-items: center;
+  justify-content: center;
+  height: 62rpx;
   line-height: 62rpx;
-    display: flex;
+  display: flex;
 }
 
 .prd-list-1 .increase {

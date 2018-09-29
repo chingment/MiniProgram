@@ -1,5 +1,14 @@
 <template name="index">
   <view class="index">
+
+    <view class="store-address">
+      <navigator url="/pages/store/store?id=be9ae32c554d4942be4a42fa48446210" hover-class="none">
+        <image class="icon" src="/images/store_address.png"></image>
+        <text class="title">保利·中汇广场</text>
+        <image class="more" src="/images/arro_down.png"></image>
+      </navigator>
+    </view>
+
     <view class="banner">
       <swiper class="banner-swipers" autoplay="{{banner.autoplay}}" current="{{banner.currentSwiper}}" bindchange="indexBarBannerSwiperChange">
         <block wx:for="{{banner.imgs}}">
@@ -37,55 +46,49 @@
 
 
     <view class="pdArea">
-
-      <view>
-        <view class="tabbar-items">
-          <view class="container">
-            <block wx:for-items="{{pdArea.tabs}}" wx:for-item="item" wx:key="{{index}}">
-              <view id="{{index}}" class="item {{item.selected==true?'item-seleced':''}}" data-reply-index="{{index}}" bindtap="indexBarPdAreatabBarClick">
-                <view class="title">{{item.name}}</view>
-                <view class='seleced-bottom'></view>
+      <view class="container">
+        <block wx:for-items="{{pdArea.tabs}}" wx:for-item="item" wx:key="{{index}}">
+          <view class="item">
+            <view class="item-title">
+              <view class="icon">
+                <text class='name'>{{item.name}}</text>
+                <view class='bottom'></view>
               </view>
-            </block>
-          </view>
-        </view>
-
-        <view class="tabbar-contents">
-          <view class='container'>
-            <block wx:for="{{pdArea.tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-
-
-              <view class="item {{item.selected==true?'':'hidden'}}">
-                <view class='item-bannerImgUrl'>
-                  <image src="{{item.bannerImgUrl}}"></image>
-                </view>
-
-                <view class='prd-list-1'>
-                  <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-                    <view class='item item-{{index%2}}'>
-                      <view class='imgbox'>
-                        <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}">
-                          <image class="imgurl" src="{{item2.imgUrl}}"></image>
-                        </navigator>
-                      </view>
-                      <text class="name font-gray">{{item2.name}}</text>
-                      <text class="briefInfo font-gray">{{item2.briefInfo}}</text>
-                      <view class="area2">
-                        <view class="price">
-                          <text class="saleprice font-black">{{item2.salePrice}}</text>
-                          <text class="showprice font-gray">{{item2.showPrice}}</text>
-                        </view>
-                        <view class="operate">
-                          <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='../../images/increase.png'></image>
-                        </view>
-                      </view>
+              <view class="left"></view>
+              <view class="right"></view>
+              <view class='more'>
+                <navigator url="/pages/productlist/productlist?subjectId={{item.id}}&navName={{item.name}}" hover-class="none" >
+                  <text>更多</text>
+                </navigator>
+              </view>
+            </view>
+            <view class='item-bannerImgUrl'>
+              <image src="{{item.bannerImgUrl}}"></image>
+            </view>
+            <view class="item-list prd-list-1">
+              <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
+                <view class='item item-{{index%2}}'>
+                  <view class='imgbox'>
+                    <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}">
+                      <image class="imgurl" src="{{item2.imgUrl}}"></image>
+                    </navigator>
+                  </view>
+                  <text class="name font-gray">{{item2.name}}</text>
+                  <text class="briefInfo font-gray">{{item2.briefInfo}}</text>
+                  <view class="area2">
+                    <view class="price">
+                      <text class="saleprice font-black">{{item2.salePrice}}</text>
+                      <text class="showprice font-gray">{{item2.showPrice}}</text>
                     </view>
-                  </block>
+                    <view class="operate">
+                      <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='../../images/increase.png'></image>
+                    </view>
+                  </view>
                 </view>
-              </view>
-            </block>
+              </block>
+            </view>
           </view>
-        </view>
+        </block>
       </view>
     </view>
 

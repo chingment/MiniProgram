@@ -12,55 +12,6 @@ const toastUtil = require('../../utils/showtoastutil')
 const ownRequest = require('../../own/ownRequest.js')
 var app = getApp()
 
-
-var pdAreaGetList = function(_this) {
-  console.log("pdAreaGetList")
-
-  var currentTab;
-  var currentTabIndex = -1;
-  for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
-    if (_this.data.index.pdArea.tabs[i].selected == true) {
-      currentTab = _this.data.index.pdArea.tabs[i];
-      currentTabIndex = i;
-    }
-  }
-
-  if (currentTabIndex == -1) {
-    currentTabIndex = 0;
-    currentTab = _this.data.index.pdArea.tabs[currentTabIndex];
-  }
-
-  var pageIndex = currentTab.pageIndex
-  var kindId = currentTab.kindId
-
-  httpUtil.getRequest(config.apiUrl.productGetList, {
-    userId: ownRequest.getCurrentUserId(),
-    storeId: 'BE9AE32C554D4942BE4A42FA48446210',
-    pageIndex: pageIndex,
-    kindId: "",
-    name: ""
-  }, {
-    success: function(res) {
-      console.log("config.apiUrl.productList->success")
-
-      var list
-      if (currentTab.pageIndex == 0) {
-        list = res.data
-      } else {
-        list = _this.data.index.pdArea.tabs[currentTabIndex].list.concat(res.data)
-      }
-
-      _this.data.index.pdArea.tabBarContentHeight = _this.data.tabBarContentHeight
-      _this.data.index.pdArea.tabs[currentTabIndex].list = list;
-      //_this.data.index.pdArea.tabsSliderIndex = currentTabIndex;
-      _this.setData(_this.data)
-    },
-    fail: function() {
-      console.log("config.apiUrl.productList->fail")
-    }
-  })
-}
-
 Page({
   data: {
     scrollHeight: 500,
@@ -105,6 +56,7 @@ Page({
       number: 0
     }],
     index: {
+
       banner: {
         imgs: [],
         currentSwiper: 0,
@@ -148,7 +100,6 @@ Page({
     var name = _dataset.replyName //对应页面data-reply-name
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
-
   },
 
   refresh: function(e) {
@@ -269,7 +220,7 @@ Page({
     for (var i = 0; i < _this.data.index.pdArea.tabs.length; i++) {
       if (i == index) {
         _this.data.index.pdArea.tabs[i].selected = true;
-        _this.data.index.pdArea.tabsSliderIndex=i;
+        _this.data.index.pdArea.tabsSliderIndex = i;
       } else {
         _this.data.index.pdArea.tabs[i].selected = false;
       }
@@ -277,7 +228,7 @@ Page({
     _this.setData(_this.data)
     pdAreaGetList(_this)
   },
-  indexBarPdAreatabBarSwitch: function (e) {
+  indexBarPdAreatabBarSwitch: function(e) {
     console.log("indexBarPdAreatabBarClick");
     var index = e.detail.current //对应页面data-reply-index
     //var kindId = e.currentTarget.dataset.replykindId //对应页面data-reply-index
@@ -395,7 +346,7 @@ Page({
       },
     })
   },
-  addToCart: function (e) {
+  addToCart: function(e) {
 
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
@@ -415,13 +366,13 @@ Page({
       operate: 2,
       skus: skus
     }, {
-        success: function (res) {
+      success: function(res) {
 
-        },
-        fail: function () {
+      },
+      fail: function() {
 
-        }
-      })
+      }
+    })
 
   },
   userAuthorize: function(e) {

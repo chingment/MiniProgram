@@ -2,6 +2,7 @@
   "pages":[
     "pages/main/main",
     "pages/login/login",
+    "pages/store/store",
     "pages/productlist/productlist",
     "pages/productdetails/productdetails",
     "pages/deliveryaddress/deliveryaddress",
