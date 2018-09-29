@@ -3,7 +3,7 @@ const config = require('../config')
 const storeage = require('../utils/storeageutil.js')
 
 
-var loginPage='../login/login'
+var loginPage = '../login/login'
 
 function getAccessonToken() {
 
@@ -25,7 +25,14 @@ function getCurrentStoreId() {
 
 function isLogin() {
 
-  showLoginModal()
+  var acctoken = storeage.getAccessToken()
+  if (acctoken == "") {
+    showLoginModal()
+    return false
+  }
+  else {
+    return true
+  }
 }
 
 function login(callback) {
@@ -68,7 +75,12 @@ function getUserInfo(code, callback) {
 
       httpUtil.postRequest(config.apiUrl.userLoginByMinProgram, params, {
         success: function (res) {
-          callback && callback()
+          if (res.result == 1) {
+            storeage.setAccessToken(res.data.accessToken);
+            console.log("getAccessonToken" + storeage.getAccessToken())
+            callback && callback()
+          }
+
         },
         fail: function () {
           showToast()
@@ -95,7 +107,7 @@ function showLoginModal() {
   wx.showModal({
     title: '提示',
     content: '你还未登录，登录后可获得完整体验 ',
-    showCancel:false,
+    showCancel: false,
     confirmText: '一键登录',
     success(res) {
       // 点击一键登录，去授权页面

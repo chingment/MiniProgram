@@ -2,6 +2,7 @@ var httpUtil = require("../utils/httputil.js")
 const config = require('../config');
 const sha256_digest = require('../utils/sha256').sha256_digest;
 const base64Encode = require('../utils/base64').base64Encode;
+const storeage = require('../utils/storeageutil.js')
 
 function getSecondTimestamp() {
   var timestamp = Date.parse(new Date());
@@ -15,13 +16,12 @@ function getSign(key, secret, timestamp, params) {
   arr.push(secret);
   arr.push(timestamp);
   if (params) {
- 
-    if (typeof (params) == "object") {
+
+    if (typeof(params) == "object") {
       var s1 = JSON.stringify(params);
-      console.log('s1:' + s1 )
+      console.log('s1:' + s1)
       arr.push(s1);
-    }
-    else if (typeof (params) == "string") {
+    } else if (typeof(params) == "string") {
       arr.push(encodeURI(params));
     }
   }
@@ -43,78 +43,87 @@ function parseUrlParam(param, key) {
 
     paramStr += "&" + key + "=" + encodeURIComponent(param).toUpperCase();
 
-  }
-  else {
+  } else {
 
 
-    for (var p in param) {//遍历json对象的每个key/value对,p为key
+    for (var p in param) { //遍历json对象的每个key/value对,p为key
       paramStr += p + '=' + encodeURIComponent(param[p]).toUpperCase() + '&';
 
     }
 
-    paramStr = paramStr.substring(0, paramStr.length-1);
+    paramStr = paramStr.substring(0, paramStr.length - 1);
   }
 
   return paramStr;
 }
 
 
-  function request(url, method, params, requestHandler) {
+function request(url, method, urlParams, dataParams, requestHandler) {
 
-    //console.log("apphttpUtil.request")
-    //console.log("apphttpUtil.url:" + url)
-    //console.log("apphttpUtil.method:" + method)
+  //console.log("apphttpUtil.request")
+  //console.log("apphttpUtil.url:" + url)
+  //console.log("apphttpUtil.method:" + method)
 
 
-    let timestamp = getSecondTimestamp();
-    let header = {};
-    header.key = config.key;
-    header.timestamp = timestamp;
+  let timestamp = getSecondTimestamp();
+  let header = {};
+  header.key = config.key;
+  header.timestamp = timestamp;
 
-    console.log("apphttpUtil.key:" + config.key)
-    console.log("apphttpUtil.timestamp:" + timestamp)
+  //console.log("apphttpUtil.key:" + config.key)
+  //console.log("apphttpUtil.timestamp:" + timestamp)
 
-    var body=[];
-    if (method == "GET") {
-      if (url.indexOf("?") < 0) {
-        url += "?"
-      }
-      params = parseUrlParam(params);
-      console.log("apphttpUtil.params:" + params)
-      url += params;
+  var body = [];
 
-      
+  if (url.indexOf("?") < 0) {
+    url += "?"
+  }
+  var params = "";
+  if (urlParams != null) {
+    params = parseUrlParam(urlParams) + "&accesstoken=" + storeage.getAccessToken()
+  } else {
+    params = "&accesstoken=" + storeage.getAccessToken()
+  }
+
+  url += params;
+
+  console.log("apphttpUtil.url:" + url)
+
+  if (method == "POST") {
+    body = dataParams;
+    console.log("apphttpUtil.dataParams:" + JSON.stringify(dataParams))
+  }
+
+  //let hexSign = getSign(config.key, config.secret, timestamp, params);
+  //let base64Sign = base64Encode(hexSign);
+  //header.sign = base64Sign;
+  // console.log("apphttpUtil.sign:" + base64Sign)
+  
+  httpUtil.wxRequest(url, method, header, body, {
+    success: function(res) {
+      requestHandler.success(res.data);
+    },
+    fail: function() {
+      requestHandler.fail();
     }
-    else
-    {
-      body = params;
-      console.log("apphttpUtil.params:" + JSON.stringify(params))
-    }
+  });
 
-    let hexSign = getSign(config.key, config.secret, timestamp, params);
-    let base64Sign = base64Encode(hexSign);
-    header.sign = base64Sign;
-    console.log("apphttpUtil.sign:" + base64Sign)
-    httpUtil.wxRequest(url, method, header, body, {
-      success: function (res) {
-        requestHandler.success(res.data);
-      },
-      fail: function () {
-        requestHandler.fail();
-      }
-    });
+}
 
-  }
 
-  function getRequest(url, params, requestHandler) {
-    request(url, "GET", params, requestHandler)
-  }
+function getRequest(url, urlParams, requestHandler) {
+  request(url, "GET", urlParams, null, requestHandler)
+}
 
-  function postRequest(url, params, requestHandler) {
-    request(url, "POST", params, requestHandler)
-  }
+function postRequest(url, urlParams, dataParams, requestHandler) {
+  request(url, "POST", urlParams, dataParams, requestHandler)
+}
 
-  module.exports = {
-    getRequest: getRequest,
-    postRequest: postRequest
-  }  
+function postRequest(url, dataParams, requestHandler) {
+  request(url, "POST", null, dataParams, requestHandler)
+}
+
+module.exports = {
+  getRequest: getRequest,
+  postRequest: postRequest
+}

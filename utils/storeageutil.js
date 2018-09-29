@@ -1,5 +1,6 @@
 const key_productkind = "key_productkind"
 const key_cart = "key_cart"
+const key_accesstoken ="key_accesstoken"
 
 function getProductKind() {
   return wx.getStorageSync(key_productkind) || []
@@ -33,9 +34,19 @@ function setCart(cart) {
 
 }
 
+function getAccessToken() {
+  return wx.getStorageSync(key_accesstoken) || []
+}
+
+function setAccessToken(accesstoken) {
+  wx.setStorageSync(key_accesstoken, accesstoken)
+}
+
 module.exports = {
   getProductKind: getProductKind,
   setProductKind: setProductKind,
   getCart: getCart,
-  setCart: setCart
+  setCart: setCart,
+  setAccessToken: setAccessToken,
+  getAccessToken: getAccessToken
 }

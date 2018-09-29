@@ -119,7 +119,7 @@ Page({
     var _self = this;
 
     if (!ownRequest.isLogin()) {
-      return;
+      //return;
     }
 
     wx.getSystemInfo({

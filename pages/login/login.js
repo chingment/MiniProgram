@@ -74,7 +74,14 @@ Page({
    // if (e.target.userInfo) {
       ownRequest.login(() => {
         // 登录成功后，返回
-        wx.navigateBack()
+        // wx.redirectTo({
+        //   url: '../main/main',
+        // })
+
+        wx.reLaunch({//关闭所有页面，打开到应用内的某个页面
+          url: '../main/main',
+        })
+
       })
     //}
   }
