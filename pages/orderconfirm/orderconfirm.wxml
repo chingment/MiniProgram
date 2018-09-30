@@ -1,50 +1,55 @@
 <view class='tag-address'>
   <image src="../../images/tag_address.png"></image>
 </view>
-
-<view class="orderconfirm">
+<view class="ord-block orderconfirm">
   <block wx:for="{{block}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-
-
-    <view>
-      <view class="col-nav col-nav-shippingaddress">
-        <view class="col-nav-item" bindtap="shippingAddressSelect" data-reply-index="{{index}}">
-          <view class="item-left">
-            <view class="item-receiver">
-              <text>{{item.deliveryAddress.consignee}}</text>
+    <view class="cnt">
+      <view class="col-its-addr">
+        <view class="ct">
+          <view class="it" bindtap="shippingAddressSelect" data-reply-index="{{index}}">
+            <view class="it-l">
+              <view class="consignee">
+                <text>{{item.deliveryAddress.consignee}}</text>
+              </view>
+              <view class="isDefault" wx:if="{{item.deliveryAddress.isDefault}}">
+                <text class="font-main border-main">默认</text>
+              </view>
             </view>
-            <view class="item-isDefault" wx:if="{{item.deliveryAddress.isDefault}}">
-              <text class="font-main border-main">默认</text>
+            <view class="it-m">
+              <view class='phoneNumber'>
+                <text>{{item.deliveryAddress.phoneNumber}}</text>
+              </view>
+              <view class='address'>
+                <text>{{item.deliveryAddress.area}} {{item.deliveryAddress.address}}</text>
+              </view>
             </view>
-          </view>
-          <view class="item-middle">
-            <view class='item-phoneNumber'>
-              <text>{{item.deliveryAddress.phoneNumber}}</text>
+            <view class='it-r' bindtap="goSelect" wx:if="{{item.deliveryAddress.canSelectElse}}" >
+              <view class='iconbox'>
+                <image class="img-nav-right" src='../../images/col_nav_right.png'></image>
+              </view>
             </view>
-            <view class='item-area'>
-              <text>{{item.deliveryAddress.area}} {{item.deliveryAddress.address}}</text>
-            </view>
-          </view>
-          <view wx:if="{{item.deliveryAddress.canSelectElse}}" class='item-right' bindtap="goSelect">
-            <image class="img-nav" src='../../images/col_nav_right.png'></image>
           </view>
         </view>
       </view>
 
-      <view class="sku-list">
+      <view class="col-its-odcskus">
         <block wx:for="{{item.skus}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
-          <view class="item">
-            <view class="item-mainImg">
-              <image src="{{skusitem.imgUrl}}"></image>
+          <view class="it">
+            <view class="it-l">
+              <view class="iconbox" >
+                <image  src="{{skusitem.imgUrl}}"></image>
+              </view>
             </view>
-            <view class="item-skuname">
-            <text>{{skusitem.name}}</text>
+            <view class="it-m">
+              <view class="it-ml">
+                <text class='name'>{{skusitem.name}}</text>
+              </view>
+              <view class="it-mr">
+                <text class='quantity'> x {{skusitem.quantity}}</text>
+              </view>
             </view>
-            <view class="item-quantity">
-              {{skusitem.quantity}}
-            </view>
-            <view class="item-price">
-              {{skusitem.salePrice}}
+            <view class="it-r">
+              <text class='salePrice'> {{skusitem.salePrice}}</text>
             </view>
           </view>
         </block>
@@ -54,7 +59,7 @@
   </block>
 
 
-  <view class="col-nav">
+  <!-- <view class="col-nav">
     <view class="container">
 
 
@@ -87,7 +92,7 @@
     </view>
 
 
-  </view>
+  </view> -->
 
 
 
@@ -95,4 +100,4 @@
 </view>
 
 
-<button class="bottom-btn bg-main" form-type="submit">立即支付({{actualAmount}})({{originalAmount}})</button>
+<button class="bottom-btn bg-main" form-type="submit">立即支付({{actualAmount}})</button>

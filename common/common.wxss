@@ -253,67 +253,6 @@ col-form-item > view {
   height: 50rpx;
 }
 
-.col-nav-shippingaddress > .col-nav-item > view {
-  height: 100rpx;
-  overflow: hidden;
-  line-height: 100rpx;
-  display: inline-block;
-}
-
-.col-nav-shippingaddress .item-left {
-  width: 140rpx;
-  font-size: 28rpx;
-}
-
-.col-nav-shippingaddress .item-receiver {
-  height: 50rpx;
-  font-size: 28rpx;
-  line-height: 50rpx;
-  overflow: hidden;
-}
-
-.col-nav-shippingaddress .item-isDefault {
-  height: 50rpx;
-  font-size: 28rpx;
-  line-height: 50rpx;
-  overflow: hidden;
-}
-
-.col-nav-shippingaddress .item-isDefault text {
-  padding: 3rpx 8rpx;
-  text-align: center;
-  font-size: 24rpx;
-}
-
-.col-nav-shippingaddress .item-middle {
-  font-size: 28rpx;
-}
-
-.col-nav-shippingaddress .item-phoneNumber {
-  height: 50rpx;
-  font-size: 28rpx;
-  line-height: 50rpx;
-}
-
-.col-nav-shippingaddress .item-area {
-  height: 50rpx;
-  font-size: 28rpx;
-  line-height: 50rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.col-nav-shippingaddress .item-right {
-  width: 100rpx;
-  text-align: right;
-}
-
-.col-nav-shippingaddress .item-right .img-edit {
-  width: 50rpx;
-  height: 50rpx;
-}
-
 .w50 {
   width: 50rpx;
 }
@@ -427,4 +366,202 @@ col-form-item > view {
 .prd-list-1 .increase {
   width: 50rpx;
   height: 50rpx;
+}
+
+/*col-its-a*/
+
+.col-its-a {
+  border-top: 0px solid #f6f6f6;
+  padding: 0rpx 18rpx;
+}
+
+.col-its-a .it {
+  display: flex;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.col-its-a .it-l {
+  border-bottom: 0px solid #f6f6f6;
+  width: 100rpx;
+}
+
+.col-its-a .it-l .iconbox {
+  border-bottom: 0px solid #f6f6f6;
+  width: 100%;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.col-its-a  .it-l .iconbox image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 90rpx;
+}
+
+.col-its-a  .it-m {
+  border-bottom: 1px solid #f6f6f6;
+  flex: 1;
+  display: flex;
+}
+
+.col-its-a  .it-ml {
+  flex: 1;
+}
+
+.col-its-a  .it-mr {
+  width: 100px;
+  overflow: hidden;
+  flex: none;
+  text-align: right;
+}
+
+.col-its-a  .it-r {
+  width: 20rpx;
+  overflow: hidden;
+  text-align: right;
+  flex: none;
+}
+
+.col-its-a  .it-r .iconbox  image {
+  width: 12rpx;
+  height: 16rpx;
+}
+
+.col-its-a  .it-ml .txt-h1 {
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: left;
+  display: block;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-size: 30rpx;
+}
+
+.col-its-a .it-selected .it-ml .txt-h1 {
+  color: #f18d00;
+}
+
+.col-its-a  .it-ml  .txt-h2 {
+  height: 40rpx;
+  line-height: 40rpx;
+  display: block;
+  text-align: left;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.col-its-a .it-mr .txt {
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: right;
+  display: block;
+  font-weight: bold;
+  font-size: 30rpx;
+  padding-right: 8rpx;
+}
+
+.col-its-a  .it:last-child  .it-m {
+  border-bottom: 0px solid #f6f6f6;
+}
+
+/*its-address*/
+
+.col-its-addr {
+  padding: 0px 16px;
+}
+
+.col-its-addr .it {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #f8f8f8;
+  padding: 5px 0px 5px 0px;
+}
+
+.col-its-addr .it:last-child {
+  border-bottom: 0px;
+}
+
+.col-its-addr .it-l {
+  width: 140rpx;
+  font-size: 28rpx;
+}
+
+.col-its-addr .it-l image {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.col-its-addr .it-m {
+  flex: 1;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+
+.col-its-addr .it-m .title {
+  font-size: 28rpx;
+}
+
+.col-its-addr .it-r {
+  text-align: right;
+  display: flex;
+}
+
+.col-its-addr .it-r .iconbox {
+  align-items: center;
+  display: flex;
+}
+
+.col-its-addr .it-r .img-nav-right {
+  width: 12rpx;
+  height: 16rpx;
+  margin-left: 8rpx;
+}
+
+.col-its-addr .it-r .img-nav-edit {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.col-its-addr .consignee {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+
+.col-its-addr .isDefault {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+
+.col-its-addr .isDefault text {
+  padding: 3rpx 8rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.col-its-addr .phoneNumber {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+
+.col-its-addr .address {
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #999;
 }

@@ -7,7 +7,7 @@ var getData = function (_this) {
 
   var couponId = _this.data.couponId
 
-  httpUtil.postRequest(config.apiUrl.orderConfirm, { userId: ownRequest.getCurrentUserId(), storeId: 'BE9AE32C554D4942BE4A42FA48446210', skus: skus, couponId: couponId }, {
+  httpUtil.postRequest(config.apiUrl.orderConfirm, { userId: ownRequest.getCurrentUserId(), storeId: '21ae9399b1804dbc9ddd3c29e8b5c670', skus: skus, couponId: couponId }, {
     success: function (res) {
       var d = res.data
       _this.setData({
