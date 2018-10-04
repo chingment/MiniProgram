@@ -36,11 +36,11 @@
 </view>
 <view class="details-nav">
   <view bindtap="goHome" class="item-home">
-    <image src="../../images/home.png" />
+    <image src="/content/default/images/home.png" />
   </view>
   <view bindtap="goCart" class="item-cart">
     <view class='number {{cart.count==0?"hidden":""}}'>{{cart.count}}</view>
-    <image src="../../images/cart.png" />
+    <image src="/content/default/images/cart.png" />
   </view>
   <view bindtap="addToCart" class='item-increase bg-blue' data-reply-skuid="{{sku.id}}">
     <text>加入购物车</text>

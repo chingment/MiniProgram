@@ -17,7 +17,7 @@
           <view class="item-right" bindtap="goSelect"  data-reply-index="{{index}}" data-reply-operate="{{operate}}"  >
             <text wx:if="{{operate==1}}" class="btn">立即使用</text>
             <label wx:elif="{{operate==2}}" class="radio">
-              <image src='../../images/{{item.isSelected==false?"checkedoff":"checkedon"}}.png'></image>
+              <image src='/content/default/images/{{item.isSelected==false?"checkedoff":"checkedon"}}.png'></image>
             </label>
           </view>
         </view>

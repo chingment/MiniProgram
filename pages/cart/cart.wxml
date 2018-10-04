@@ -1,25 +1,25 @@
 <template name="cart">
-  <view class="cart">
+  <view class="st-cart">
     <view class="container">
       <view class="cart-list">
         <block wx:for="{{block}}" wx:for-index="pindex" wx:for-item="item" wx:key="list">
           <view class="item">
             <view class="cart-tag">
               <view class="icon">
-                <image src='../../images/cart_channel{{item.channelType}}.png'></image>
+                <image src='/content/default/images/cart_channel{{item.channelType}}.png'></image>
               </view>
               <view class="name">
                 <text>{{item.tagName}}</text>
               </view>
               <view class="right">
-                <image src='../../images/col_nav_right.png'></image>
+                <image src='/content/default/images/col_nav_right.png'></image>
               </view>
             </view>
             <view class="cart-skus">
               <block wx:for="{{item.skus}}" wx:for-index="cindex" wx:for-item="itemsku" wx:key="list">
                 <view class="item">
                   <view class="item-left" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}">
-                    <image src='../../images/{{itemsku.selected==false?"checkedoff":"checkedon"}}.png'></image>
+                    <image src='/content/default/images/{{itemsku.selected==false?"checkedoff":"checkedon"}}.png'></image>
                   </view>
                   <view class="item-middle">
                     <view class="item-mainimgbox">
@@ -33,9 +33,9 @@
                     </view>
                   </view>
                   <view class="item-right">
-                    <image bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='../../images/increase.png'></image>
+                    <image bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/increase.png'></image>
                     <text class="quantity">{{itemsku.quantity}}</text>
-                    <image bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='../../images/decrease.png'></image>
+                    <image bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/decrease.png'></image>
                   </view>
                 </view>
               </block>

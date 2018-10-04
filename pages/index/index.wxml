@@ -1,11 +1,12 @@
 <template name="index">
-  <view class="index">
+
+  <view class="st-index">
 
     <view class="store-address">
       <navigator url="/pages/store/store?id=be9ae32c554d4942be4a42fa48446210" hover-class="none">
-        <image class="icon" src="/images/store_address.png"></image>
+        <image class="icon" src="/content/default/images/store_address.png"></image>
         <text class="title">保利·中汇广场</text>
-        <image class="more" src="/images/arro_down.png"></image>
+        <image class="more" src="/content/default/images/arro_down.png"></image>
       </navigator>
     </view>
 
@@ -27,23 +28,22 @@
 
     <view class='fc'>
       <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-        <image class='item-img' src='../../images/index-fc-newuser.png'></image>
+        <image class='item-img' src='/content/default/images/index-fc-newuser.png'></image>
         <text class='item-title'>新人专享</text>
       </navigator>
       <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-        <image class='item-img' src='../../images/index-fc-seckill.png'></image>
+        <image class='item-img' src='/content/default/images/index-fc-seckill.png'></image>
         <text class='item-title'>限时秒杀</text>
       </navigator>
       <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-        <image class='item-img' src='../../images/index-fc-member.png'></image>
+        <image class='item-img' src='/content/default/images/index-fc-member.png'></image>
         <text class='item-title'>会员专区</text>
       </navigator>
       <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
-        <image class='item-img' src='../../images/index-fc-coupon.png'></image>
+        <image class='item-img' src='/content/default/images/index-fc-coupon.png'></image>
         <text class='item-title'>优惠券</text>
       </navigator>
     </view>
-
 
     <view class="pdArea">
       <view class="container">
@@ -81,7 +81,7 @@
                       <text class="showprice font-gray">{{item2.showPrice}}</text>
                     </view>
                     <view class="operate">
-                      <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='../../images/increase.png'></image>
+                      <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='/content/default/images/increase.png'></image>
                     </view>
                   </view>
                 </view>

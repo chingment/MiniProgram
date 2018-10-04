@@ -1,5 +1,5 @@
 <view class='tag-address'>
-  <image class="img" src="../../images/tag_address.png"></image>
+  <image class="img" src="/content/default/images/tag_address.png"></image>
 </view>
 <!-- wx:if="{{item.deliveryAddress.canSelectElse}}" -->
 <view class="ord-block orderconfirm">
@@ -26,7 +26,7 @@
             </view>
             <view class='it-r' bindtap="goSelect"  >
               <view class='iconbox'>
-                <image class="img-nav-right" src='../../images/col_nav_right.png'></image>
+                <image class="img-nav-right" src='/content/default/images/col_nav_right.png'></image>
               </view>
             </view>
           </view>

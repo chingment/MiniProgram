@@ -59,7 +59,7 @@
                   <text class="showprice font-gray">{{item2.showPrice}}</text>
                 </view>
                 <view class="operate">
-                  <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='../../images/increase.png'></image>
+                  <image bindtap="addToCart" data-reply-skuid="{{item2.id}}" class="increase" src='/content/default/images/increase.png'></image>
                 </view>
               </view>
             </view>
@@ -68,7 +68,7 @@
         <view class="list-emptytips" wx:else>
 
           <view class="img">
-            <image src='/images/list_emptytips_img.png'></image>
+            <image src='/content/default/images/list_emptytips_img.png'></image>
           </view>
           <view class="msg">
             <text>~暂无数据~</text>

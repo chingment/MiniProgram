@@ -1,11 +1,11 @@
-.index {
-  padding: 0rpx 18rpx;
+.st-index {
+  padding: 0 .5rem;
 }
 
 .store-address {
-  height: 40rpx;
-  line-height: 40rpx;
-  margin-bottom: 15rpx;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  margin-bottom: .3rem;
 }
 
 .store-address navigator {
@@ -15,19 +15,19 @@
 }
 
 .store-address .icon {
-  width: 40rpx;
-  height: 40rpx;
+  width: 1rem;
+  height: 1rem;
 }
 
 .store-address .title {
-  font-size: 24rpx;
-  margin-left: 10rpx;
+  font-size: .7rem;
+  margin-left: .3rem;
 }
 
 .store-address .more {
-  margin-left: 10rpx;
-  width: 24rpx;
-  height: 18rpx;
+  margin-left: .3rem;
+  width: .5rem;
+  height: .3rem;
 }
 
 .banner {
@@ -37,48 +37,48 @@
 
 .banner-swipers {
   width: 100%;
-  height: 260rpx;
+  height: 6.9rem;
   text-align: center;
 }
 
 .banner-swipers image {
   width: 100%;
   height: 100%;
-  -webkit-border-radius: 12rpx;
-  -moz-border-radius: 12rpx;
-  border-radius: 12rpx;
-  -webkit-box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.25);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
 }
 
 /*用来包裹所有的小圆点  */
 
 .banner-dots {
-  width: 750rpx;
-  height: 36rpx;
+  width: 100%;
+  height: 1rem;
   display: flex;
   flex-direction: row;
   position: absolute;
   left: 0;
-  bottom: 16rpx;
+  bottom: .3rem;
 }
 
 /*未选中时的小圆点样式 */
 
 .banner-dot {
-  width: 16rpx;
-  height: 16rpx;
-  margin-right: 26rpx;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 1rem;
   background-color: #fff;
-  border-radius: 16rpx;
+  border-radius: 0.6rem;
 }
 
+.banner-dot:last-child{
+  margin-right: 0;
+}
 /*选中以后的小圆点样式  */
 
 .banner-active {
-  width: 32rpx;
-  height: 16rpx;
+  width: 1.2rem;
+  height: .6rem;
   background-color: #f18d00;
 }
 
@@ -112,17 +112,17 @@
 }
 
 .fc {
-  margin-top: 24rpx;
-  margin-bottom: 24rpx;
-  padding: 18rpx 0rpx;
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+  padding: .6rem 0;
   display: flex;
   flex-direction: row;
-  -webkit-border-radius: 12rpx;
-  -moz-border-radius: 12rpx;
-  border-radius: 12rpx;
-  -webkit-box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
 }
 
 .fc .item {
@@ -131,59 +131,45 @@
 }
 
 .fc .item-img {
-  width: 80rpx;
-  height: 80rpx;
+  width: 3rem;
+  height: 3rem;
   display: inline-block;
 }
 
 .fc .item-title {
-  height: 40rpx;
-  line-height: 40rpx;
+  height: 1.2rem;
+  line-height: 1.2rem;
   display: block;
   text-align: center;
-  font-size: 24rpx;
+  font-size: .7rem;
 }
 
-
 .pdArea .item-title {
-  height: 60rpx;
-  line-height: 42rpx;
+  height: 1.5rem;
+  line-height: 1.5rem;
   display: flex;
   overflow: hidden;
   background: #fff;
   text-align: center;
-  font-size: 28rpx;
   z-index: 999;
 }
 
 
-.pdArea .item-title .icon {
+.pdArea .item-title .icon .name {
   display: block;
-  margin-bottom: 10rpx;
+  margin-bottom: 1.2rem;
   color: #ffb101;
-  font-size: 28rpx;
+  font-size: .8rem;
   flex: 1;
-  text-align: left
+  text-align: left;
 }
-
-
-.pdArea .item-title .icon .name{
-  display: block;
-  margin-bottom: 10rpx;
-  color: #ffb101;
-  font-size: 28rpx;
-  flex: 1;
-  text-align: left
-}
-
 
 .pdArea .item-title .more {
   display: block;
-  margin-bottom: 10rpx;
   color: #000;
-  font-size: 28rpx;
+  font-size: .6rem;
   flex: 1;
-  text-align: right
+  text-align: right;
 }
 
 .pdArea .item-bannerImgUrl image {

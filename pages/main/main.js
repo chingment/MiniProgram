@@ -21,8 +21,8 @@ Page({
     tabBar: [{
       name: "index",
       pagePath: "/pages/index/index.wxml",
-      iconPath: "/images/home.png",
-      selectedIconPath: "/images/home_fill.png",
+      iconPath: "/content/default/images/home.png",
+      selectedIconPath: "/content/default/images/home_fill.png",
       text: "首页",
       navTitle: "贩聚社团",
       selected: true,
@@ -30,8 +30,8 @@ Page({
     }, {
       name: "productkind",
       pagePath: "/pages/productkind/productkind.wxml",
-      iconPath: "/images/kind.png",
-      selectedIconPath: "/images/kind_fill.png",
+      iconPath: "/content/default/images/kind.png",
+      selectedIconPath: "/content/default/images/kind_fill.png",
       text: "分类",
       navTitle: "分类",
       selected: false,
@@ -39,8 +39,8 @@ Page({
     }, {
       name: "cart",
       pagePath: "/pages/cart/cart.wxml",
-      iconPath: "/images/cart.png",
-      selectedIconPath: "/images/cart_fill.png",
+      iconPath: "/content/default/images/cart.png",
+      selectedIconPath: "/content/default/images/cart_fill.png",
       text: "购物车",
       navTitle: "购物车",
       selected: false,
@@ -48,8 +48,8 @@ Page({
     }, {
       name: "personal",
       pagePath: "/pages/personal/personal.wxml",
-      iconPath: "/images/personal.png",
-      selectedIconPath: "/images/personal_fill.png",
+      iconPath: "/content/default/images/personal.png",
+      selectedIconPath: "/content/default/images/personal_fill.png",
       text: "个人",
       navTitle: "个人",
       selected: false,

@@ -3,7 +3,7 @@
  
     <block wx:for="{{swiperList}}"  wx:for-index="index" wx:for-item="item" wx:key="list" >
        <view class="swiper_item" data-index="{{index}}" data-curid="{{curIndex}}" animation="{{curIndex == index? animationToLarge : animationToSmall}}">
-          <image style='width:100px;height:100px;' src="../../images/col_nav_right.png"></image>
+          <image style='width:100px;height:100px;' src="/content/default/images/col_nav_right.png"></image>
       </view>
     </block>
  

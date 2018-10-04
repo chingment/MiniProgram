@@ -1,5 +1,5 @@
 <template name="showToast">
-  <view>
+  
     <block wx:if="{{showToast.isShow==true?true: false}}">
        <view class="toast-bg" wx:if="{{showToast.mask==false? false : true}}"></view>
       <view class="toast-center">
@@ -9,5 +9,5 @@
         </view>
       </view> 
     </block>
-  </view>
+  
 </template>

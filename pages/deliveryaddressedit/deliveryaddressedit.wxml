@@ -41,7 +41,7 @@
 
           <view class="ownradio-box">
             <label class="radio" catchtap="isDefaultEvent"  >
-              <image src='../../images/{{deliveryAddress_isDefault==false?"checkedoff":"checkedon"}}.png'></image>
+              <image src='/content/default/images/{{deliveryAddress_isDefault==false?"checkedoff":"checkedon"}}.png'></image>
                <text >默认地址</text>
               <input name="hidden" class="hide" name="deliveryAddress_isDefault" value="{{deliveryAddress_isDefault}}" /> 
             </label>

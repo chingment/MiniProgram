@@ -1,3 +1,9 @@
+page {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
 .col-nav-item .item-right page {
   color: #303030;
 }
@@ -257,6 +263,8 @@ col-form-item > view {
   width: 50rpx;
 }
 
+/*prd-list-1*/
+
 .prd-list-1 {
   position: relative;
   overflow: hidden;
@@ -268,8 +276,7 @@ col-form-item > view {
   width: 50%;
   box-sizing: border-box;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: .5rem 0;
 }
 
 .prd-list-1 .item-0 {
@@ -284,8 +291,8 @@ col-form-item > view {
 
 .prd-list-1 .imgbox {
   text-align: center;
-  height: 200rpx;
-  width: 200rpx;
+  height: 7rem;
+  width: 7rem;
   margin: auto;
 }
 
@@ -372,22 +379,21 @@ col-form-item > view {
 
 .col-its-a {
   border-top: 0px solid #f6f6f6;
-  padding: 0rpx 18rpx;
+  padding: 0 .5rem;
 }
 
 .col-its-a .it {
   display: flex;
-  height: 120rpx;
-  line-height: 120rpx;
+  height: 3rem;
+  line-height: 3rem;
 }
 
 .col-its-a .it-l {
-  border-bottom: 0px solid #f6f6f6;
-  width: 100rpx;
+  border-bottom-width: 0;
+  width: 60px;
 }
 
 .col-its-a .it-l .iconbox {
-  border-bottom: 0px solid #f6f6f6;
   width: 100%;
   text-align: left;
   align-items: center;
@@ -396,9 +402,9 @@ col-form-item > view {
 }
 
 .col-its-a  .it-l .iconbox image {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 90rpx;
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
 }
 
 .col-its-a  .it-m {
@@ -419,20 +425,21 @@ col-form-item > view {
 }
 
 .col-its-a  .it-r {
-  width: 20rpx;
+  width: 20px;
   overflow: hidden;
   text-align: right;
   flex: none;
+  border-bottom-width: 0;
 }
 
 .col-its-a  .it-r .iconbox  image {
-  width: 12rpx;
-  height: 16rpx;
+  width: .2rem;
+  height: .36rem;
 }
 
 .col-its-a  .it-ml .txt-h1 {
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 1.8rem;
+  line-height: 1.8rem;
   text-align: left;
   display: block;
   color: #333;
@@ -441,7 +448,7 @@ col-form-item > view {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  font-size: 30rpx;
+  font-size: .8rem;
 }
 
 .col-its-a .it-selected .it-ml .txt-h1 {
@@ -449,26 +456,31 @@ col-form-item > view {
 }
 
 .col-its-a  .it-ml  .txt-h2 {
-  height: 40rpx;
-  line-height: 40rpx;
+  height: 1.2rem;
+  line-height: 1.2rem;
   display: block;
   text-align: left;
-  font-size: 26rpx;
+  font-size: .7rem;
   color: #999;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .col-its-a .it-mr .txt {
-  height: 120rpx;
-  line-height: 120rpx;
+  height: 3rem;
+  line-height: 3rem;
   text-align: right;
   display: block;
   font-weight: bold;
-  font-size: 30rpx;
-  padding-right: 8rpx;
+  font-size: .8rem;
+  padding-right: .2rem;
 }
 
 .col-its-a  .it:last-child  .it-m {
-  border-bottom: 0px solid #f6f6f6;
+  border-bottom-width: 0;
 }
 
 /*its-address*/
@@ -492,7 +504,7 @@ col-form-item > view {
 .col-its-addr .it-l {
   width: 5rem;
   font-size: 1rem;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .col-its-addr .it-m {
@@ -502,7 +514,7 @@ col-form-item > view {
 
 .col-its-addr .it-r {
   display: flex;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .col-its-addr .it-r .iconbox {
@@ -537,7 +549,7 @@ col-form-item > view {
   text-align: left;
   height: 1.2rem;
   line-height: 1.2rem;
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 
 .col-its-addr .isDefault .txt {
