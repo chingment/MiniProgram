@@ -4,23 +4,23 @@
       <view class="it">
         <view class="it-l">
           <view class="consignee">
-            <text>{{item.consignee}}</text>
+            <text class='txt'>{{item.consignee}}</text>
           </view>
           <view class="isDefault" wx:if="{{item.isDefault}}">
-            <text class="font-main border-main">默认</text>
+            <text class='txt'>默认</text>
           </view>
         </view>
         <view class="it-m" bindtap="goSelect" data-reply-index="{{index}}">
           <view class='phoneNumber'>
-            <text>{{item.phoneNumber}}</text>
+            <text class='txt'>{{item.phoneNumber}}</text>
           </view>
           <view class='address'>
-            <text>{{item.areaName}} {{item.address}}</text>
+            <text class='txt'>{{item.areaName}} {{item.address}}</text>
           </view>
         </view>
         <view class='it-r' bindtap="goEdit" data-reply-index="{{index}}">
           <view class='iconbox'>
-            <image class="img-edit" class="img-nav-edit" src='../../images/icon_edit.png'></image>
+            <image class="img-nav-edit" src='../../images/icon_edit.png'></image>
           </view>
         </view>
       </view>

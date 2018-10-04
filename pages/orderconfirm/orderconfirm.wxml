@@ -1,6 +1,7 @@
 <view class='tag-address'>
-  <image src="../../images/tag_address.png"></image>
+  <image class="img" src="../../images/tag_address.png"></image>
 </view>
+<!-- wx:if="{{item.deliveryAddress.canSelectElse}}" -->
 <view class="ord-block orderconfirm">
   <block wx:for="{{block}}" wx:for-index="index" wx:for-item="item" wx:key="list">
     <view class="cnt">
@@ -23,7 +24,7 @@
                 <text>{{item.deliveryAddress.area}} {{item.deliveryAddress.address}}</text>
               </view>
             </view>
-            <view class='it-r' bindtap="goSelect" wx:if="{{item.deliveryAddress.canSelectElse}}" >
+            <view class='it-r' bindtap="goSelect"  >
               <view class='iconbox'>
                 <image class="img-nav-right" src='../../images/col_nav_right.png'></image>
               </view>
@@ -37,7 +38,7 @@
           <view class="it">
             <view class="it-l">
               <view class="iconbox" >
-                <image  src="{{skusitem.imgUrl}}"></image>
+                <image class="img" src="{{skusitem.imgUrl}}"></image>
               </view>
             </view>
             <view class="it-m">
