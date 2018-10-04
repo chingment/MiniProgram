@@ -42,17 +42,19 @@
 </block> -->
 
 
-  <view class="main-tabbar-items">
-    <view class="container">
-      <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
-        <view class="item" catchtap='mainTabBarItemClick' data-reply-index="{{index}}">
-          <view class='number {{item.number==0?"hidden":""}}'>{{item.number}}</view>
-          <view>
-            <image class="icon" src='{{item.selected==false?item.iconPath:item.selectedIconPath}}'></image>
+  <view class="main-tabbar-nav">
+    <view class="ct">
+      <view class="its">
+        <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
+          <view class="it" catchtap='mainTabBarItemClick' data-reply-index="{{index}}">
+            <view class='number {{item.number==0?"hidden":""}}'>{{item.number}}</view>
+            <view>
+              <image class="icon" src='{{item.selected==false?item.iconPath:item.selectedIconPath}}'></image>
+            </view>
+            <view class="title">{{item.text}}</view>
           </view>
-          <view class="title">{{item.text}}</view>
-        </view>
-      </block>
+        </block>
+      </view>
     </view>
   </view>
 </view>

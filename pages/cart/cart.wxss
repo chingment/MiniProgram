@@ -1,61 +1,99 @@
 /*购物车*/
 
-.cart-list >.item {
-  padding: 0px 20rpx 0rpx 20rpx;
+.cart-blocks {
+  padding: 0;
+  margin: 0;
 }
 
-.cart-skus >.item {
+.its-blocks>.it {
+  padding: 0 0.5rem;
+}
+
+.its-blocks >.it>.it-tag {
+  height: 1.3rem;
+  line-height: 1.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+
+.its-blocks >.it>.it-tag .icon {
+  margin-right: 0.3rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.its-blocks >.it>.it-tag .name {
+  font-size: 0.7rem;
+}
+
+.its-blocks >.it>.it-tag .more {
+  width: 0.2rem;
+  height: 0.36rem;
+  margin-left: 0.3rem;
+}
+
+.its-blocks >.it>.it-skus >.it {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #f8f8f8;
-  padding: 10rpx 0rpx;
+  padding: 10px 0px;
+  line-height: 3.8rem;
+  height: 3.8rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.cart-skus >.item:last-child {
+.its-blocks >.it>.it-skus >.it:last-child {
   border-bottom: 0px;
 }
 
-.cart-skus >.item > view {
-  height: 150rpx;
-  display: inline-block;
-  line-height: 150rpx;
-}
-
-.cart-skus .item-left {
-  width: 80rpx;
+.its-blocks >.it>.it-skus >.it>.it-l {
+  width: 1.2rem;
   text-align: left;
 }
 
-.cart-skus .item-left image {
-  width: 38rpx;
-  height: 38rpx;
+.its-blocks >.it>.it-skus >.it>.it-l .img {
+  width: 1rem;
+  height: 1rem;
 }
 
-.cart-skus .item-middle {
+.its-blocks >.it>.it-skus >.it>.it-m {
   flex: 1;
 }
 
-.cart-skus .item-mainimgbox {
+.its-blocks >.it>.it-skus >.it>.it-m>.it-ml {
   float: left;
-  width: 150rpx;
-  height: 150rpx;
+  width: 3.8rem;
+  height: 3.8rem;
 }
 
-.cart-skus .item-mainimgbox .mainimg {
+.its-blocks >.it>.it-skus >.it>.it-m>.it-ml .img {
   width: 100%;
   height: 100%;
 }
 
-.cart-skus .item-infobox {
+.its-blocks >.it>.it-skus >.it>.it-m>.it-mr {
   flex: 1;
 }
 
-.cart-skus .item-infobox .skuname {
-  min-height: 35rpx;
-  max-height: 70rpx;
-  line-height: 38rpx;
-  font-size: 28rpx;
-  padding-top: 10rpx;
+.its-blocks >.it>.it-skus >.it>.it-r {
+  width: 4rem;
+  text-align: center;
+}
+
+.its-blocks >.it>.it-skus >.it>.it-r .img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.its-blocks .skuname {
+  min-height: 1.1rem;
+  max-height: 2.2rem;
+  line-height: 1rem;
+  font-size: 0.8rem;
+  padding-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -64,30 +102,29 @@
   -webkit-line-clamp: 2;
 }
 
-.cart-skus .item-infobox .sumprice {
+.its-blocks .sumprice {
   display: block;
-  font-size: 24rpx;
-  height: 70rpx;
-  line-height: 70rpx;
+  font-size: .7rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
 }
 
-.cart-skus .item-right {
-  width: 150rpx;
-  text-align: center;
-}
-
-.cart-skus .item-right image {
-  width: 45rpx;
-  height: 45rpx;
+.its-blocks .quantity {
+  width: 1.8rem;
+  font-size: .8rem;
+  display: block;
   float: right;
-  position: relative;
-  top: 38%;
+  line-height: 3.5rem;
 }
 
-.cart-skus .item-right .quantity {
-  width: 32rpx;
+.its-blocks .increase {
+  display: block;
   float: right;
-  font-size: 24rpx;
+}
+
+.its-blocks .decrease {
+  display: block;
+  float: right;
 }
 
 .cart-bottom {
@@ -99,7 +136,7 @@
   border-top: 1px solid #f8f8f8;
 }
 
-.cart-selInfo-count {
+.cart-bottom .it-l {
   margin-left: 12rpx;
   flex: 1;
   line-height: 80rpx;
@@ -107,14 +144,14 @@
   font-size: 24rpx;
 }
 
-.cart-selInfo-sumprice {
+.cart-bottom .it-m {
   line-height: 80rpx;
   flex: 1;
   height: 80rpx;
   font-size: 32rpx;
 }
 
-.cart-selInfo-btnsettle {
+.cart-bottom .it-r {
   position: relative;
   font-size: 32rpx;
   width: 300rpx;
@@ -122,32 +159,4 @@
   line-height: 80rpx;
   text-align: center;
   color: #fff;
-}
-
-.cart-tag {
-  height: 50rpx;
-  line-height: 50rpx;
-  display: flex;
-  flex-direction: row;
-}
-
-.cart-tag .icon {
-  padding-top: 6rpx;
-  margin-right: 20rpx;
-}
-
-.cart-tag .icon image {
-  width: 32rpx;
-  height: 32rpx;
-  position: relative;
-}
-
-.cart-tag .name  text {
-  font-size: 28rpx;
-}
-
-.cart-tag .right image {
-  width: 12rpx;
-  height: 16rpx;
-  margin-left: 20rpx;
 }
