@@ -2,9 +2,9 @@
   <image class="img" src="/content/default/images/tag_address.png"></image>
 </view>
 <!-- wx:if="{{item.deliveryAddress.canSelectElse}}" -->
-<view class="ord-block orderconfirm">
+<view class="ord-block">
   <block wx:for="{{block}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-    <view class="cnt">
+    <view class="ct">
       <view class="col-its-addr">
         <view class="ct">
           <view class="it" bindtap="shippingAddressSelect" data-reply-index="{{index}}">
@@ -24,7 +24,7 @@
                 <text>{{item.deliveryAddress.area}} {{item.deliveryAddress.address}}</text>
               </view>
             </view>
-            <view class='it-r' bindtap="goSelect"  >
+            <view class='it-r' bindtap="goSelect">
               <view class='iconbox'>
                 <image class="img-nav-right" src='/content/default/images/col_nav_right.png'></image>
               </view>
@@ -32,12 +32,11 @@
           </view>
         </view>
       </view>
-
       <view class="col-its-odcskus">
         <block wx:for="{{item.skus}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
           <view class="it">
             <view class="it-l">
-              <view class="iconbox" >
+              <view class="iconbox">
                 <image class="img" src="{{skusitem.imgUrl}}"></image>
               </view>
             </view>
@@ -58,47 +57,7 @@
     </view>
     <view class="line-space"></view>
   </block>
-
-
-  <!-- <view class="col-nav">
-    <view class="container">
-
-
-      <block wx:for="{{subtotalItem}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-        <view class="col-nav-item">
-          <view class="item-left">
-            <image src='../../images/col_nav_icon_coupon.png'></image>
-          </view>
-          <view class="item-middle">
-            <text class="title">{{item.name}}</text>
-          </view>
-          <view class="item-right" style="width:300rpx">
-            {{item.amount}}
-          </view>
-        </view>
-      </block>
-
-      <view class="col-nav-item" bindtap="couponSelect">
-        <view class="item-left">
-          <image src='../../images/col_nav_icon_coupon.png'></image>
-        </view>
-        <view class="item-middle">
-          <text class="title">优惠卷</text>
-        </view>
-        <view class='item-right' style="width:300rpx">
-          <text class="coupontip coupontip{{coupon.tipType}}">{{coupon.tipMsg}}</text>
-          <image src='../../images/col_nav_right.png'></image>
-        </view>
-      </view>
-    </view>
-
-
-  </view> -->
-
-
-
-
 </view>
 
 
-<button class="bottom-btn bg-main" form-type="submit">立即支付({{actualAmount}})</button>
+<button class="btn-bottom bg-main" form-type="submit">立即支付({{actualAmount}})</button>

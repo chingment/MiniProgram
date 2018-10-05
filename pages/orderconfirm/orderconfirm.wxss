@@ -8,16 +8,17 @@
   display: block;
 }
 
-.orderconfirm {
+.ord-block {
   margin-bottom: 88rpx;
   padding-bottom: 88rpx;
 }
 
-.flex-end
-
+.ord-block >.ct{
+  padding: 0 .5rem;
+}
 
 .col-its-odcskus {
-  padding: 0px 0px;
+  padding: 0 0;
 }
 
 .col-its-odcskus .it {

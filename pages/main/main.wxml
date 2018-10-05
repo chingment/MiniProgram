@@ -5,43 +5,25 @@
 <import src="/template/showToast.wxml" />
 <template is="showToast" data="{{showToast: showToast}}" />
 
-<!-- <scroll-view   style="height: 200px" scroll-y="true"  bindscrolltoupper="refresh" bindscrolltolower="loadMore" >
-  <view  style="background: red; width: 100%; height: 200px">dsadadddd</view>
-    <view  style="background: red; width: 100%; height: 200px">dsadadddd</view>
- </scroll-view>  -->
-
-<!-- <scroll-view scroll-y="true" style="height: 200px" bindscrolltoupper="refresh" bindscrolltolower="loadMore" >
-    <view style="background: red; width: 100px; height: 100px" ></view>
-    <view style="background: green; width: 100px; height: 100px"></view>
-    <view style="background: blue; width: 100px; height: 100px"></view>
-    <view style="background: yellow; width: 100px; height: 100px"></view>
-</scroll-view>  -->
-
 <view class='ct'>
-  <view class="main-tabbar-contents">
-    <view class="container">
-      <scroll-view class='item {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}">
-        <template is="{{tabBar[0].name}}" data="{{...index}}" />
-      </scroll-view>
-      <scroll-view class='item {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}">
-        <template is="{{tabBar[1].name}}" data="{{...productKind}}" />
-      </scroll-view>
-      <scroll-view class='item {{tabBar[2].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{2}}" data-reply-name="{{tabBar[2].name}}">
-        <template is="{{tabBar[2].name}}" data="{{...cart}}" />
-      </scroll-view>
-      <scroll-view class='item {{tabBar[3].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{3}}" data-reply-name="{{tabBar[3].name}}">
-        <template is="{{tabBar[3].name}}" data="{{...personal}}" />
-      </scroll-view>
+  <view class="main-tabbar-content">
+    <view class="ct">
+      <view class="its">
+        <scroll-view class='it {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}">
+          <template is="{{tabBar[0].name}}" data="{{...index}}" />
+        </scroll-view>
+        <scroll-view class='it {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}">
+          <template is="{{tabBar[1].name}}" data="{{...productKind}}" />
+        </scroll-view>
+        <scroll-view class='it {{tabBar[2].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{2}}" data-reply-name="{{tabBar[2].name}}">
+          <template is="{{tabBar[2].name}}" data="{{...cart}}" />
+        </scroll-view>
+        <scroll-view class='it {{tabBar[3].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{3}}" data-reply-name="{{tabBar[3].name}}">
+          <template is="{{tabBar[3].name}}" data="{{...personal}}" />
+        </scroll-view>
+      </view>
     </view>
   </view>
-
-  <!-- <block wx:for="{{tabBar}}" wx:for-index="index" wx:for-item="item" wx:key="tabBar">
-  <scroll-view class='main-tabbar-content {{item.selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{index}}" data-reply-name="{{name}}" >
-      <template is="{{item.name}}" data="{{...this.data}}" />
-  </scroll-view>
-</block> -->
-
-
   <view class="main-tabbar-nav">
     <view class="ct">
       <view class="its">

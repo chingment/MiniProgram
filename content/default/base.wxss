@@ -4,6 +4,7 @@ page {
   background: #fff;
 }
 
+
 .col-nav-item .item-right page {
   color: #303030;
 }
@@ -105,69 +106,38 @@ page {
   margin-left: 8rpx;
 }
 
-.col-form {
+.its-form {
   padding: 0px 16px;
 }
 
-.col-form-item {
+.its-form .ct> .it {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #f8f8f8;
   padding: 5px 0px 5px 0px;
 }
 
-.col-form-item:last-child {
+.its-form .ct >it:last-child {
   border-bottom: 0px;
 }
 
-col-form-item > view {
-  height: 70rpx;
-  display: inline-block;
-  overflow: hidden;
-}
-
-.col-form-item .item-left {
-  width: 50rpx;
-  line-height: 78rpx;
-}
-
-.col-form-item .item-left image {
-  width: 38rpx;
-  height: 38rpx;
-}
-
-.col-form-item .item-middle {
+.its-form > .it-m {
   flex: 1;
   line-height: 64rpx;
 }
 
-.col-form-item .item-middle .title {
-  font-size: 28rpx;
-}
-
-.col-form-item .item-right {
-  width: 12px;
-  line-height: 54rpx;
-  text-align: right;
-}
-
-.col-form-item .item-right image {
-  width: 12rpx;
-  height: 16rpx;
-}
-
-.col-form-item input {
+.its-form input {
   height: 70rpx;
   line-height: 64rpx;
 }
 
-.col-form-item .radio {
+.its-form .radio {
   display: flex;
   height: 70rpx;
   align-items: center;
 }
 
-.col-form-item .radio image {
+.its-form .radio image {
   width: 38rpx;
   height: 38rpx;
   line-height: 42rpx;
@@ -175,21 +145,21 @@ col-form-item > view {
   float: left;
 }
 
-.col-form-item .radio text {
+.its-form .radio text {
   margin-left: 15rpx;
   display: block;
   float: left;
 }
 
-.bottom-btn {
+.btn-bottom {
   display: block;
   position: fixed;
   bottom: 0;
   right: 0;
   z-index: 1;
   width: 100%;
-  height: 88rpx;
-  line-height: 88rpx;
+  height: 2.126rem;
+  line-height: 2.216rem;
   border-top: 1rpx #dbdbdb solid;
   overflow: hidden;
   text-align: center;
@@ -276,7 +246,7 @@ col-form-item > view {
   width: 50%;
   box-sizing: border-box;
   text-align: center;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 .prd-list-1 .item-0 {
@@ -379,7 +349,7 @@ col-form-item > view {
 
 .col-its-a {
   border-top: 0px solid #f6f6f6;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
 }
 
 .col-its-a .it {
@@ -433,8 +403,8 @@ col-form-item > view {
 }
 
 .col-its-a  .it-r .iconbox  image {
-  width: .2rem;
-  height: .36rem;
+  width: 0.2rem;
+  height: 0.36rem;
 }
 
 .col-its-a  .it-ml .txt-h1 {
@@ -448,7 +418,7 @@ col-form-item > view {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .col-its-a .it-selected .it-ml .txt-h1 {
@@ -460,11 +430,11 @@ col-form-item > view {
   line-height: 1.2rem;
   display: block;
   text-align: left;
-  font-size: .7rem;
+  font-size: 0.7rem;
   color: #999;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp:1;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -475,8 +445,8 @@ col-form-item > view {
   text-align: right;
   display: block;
   font-weight: bold;
-  font-size: .8rem;
-  padding-right: .2rem;
+  font-size: 0.8rem;
+  padding-right: 0.2rem;
 }
 
 .col-its-a  .it:last-child  .it-m {
@@ -573,3 +543,5 @@ col-form-item > view {
   white-space: nowrap;
   color: #999;
 }
+
+
