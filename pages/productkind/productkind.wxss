@@ -1,12 +1,12 @@
 /**分类栏**/
 
-.kind {
+.st-kind {
+  display: flex;
 }
 
 .kind-left-navbar {
-  position: absolute;
-  left: 0;
-  width: 25%;
+
+  width: 4rem;
   height: 100%;
   font-size: 28rpx;
   border-right: 1rpx #dbdbdb solid;
@@ -28,9 +28,7 @@
 }
 
 .kind-right-content {
-  position: absolute;
-  right: 0;
-  width: 75%;
+  flex: 1;
   height: 100%;
   padding-top: 12rpx;
 }

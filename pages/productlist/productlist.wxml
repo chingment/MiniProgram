@@ -13,31 +13,7 @@
   </scroll-view>
 </block>
 
-<!-- <block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-      <scroll-view  
-       scroll-y="true"
-       class="tabbar-content  {{item.selected==true?'show':'hide'}}" scroll-top="{{item.scrollTop}}"
-        data-reply-index="{{index}}" style="height:{{scrollHeight-41}}px" bindscrolltolower="loadMore" bindscrolltoupper="refesh"
-       bindscroll="scroll"
-       >
 
-        <view class='prd-list-1'>
-          <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-            <view class='item'>
-              <view class='item-imgbox'>
-                <image class="item-imgurl" src="{{item2.mainImg}}"></image>
-              </view>
-              <text class="item-name font-black">{{item2.name}}</text>
-            </view>
-          </block>
-        </view>
-
-
-
-
-
-      </scroll-view>
-</block> -->
 <swiper class="tabbar-contents" bindchange="swiperSwitchTab" current="{{tabsSliderIndex}}" duration="300" style="height:{{scrollHeight}}px">
   <block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
     <swiper-item class="item">
@@ -45,12 +21,10 @@
 
         <view class='list-data prd-list-1' wx:if="{{item.list.length>0}}">
           <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-            <view class='item item-{{index%2}}'>
-              <view class='imgbox'>
-                <navigator url="/pages/productdetails/productdetails?skuId={{item2.id}}">
-                  <image class="imgurl" src="{{item2.imgUrl}}"></image>
-                </navigator>
-              </view>
+            <view class='it it-{{index%2}}'>
+              <navigator class='imgurl' url="/pages/productdetails/productdetails?skuId={{item2.id}}">
+                <image class="img" src="{{item2.imgUrl}}"></image>
+              </navigator>
               <text class="name font-gray">{{item2.name}}</text>
               <text class="briefInfo font-gray">{{item2.briefInfo}}</text>
               <view class="area2">
@@ -84,5 +58,5 @@
 
 <view class="carttips" bindtap="goCart">
   <view class="number">{{cart.count}}</view>
-  <image class="icon" src="/images/cart.png"></image>
+  <image class="icon" src="/content/default/images/cart.png"></image>
 </view>

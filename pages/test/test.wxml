@@ -1,0 +1,5 @@
+<view style="background: green;">
+<view style="height:608px;   background: #8a2be2;"></view>
+
+<view style="height:64px;  background: red;"></view>
+</view>

@@ -1,42 +1,33 @@
 <view class='tag-address'>
   <image class="img" src="/content/default/images/tag_address.png"></image>
 </view>
-<!-- wx:if="{{item.deliveryAddress.canSelectElse}}" -->
 <view class="ord-block">
   <block wx:for="{{block}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-    <view class="ct">
-      <view class="col-its-addr">
-        <view class="ct">
-          <view class="it" bindtap="shippingAddressSelect" data-reply-index="{{index}}">
-            <view class="it-l">
-              <view class="consignee">
-                <text>{{item.deliveryAddress.consignee}}</text>
-              </view>
-              <view class="isDefault" wx:if="{{item.deliveryAddress.isDefault}}">
-                <text class="font-main border-main">默认</text>
-              </view>
+    <view class="ct pd-com">
+      <view class="its-a">
+        <view class="it" bindtap="shippingAddressSelect" data-reply-index="{{index}}">
+          <view class="it-l" style="width:auto" >
+            <text class='txt-h1'>{{item.deliveryAddress.consignee}}</text>
+            <text class="txt-h2 isDefault" wx:if="{{item.deliveryAddress.isDefault}}">默认</text>
+          </view>
+          <view class="it-m">
+            <view class="it-ml">
+              <text class='txt-h1 bold'>{{item.deliveryAddress.phoneNumber}}</text>
+              <text class='txt-h2'>{{item.deliveryAddress.area}} {{item.deliveryAddress.address}}</text>
             </view>
-            <view class="it-m">
-              <view class='phoneNumber'>
-                <text>{{item.deliveryAddress.phoneNumber}}</text>
-              </view>
-              <view class='address'>
-                <text>{{item.deliveryAddress.area}} {{item.deliveryAddress.address}}</text>
-              </view>
-            </view>
-            <view class='it-r' bindtap="goSelect">
-              <view class='iconbox'>
-                <image class="img-nav-right" src='/content/default/images/col_nav_right.png'></image>
-              </view>
+          </view>
+          <view class='it-r' bindtap="goSelect" wx:if="{{item.deliveryAddress.canSelectElse}}">
+            <view class="icon">
+              <image class="img-nav-right" src='/content/default/images/col_nav_right.png'></image>
             </view>
           </view>
         </view>
       </view>
-      <view class="col-its-odcskus">
+      <view class="its-odcskus">
         <block wx:for="{{item.skus}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
           <view class="it">
             <view class="it-l">
-              <view class="iconbox">
+              <view class="imgUrl">
                 <image class="img" src="{{skusitem.imgUrl}}"></image>
               </view>
             </view>

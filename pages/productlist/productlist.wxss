@@ -52,7 +52,7 @@ page {
 }
 
 .tabbar-contents {
-  margin-top: 62rpx;
+
 }
 
 .list-emptytips {

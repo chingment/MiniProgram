@@ -124,9 +124,7 @@ Page({
 
     wx.getSystemInfo({
       success: function(res) {
-       var c=  wx.getSystemInfoSync().screenWidth
-      console.log("c:"+c);
-        var height = wx.getSystemInfoSync().windowHeight - wx.getSystemInfoSync().screenWidth / 420 * (64)
+         var height = wx.getSystemInfoSync().windowHeight - wx.getSystemInfoSync().windowWidth  / 26 * (3.044)
         console.log("windowHeight:" + height)
         _self.setData({
           tabBarContentHeight: height

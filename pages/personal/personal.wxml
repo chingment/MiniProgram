@@ -1,5 +1,4 @@
 <template name="personal">
-
   <view class='st-personal'>
     <view class="container">
       <view class='personal-userinfo'>

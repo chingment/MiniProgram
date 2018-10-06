@@ -88,8 +88,8 @@ Page({
 
     var tabs = new Array()
     var tabsSliderIndex = -1 //默认未选择tab
-
-    if (productKinds.length.length > 0) {
+    console.log("productKinds.length.length " + productKinds.length )
+    if (productKinds.length > 0) {
       for (var i = 0; i < productKinds.length; i++) {
         if (productKinds[i].id == pKindId) {
 
