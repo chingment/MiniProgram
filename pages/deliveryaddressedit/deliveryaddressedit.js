@@ -235,7 +235,7 @@ Page({
       return
     }
 
-    httpUtil.postRequest(config.apiUrl.deliveryAddressEdit, { id: id, userId: ownRequest.getCurrentUserId(), consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault }, {
+    httpUtil.postRequest(config.apiUrl.deliveryAddressEdit, { id: id, consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault }, {
       success: function (res) {
         wx.navigateBack()
       },

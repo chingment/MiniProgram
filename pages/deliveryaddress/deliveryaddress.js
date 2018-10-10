@@ -6,7 +6,7 @@ const app = getApp()
 
 var getList = function (_this) {
 
-  httpUtil.getRequest(config.apiUrl.deliveryAddressMy, { userId: ownRequest.getCurrentUserId() }, {
+  httpUtil.getRequest(config.apiUrl.deliveryAddressMy, null, {
     success: function (res) {
       _this.setData({
         list: res.data

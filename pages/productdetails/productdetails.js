@@ -25,7 +25,6 @@ Page({
     //app.changeData("main", { cart: cart })
 
     httpUtil.getRequest(config.apiUrl.productGetSkuDetails, {
-      userId: ownRequest.getCurrentUserId(),
       skuId: skuId
     }, {
       success: function(res) {
@@ -61,8 +60,7 @@ Page({
     });
 
     cart.operate({
-      userId: '00000000000000000000000000000000',
-      storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+      storeId: ownRequest.getCurrentStoreId(),
       operate: 2,
       skus: skus
     }, {

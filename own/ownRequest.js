@@ -18,9 +18,23 @@ function getCurrentUserId() {
 }
 
 function getCurrentStoreId() {
+  var store = storeage.getCurrentStore();
+  return store.id
+}
 
-  var storeId = "00000000000000000000000000000000"
-  return storeId
+function getCurrentStore() {
+  console.log("storeage.getCurrentStore():" + storeage.getCurrentStore())
+
+  var store = storeage.getCurrentStore();
+
+  if (store == "")
+    return undefined
+
+  return storeage.getCurrentStore()
+}
+
+function setCurrentStore(store) {
+  storeage.setCurrentStore(store)
 }
 
 function isLogin() {
@@ -29,8 +43,30 @@ function isLogin() {
   if (acctoken == "") {
     showLoginModal()
     return false
+  } else {
+    return true
   }
-  else {
+}
+
+
+
+
+function isSelectedStore(isGoSelect) {
+  var store = storeage.getCurrentStore()
+  if (store == "") {
+    console.log("当前没有选择店铺")
+
+    isGoSelect = isGoSelect == undefined ? false : isGoSelect
+
+    if (isGoSelect) {
+      wx.navigateTo({    //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）
+        url: "/pages/store/store"
+      })
+    }
+
+    return false
+  } else {
+    console.log("当前已选择店铺")
     return true
   }
 }
@@ -130,6 +166,9 @@ function showToast(content = '登录失败，请稍后再试') {
 module.exports = {
   getCurrentUserId: getCurrentUserId,
   getCurrentStoreId: getCurrentStoreId,
+  setCurrentStore: setCurrentStore,
+  getCurrentStore: getCurrentStore,
+  isSelectedStore: isSelectedStore,
   isLogin: isLogin,
   login: login
 }

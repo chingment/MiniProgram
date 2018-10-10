@@ -19,7 +19,12 @@ Page({
    */
   onLoad: function(options) {
     var _this = this
-    var _curStoreId = options.id == undefined ? "" : options.id
+
+    var currentStore = ownRequest.getCurrentStore()
+    
+    console.log("currentStore:" + currentStore)
+
+    var _curStoreId = currentStore == undefined ? "" : currentStore.id
 
     httpUtil.getRequest(config.apiUrl.storeList, {
       merchantId: "",
@@ -81,6 +86,28 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
+
+  },
+  selectStore: function(e) {
+    var store = e.currentTarget.dataset.replyStore //对应页面data-reply-index
+
+    ownRequest.setCurrentStore(store);
+
+    console.log("storeId:" + store.id)
+    // wx.navigateBack({
+    //   delta: -1
+    // })
+
+    wx.reLaunch({     //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
+
+      url: '/pages/main/main'
+
+    })
+
+    // wx.redirectTo({
+    //   url: "/pages/main/main"
+    // })
+
 
   }
 })

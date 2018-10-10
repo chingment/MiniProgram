@@ -1,8 +1,8 @@
 <view class="pd-com">
-  
+<!-- url="/pages/main/main?storeId={{item.id}}" -->
   <view class="its-a">
     <block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-      <navigator url="/pages/main/main?storeId={{item.id}}" class="it {{item.id==curStoreId?'it-selected':''}}" hover-class="none">
+      <view  class="it {{item.id==curStoreId?'it-selected':''}}" bindtap="selectStore" data-reply-store="{{item}}" >
         <view class="it-l">
           <view class="icon">
             <image class="img" src='/content/default/images/list_icon_withdraw.png'></image>
@@ -22,7 +22,7 @@
             <image class="img-nav-right" src='/content/default/images/col_nav_right.png'></image>
           </view>
         </view>
-      </navigator>
+      </view>
     </block>
   </view>
 </view>

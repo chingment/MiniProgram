@@ -122,9 +122,17 @@ Page({
       //return;
     }
 
+    if (!ownRequest.isSelectedStore(true)) {
+
+    }
+
+    var currentStore = ownRequest.getCurrentStore()
+
+    console.log("currentStore.name" + currentStore.name)
+
     wx.getSystemInfo({
       success: function(res) {
-         var height = wx.getSystemInfoSync().windowHeight - wx.getSystemInfoSync().windowWidth  / 26 * (3.044)
+        var height = wx.getSystemInfoSync().windowHeight - wx.getSystemInfoSync().windowWidth / 26 * (3.044)
         console.log("windowHeight:" + height)
         _self.setData({
           tabBarContentHeight: height
@@ -139,8 +147,7 @@ Page({
     console.log("main.onload.wxutil.getAuthorize.success")
 
     httpUtil.getRequest(config.apiUrl.globalDataSet, {
-      userId: ownRequest.getCurrentUserId(),
-      storeId: 'be9ae32c554d4942be4a42fa48446210',
+      storeId: ownRequest.getCurrentStoreId(),
       datetime: '2018-03-30'
     }, {
       success: function(res) {
@@ -149,6 +156,7 @@ Page({
         var cart = res.data.cart
         var personal = res.data.personal
         _self.setData({
+          store: currentStore,
           index: index,
           productKind: productKind,
           cart: cart,
@@ -238,9 +246,10 @@ Page({
       channelType: sku.channelType
     });
 
+    console.log('ownRequest.getCurrentStoreId():' + ownRequest.getCurrentStoreId())
+
     cart.operate({
-      userId: ownRequest.getCurrentUserId(),
-      storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+      storeId: ownRequest.getCurrentStoreId(),
       operate: operate,
       skus: operateSkus
     }, {
@@ -300,10 +309,9 @@ Page({
       channelId: 1,
       channelType: 1
     });
-
+    console.log('ownRequest.getCurrentStoreId():' + ownRequest.getCurrentStoreId())
     cart.operate({
-      userId: '00000000000000000000000000000000',
-      storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+      storeId: ownRequest.getCurrentStoreId(),
       operate: 2,
       skus: skus
     }, {

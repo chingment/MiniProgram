@@ -1,11 +1,11 @@
 <template name="index">
   <view class="st-index">
-    <navigator class="store" url="/pages/store/store?id=be9ae32c554d4942be4a42fa48446210" hover-class="none">
+    <navigator class="store" url="/pages/store/store" hover-class="none">
       <view class="icon">
         <image class="img" src="/content/default/images/store_address.png"></image>
       </view>
       <view class="title">
-        <text class="txt">保利·中汇广场</text>
+        <text class="txt">{{store.name}}</text>
       </view>
       <view class="more">
         <image class="img" src="/content/default/images/arro_down.png"></image>

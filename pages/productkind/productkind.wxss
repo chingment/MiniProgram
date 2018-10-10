@@ -6,15 +6,15 @@
 
 .kind-left-navbar {
 
-  width: 4rem;
+  width: 5rem;
   height: 100%;
-  font-size: 28rpx;
-  border-right: 1rpx #dbdbdb solid;
+  font-size: .8rem;
+  border-right: 1px #dbdbdb solid;
 }
 
-.kind-left-navbar view {
-  height: 68rpx;
-  line-height: 68rpx;
+.kind-left-navbar .it {
+  height: 2rem;
+  line-height: 2rem;
   text-align: center;
 }
 
@@ -24,23 +24,22 @@
 
 .kind-left-navbar-selected {
 
-  font-size: 32rpx;
+  font-size: .9rem;
 }
 
 .kind-right-content {
   flex: 1;
   height: 100%;
-  padding-top: 12rpx;
 }
 
 .kind-lv1-imgbox {
-  margin-left: 5rpx;
-  margin-right: 5rpx;
+  margin-left: .1rem;
+  margin-right: .1rem;
   text-align: center;
 }
 
 .kind-lv1-imgurl {
-  height: 150rpx;
+  height: 3.6rem;
   width: 90%;
 }
 
@@ -48,9 +47,9 @@
   text-align: center;
   width: 100%;
   display: block;
-  font-size: 28rpx;
-  height: 46rpx;
-  line-height: 46rpx
+  font-size: .8rem;
+  height: 1.2rem;
+  line-height: 1.2rem
 }
 
 .kind-lv2-list {
@@ -69,16 +68,16 @@
 }
 
 .kind-lv2-imgurl {
-  width: 120rpx;
-  height: 120rpx;
+  width: 4rem;
+  height: 4rem;
   display: block;
 }
 
 .kind-lv2-name {
-  width: 120rpx;
-  height: 42rpx;
-  font-size: 24rpx;
-  line-height: 42rpx;
+  width: 4rem;
+  height: 1.2rem;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
   text-align: center;
   display: block;
 }

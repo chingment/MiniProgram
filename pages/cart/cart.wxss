@@ -20,17 +20,17 @@
 
 .its-blocks >.it>.it-tag .icon {
   margin-right: 0.3rem;
-  width: 1rem;
-  height: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 .its-blocks >.it>.it-tag .name {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .its-blocks >.it>.it-tag .more {
-  width: 0.2rem;
-  height: 0.36rem;
+  width: 0.4rem;
+  height: 0.56rem;
   margin-left: 0.3rem;
 }
 
@@ -50,13 +50,13 @@
 }
 
 .its-blocks >.it>.it-skus >.it>.it-l {
-  width: 1.2rem;
+  width: 1.6rem;
   text-align: left;
 }
 
 .its-blocks >.it>.it-skus >.it>.it-l .img {
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .its-blocks >.it>.it-skus >.it>.it-m {
@@ -79,13 +79,13 @@
 }
 
 .its-blocks >.it>.it-skus >.it>.it-r {
-  width: 4rem;
+  width: 5rem;
   text-align: center;
 }
 
 .its-blocks >.it>.it-skus >.it>.it-r .img {
-  width: 1rem;
-  height: 1rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .its-blocks .skuname {
@@ -104,17 +104,17 @@
 
 .its-blocks .sumprice {
   display: block;
-  font-size: .7rem;
+  font-size: 0.8rem;
   height: 1.6rem;
   line-height: 1.6rem;
 }
 
 .its-blocks .quantity {
   width: 1.8rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   display: block;
   float: right;
-  line-height: 3.5rem;
+  line-height: 3.2rem;
 }
 
 .its-blocks .increase {
@@ -130,33 +130,30 @@
 .cart-bottom {
   width: 100%;
   position: fixed;
-  bottom: 81rpx;
+  bottom: 3.044rem;
   background: #fff;
   display: flex;
   border-top: 1px solid #f8f8f8;
+  z-index: 9999;
+  line-height: 2.8rem;
+  height: 2.8rem;
 }
 
 .cart-bottom .it-l {
-  margin-left: 12rpx;
+  margin-left: 0.5rem;
   flex: 1;
-  line-height: 80rpx;
-  height: 80rpx;
-  font-size: 24rpx;
+  font-size: 0.8rem;
 }
 
 .cart-bottom .it-m {
-  line-height: 80rpx;
   flex: 1;
-  height: 80rpx;
-  font-size: 32rpx;
+  font-size: 1rem;
 }
 
 .cart-bottom .it-r {
   position: relative;
-  font-size: 32rpx;
-  width: 300rpx;
-  height: 80rpx;
-  line-height: 80rpx;
+  font-size: 1.2rem;
+  width: 8rem;
   text-align: center;
   color: #fff;
 }

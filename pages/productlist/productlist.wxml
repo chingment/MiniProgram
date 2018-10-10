@@ -40,17 +40,13 @@
           </block>
         </view>
         <view class="list-emptytips" wx:else>
-
-          <view class="img">
-            <image src='/content/default/images/list_emptytips_img.png'></image>
+          <view class="icon">
+            <image class="img" src='/content/default/images/list_emptytips_img.png'></image>
           </view>
           <view class="msg">
             <text>~暂无数据~</text>
           </view>
-
-
         </view>
-
       </scroll-view>
     </swiper-item>
   </block>
@@ -58,5 +54,5 @@
 
 <view class="carttips" bindtap="goCart">
   <view class="number">{{cart.count}}</view>
-  <image class="icon" src="/content/default/images/cart.png"></image>
+  <image class="img" src="/content/default/images/cart.png"></image>
 </view>

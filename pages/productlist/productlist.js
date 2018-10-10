@@ -26,11 +26,10 @@ var getList = function(_this) {
   console.log("getList.currentTabIndex:" + currentTabIndex)
 
   var pageIndex = currentTab.pageIndex
-  var kindId = currentTab.kindId
-  var subjectId = currentTab.subjectId
+  var kindId = currentTab.kindId == undefined ? "" : currentTab.kindId
+  var subjectId = currentTab.subjectId == undefined ? "" : currentTab.subjectId
   httpUtil.getRequest(config.apiUrl.productGetList, {
-    userId: ownRequest.getCurrentUserId(),
-    storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+    storeId: ownRequest.getCurrentStoreId(),
     pageIndex: pageIndex,
     kindId: kindId,
     subjectId: subjectId,
@@ -235,8 +234,7 @@ Page({
     });
 
     cart.operate({
-      userId: '00000000000000000000000000000000',
-      storeId: 'BE9AE32C554D4942BE4A42FA48446210',
+      storeId: ownRequest.getCurrentStoreId(),
       operate: 2,
       skus: skus
     }, {

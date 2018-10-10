@@ -40,7 +40,7 @@ Page({
     })
 
     var isGetHis = false
-    httpUtil.postRequest(config.apiUrl.couponMy, { userId: ownRequest.getCurrentUserId(), isGetHis: isGetHis, couponId: couponId, skus: skus }, {
+    httpUtil.postRequest(config.apiUrl.couponMy, {  isGetHis: isGetHis, couponId: couponId, skus: skus }, {
       success: function (res) {
         _this.setData({
           coupon: res.data,

@@ -4,7 +4,7 @@ page {
   background: #fff;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
@@ -57,7 +57,7 @@ page {
 }
 
 .line-space {
-  height: .6rem;
+  height: 0.6rem;
   background-color: #f4f4f4;
 }
 
@@ -189,7 +189,7 @@ page {
   display: none;
 }
 
-.pd-com{
+.pd-com {
   padding: 0 0.8rem;
 }
 
@@ -362,7 +362,7 @@ page {
 .its-a .it-l {
   border-bottom-width: 0;
   width: 60px;
-  margin-right: .8rem;
+  margin-right: 0.8rem;
 }
 
 .its-a .it-l .icon {
@@ -459,6 +459,20 @@ page {
   text-align: left;
   font-size: 0.8rem;
   color: #999;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.its-a .it-ml .txt {
+  color: #333;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: left;
+  font-size: 0.8rem;
+  padding-right: 0.2rem;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
