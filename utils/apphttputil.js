@@ -87,11 +87,8 @@ function request(url, method, urlParams, dataParams, requestHandler) {
 
   url += params;
 
-  console.log("apphttpUtil.url:" + url)
-
   if (method == "POST") {
     body = dataParams;
-    console.log("apphttpUtil.dataParams:" + JSON.stringify(dataParams))
   }
 
   //let hexSign = getSign(config.key, config.secret, timestamp, params);

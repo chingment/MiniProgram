@@ -2,6 +2,7 @@
 
 .st-kind {
   display: flex;
+  height: 100%;
 }
 
 .kind-left-navbar {

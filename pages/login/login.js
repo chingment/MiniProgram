@@ -28,7 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-  
+
 
   },
 
@@ -71,18 +71,26 @@ Page({
 
   bindgetuserinfo: function(e) {
 
-   // if (e.target.userInfo) {
-      ownRequest.login(() => {
-        // 登录成功后，返回
-        // wx.redirectTo({
-        //   url: '../main/main',
-        // })
+    var pages = getCurrentPages() //获取加载的页面
 
-        wx.reLaunch({//关闭所有页面，打开到应用内的某个页面
-          url: '../main/main',
-        })
+    var currentPage = pages[pages.length - 2] //获取当前页面的对象
 
+    var url = currentPage.route //当前页面ur
+
+
+    console.log("url:" + url)
+    // if (e.target.userInfo) {
+    ownRequest.login(() => {
+      // 登录成功后，返回
+      // wx.redirectTo({
+      //   url: '../main/main',
+      // })
+
+      wx.reLaunch({ //关闭所有页面，打开到应用内的某个页面
+        url: ownRequest.getReturnUrl(),
       })
+
+    })
     //}
   }
 })

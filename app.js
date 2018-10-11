@@ -39,7 +39,7 @@ App({
 
   },
   onShow: function() {
-    console.log("App.onShow")
+    //console.log("App.onShow")
   },
   globalData: {
     userInfo: null

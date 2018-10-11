@@ -12,6 +12,7 @@ function wxRequest(url, method, header, data, requestHandler) {
   wx.showNavigationBarLoading();
   console.log("wxRequest.url->>>>" + url);
   console.log("wxRequest.method->>>>" + method);
+  console.log("wxRequest.postData->>>>" + JSON.stringify(data));
   wx.request({
     url: url,
     data: data,

@@ -140,6 +140,7 @@
   justify-content: 1;
   display: flex;
   margin-left: 0.3rem;
+  margin-right: 0.2rem;
 }
 
 .pdArea .its-pdArea .it-a2 .img {

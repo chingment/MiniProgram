@@ -6,15 +6,8 @@ const storeage = require('../utils/storeageutil.js')
 var loginPage = '../login/login'
 
 function getAccessonToken() {
-
-  var token = "00000000000000000000000000000001"
+  var token = storeage.getAccessToken()
   return token
-}
-
-function getCurrentUserId() {
-
-  var userId = "00000000000000000000000000000001"
-  return userId
 }
 
 function getCurrentStoreId() {
@@ -23,18 +16,22 @@ function getCurrentStoreId() {
 }
 
 function getCurrentStore() {
-  console.log("storeage.getCurrentStore():" + storeage.getCurrentStore())
-
   var store = storeage.getCurrentStore();
-
-  if (store == "")
-    return undefined
-
-  return storeage.getCurrentStore()
+  if (store == "") {
+    store = {
+      id: "",
+      name: "未选择店铺"
+    }
+  } else {
+    store = storeage.getCurrentStore()
+  }
+  console.log("ownRequest.getCurrentStore->>>" + JSON.stringify(store))
+  return store
 }
 
 function setCurrentStore(store) {
   storeage.setCurrentStore(store)
+  console.log("ownRequest.setCurrentStore->>>" + JSON.stringify(store))
 }
 
 function isLogin() {
@@ -48,25 +45,36 @@ function isLogin() {
   }
 }
 
-
+function getReturnUrl() {
+  var pages = getCurrentPages()
+  var url = "/pages/main/main";
+  if (pages.length >= 2) {
+    var currentPage = pages[pages.length - 2] //获取当前页面的对象
+    url = "/" + currentPage.route //当前页面url
+    url += "?"
+    for (let key in currentPage.options) {
+      const value = currentPage.options[key]
+      url += `${key}=${value}&`
+    }
+    url = url.substring(0, url.length - 1)
+  }
+  console.log("ownRequest.getReturnUrl->>>" + url)
+  return url;
+}
 
 
 function isSelectedStore(isGoSelect) {
-  var store = storeage.getCurrentStore()
-  if (store == "") {
-    console.log("当前没有选择店铺")
-
+  var store = getCurrentStore()
+  if (store.id == "") {
+    console.log("ownRequest.isSelectedStore->>>当前店铺id为空，未选择店铺")
     isGoSelect = isGoSelect == undefined ? false : isGoSelect
-
     if (isGoSelect) {
-      wx.navigateTo({    //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）
+      wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）
         url: "/pages/store/store"
       })
     }
-
     return false
   } else {
-    console.log("当前已选择店铺")
     return true
   }
 }
@@ -110,7 +118,7 @@ function getUserInfo(code, callback) {
       }
 
       httpUtil.postRequest(config.apiUrl.userLoginByMinProgram, params, {
-        success: function (res) {
+        success: function(res) {
           if (res.result == 1) {
             storeage.setAccessToken(res.data.accessToken);
             console.log("getAccessonToken" + storeage.getAccessToken())
@@ -118,7 +126,7 @@ function getUserInfo(code, callback) {
           }
 
         },
-        fail: function () {
+        fail: function() {
           showToast()
         }
       })
@@ -164,11 +172,11 @@ function showToast(content = '登录失败，请稍后再试') {
 }
 
 module.exports = {
-  getCurrentUserId: getCurrentUserId,
   getCurrentStoreId: getCurrentStoreId,
   setCurrentStore: setCurrentStore,
   getCurrentStore: getCurrentStore,
   isSelectedStore: isSelectedStore,
   isLogin: isLogin,
-  login: login
+  login: login,
+  getReturnUrl: getReturnUrl
 }

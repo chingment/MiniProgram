@@ -5,7 +5,7 @@
         <image class="img" src="/content/default/images/store_address.png"></image>
       </view>
       <view class="title">
-        <text class="txt">{{store.name}}</text>
+        <text class="txt">{{currentStore.name}}</text>
       </view>
       <view class="more">
         <image class="img" src="/content/default/images/arro_down.png"></image>
@@ -13,18 +13,20 @@
     </navigator>
     <view class="banner">
       <view class="ct">
-        <swiper class="its-swiper" autoplay="{{banner.autoplay}}" current="{{banner.currentSwiper}}" bindchange="indexBarBannerSwiperChange">
-          <block wx:for="{{banner.imgs}}">
-            <swiper-item class="it">
-              <image class="img" src="{{item.url}}"></image>
-            </swiper-item>
-          </block>
-        </swiper>
-        <view class="its-dot">
-          <block wx:for="{{banner.imgs}}">
-            <view class="it{{index == banner.currentSwiper ? ' it-active' : ''}}"></view>
-          </block>
-        </view>
+        <block wx:if="{{banner.imgs.length>0}}">
+          <swiper class="its-swiper" autoplay="{{banner.autoplay}}" current="{{banner.currentSwiper}}" bindchange="indexBarBannerSwiperChange">
+            <block wx:for="{{banner.imgs}}" wx:key="item" >
+              <swiper-item class="it">
+                <image class="img" src="{{item.url}}"></image>
+              </swiper-item>
+            </block>
+          </swiper>
+          <view class="its-dot">
+            <block wx:for="{{banner.imgs}}" wx:key="item">
+              <view class="it{{index == banner.currentSwiper ? ' it-active' : ''}}"></view>
+            </block>
+          </view>
+        </block>
       </view>
     </view>
 
