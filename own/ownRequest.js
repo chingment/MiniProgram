@@ -118,7 +118,7 @@ function getUserInfo(code, callback) {
       }
 
       httpUtil.postRequest(config.apiUrl.userLoginByMinProgram, params, {
-        success: function(res) {
+        success: function (res) {
           if (res.result == 1) {
             storeage.setAccessToken(res.data.accessToken);
             console.log("getAccessonToken" + storeage.getAccessToken())
@@ -126,7 +126,7 @@ function getUserInfo(code, callback) {
           }
 
         },
-        fail: function() {
+        fail: function () {
           showToast()
         }
       })
@@ -171,6 +171,26 @@ function showToast(content = '登录失败，请稍后再试') {
   })
 }
 
+function rem2px(rem) {
+  var size = 0;
+
+  var wHidth = wx.getSystemInfoSync().windowWidth;
+  console.log("rem2px->>>wHidth:" + wHidth)
+
+  if (wHidth >= 360 & wHidth < 414) {
+    size = wHidth / 23 * rem
+  }
+  else if (wHidth >= 414) {
+    size = wHidth / 26 * rem
+  }
+  else {
+    size = wHidth / 26 * rem
+  }
+
+  console.log("rem2px->>>size:" + rem + "," + size)
+  return size
+}
+
 module.exports = {
   getCurrentStoreId: getCurrentStoreId,
   setCurrentStore: setCurrentStore,
@@ -178,5 +198,6 @@ module.exports = {
   isSelectedStore: isSelectedStore,
   isLogin: isLogin,
   login: login,
-  getReturnUrl: getReturnUrl
+  getReturnUrl: getReturnUrl,
+  rem2px: rem2px
 }

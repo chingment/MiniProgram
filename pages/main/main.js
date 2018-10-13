@@ -127,15 +127,37 @@ Page({
 
     var currentStore = ownRequest.getCurrentStore()
 
-    wx.getSystemInfo({
-      success: function (res) {
-        var height = wx.getSystemInfoSync().windowHeight - wx.getSystemInfoSync().windowWidth / 26 * (3.044)
-        console.log("windowHeight:" + height)
-        _self.setData({
-          tabBarContentHeight: height
-        });
-      }
-    })
+    var wHeight = wx.getSystemInfoSync().windowHeight;
+
+    _self.setData({
+      tabBarContentHeight: wHeight - ownRequest.rem2px(3.044)
+    });
+
+    // var rem = ownRequest.rem2px(3.044);
+    // console.log("screen size->>>rem:" + rem )
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     var wHeight = wx.getSystemInfoSync().windowHeight;
+    //     var wHidth = wx.getSystemInfoSync().windowWidth;
+    //     console.log("screen size->>>wHeight:" + wHeight + ",wHidth:" + wHidth)
+    //     var height = 0;
+
+    //     if (wHidth >= 360 & wHidth < 414) {
+    //       height = wHeight - wHidth / 23 * (3.044)
+    //     }
+    //     else if (wHidth >= 414) {
+    //       height = wHeight - wHidth / 26 * (3.044)
+    //     }
+    //     else {
+    //       height = wHeight - wHidth / 26 * (3.044)
+    //     }
+
+
+    //     _self.setData({
+    //       tabBarContentHeight: height
+    //     });
+    //   }
+    // })
 
     wx.setNavigationBarTitle({
       title: _self.data.tabBar[0].navTitle
@@ -239,8 +261,7 @@ Page({
       skuId: sku.id,
       quantity: 1,
       selected: sku.selected,
-      channelId: sku.channelId,
-      channelType: sku.channelType
+      receptionMode: 1
     });
 
     console.log('ownRequest.getCurrentStoreId():' + ownRequest.getCurrentStoreId())
@@ -273,8 +294,7 @@ Page({
             carId: block[i].skus[j].cartId,
             id: block[i].skus[j].id,
             quantity: block[i].skus[j].quantity,
-            channelId: block[i].skus[j].channelId,
-            channelType: block[i].skus[j].channelType
+            receptionMode: block[i].skus[j].receptionMode
           })
         }
       }
@@ -303,8 +323,7 @@ Page({
       skuId: skuId,
       quantity: 1,
       selected: true,
-      channelId: 1,
-      channelType: 1
+      receptionMode: 1
     });
     console.log('ownRequest.getCurrentStoreId():' + ownRequest.getCurrentStoreId())
     cart.operate({

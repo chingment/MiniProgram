@@ -131,12 +131,11 @@
 
 .cart-bottom {
   width: 100%;
-  position: fixed;
-  bottom: 3.044rem;
+  position: absolute;
+  bottom: 0;
   background: #fff;
   display: flex;
   border-top: 1px solid #f8f8f8;
-  z-index: 9999;
   line-height: 2.8rem;
   height: 2.8rem;
 }

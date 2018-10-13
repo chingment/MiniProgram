@@ -81,7 +81,7 @@ Page({
     var tabsSliderIndex = -1 //默认未选择tab
     console.log("productKinds.length.length " + productKinds.length)
 
-    var deHeight=41;
+    var deHeight=2;
     if (kindId != "") {
       if (productKinds.length > 0) {
         for (var i = 0; i < productKinds.length; i++) {
@@ -123,13 +123,20 @@ Page({
       tabs.push(tab)
     }
 
-    wx.getSystemInfo({
-      success: function (res) {
-        _this.setData({
-          scrollHeight: res.windowHeight - deHeight
-        });
-      }
+
+    var wHeight = wx.getSystemInfoSync().windowHeight;
+    console.log("screen size->>>wHeight:" + wHeight )
+    _this.setData({
+      scrollHeight: wHeight - ownRequest.rem2px(deHeight)
     });
+
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     _this.setData({
+    //       scrollHeight: res.windowHeight - deHeight
+    //     });
+    //   }
+    // });
 
     _this.setData({
       tabs: tabs,
