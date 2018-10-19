@@ -116,7 +116,8 @@ Page({
   onLoad: function () {
     console.log("main.onLoad")
     var _self = this;
-
+  
+    
     if (!ownRequest.isLogin()) {
       return;
     }

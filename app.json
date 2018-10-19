@@ -11,7 +11,8 @@
     "pages/mycoupon/mycoupon",
     "pages/personalinfo/personalinfo",
     "pages/orderlist/orderlist",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/operate/operate"
   ],
   "window":{
     "backgroundTextStyle":"light",

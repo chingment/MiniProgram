@@ -30,13 +30,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "带参数页面测试",
 					"pathName": "pages/test/test",
 					"query": "id=1001&name=chingment"
+				},
+				{
+					"id": 1,
+					"name": "操作结果",
+					"pathName": "pages/operate/operate",
+					"query": "id=ce9834e30971490ba7984e89f7e4b582&type=1"
 				}
 			]
 		}

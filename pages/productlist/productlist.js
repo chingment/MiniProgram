@@ -242,8 +242,7 @@ Page({
       skuId: skuId,
       quantity: 1,
       selected: true,
-      channelId: 1,
-      channelType: 1
+      receptionMode: 1
     });
 
     cart.operate({

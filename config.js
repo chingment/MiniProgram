@@ -24,7 +24,8 @@ var config = {
     orderConfirm: `${host}/Order/Confirm`,
     couponMy: `${host}/Coupon/My`,
     storeList: `${host}/Store/List`,
-    userLoginByMinProgram: `${host}/User/LoginByMinProgram`
+    userLoginByMinProgram: `${host}/User/LoginByMinProgram`,
+    operateGetResult: `${host}/Operate/GetResult`
   }
 
 };
