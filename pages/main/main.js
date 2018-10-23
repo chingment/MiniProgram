@@ -1,7 +1,5 @@
 //index.js
 //获取应用实例
-const wxutil = require('../../utils/wxutil.js')
-const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const cart = require('../../pages/cart/cart.js')
@@ -10,6 +8,7 @@ const productkind = require('../../pages/productkind/productkind.js')
 const personal = require('../../pages/personal/personal.js')
 const toastUtil = require('../../utils/showtoastutil')
 const ownRequest = require('../../own/ownRequest.js')
+const lumos = require('../../utils/lumos.minprogram.js')
 var app = getApp()
 
 Page({
@@ -90,7 +89,7 @@ Page({
       list: []
     }
   },
-  loadMore: function (e) {
+  loadMore: function(e) {
     console.log("main.loadMore")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -99,7 +98,7 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-  refresh: function (e) {
+  refresh: function(e) {
     console.log("main.refresh")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -108,16 +107,17 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-  changeData: function (data) {
+  changeData: function(data) {
     console.log("main.changeData")
     var _self = this;
     _self.setData(data)
   },
-  onLoad: function () {
+  onLoad: function() {
     console.log("main.onLoad")
     var _self = this;
-  
-    
+
+
+
     if (!ownRequest.isLogin()) {
       return;
     }
@@ -127,67 +127,41 @@ Page({
     }
 
     var currentStore = ownRequest.getCurrentStore()
-
     var wHeight = wx.getSystemInfoSync().windowHeight;
-
     _self.setData({
       tabBarContentHeight: wHeight - ownRequest.rem2px(3.044)
     });
-
-    // var rem = ownRequest.rem2px(3.044);
-    // console.log("screen size->>>rem:" + rem )
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     var wHeight = wx.getSystemInfoSync().windowHeight;
-    //     var wHidth = wx.getSystemInfoSync().windowWidth;
-    //     console.log("screen size->>>wHeight:" + wHeight + ",wHidth:" + wHidth)
-    //     var height = 0;
-
-    //     if (wHidth >= 360 & wHidth < 414) {
-    //       height = wHeight - wHidth / 23 * (3.044)
-    //     }
-    //     else if (wHidth >= 414) {
-    //       height = wHeight - wHidth / 26 * (3.044)
-    //     }
-    //     else {
-    //       height = wHeight - wHidth / 26 * (3.044)
-    //     }
-
-
-    //     _self.setData({
-    //       tabBarContentHeight: height
-    //     });
-    //   }
-    // })
-
     wx.setNavigationBarTitle({
       title: _self.data.tabBar[0].navTitle
     })
 
-    httpUtil.getRequest(config.apiUrl.globalDataSet, {
-      storeId: ownRequest.getCurrentStoreId(),
-      datetime: '2018-03-30'
-    }, {
-        success: function (res) {
-          var index = res.data.index
-          var productKind = res.data.productKind
-          var cart = res.data.cart
-          var personal = res.data.personal
+    lumos.getJson({
+      url: config.apiUrl.globalDataSet,
+      urlParams: {
+        storeId: ownRequest.getCurrentStoreId(),
+        datetime: '2018-03-30'
+      },
+      success: function (d) {
 
-          index["currentStore"] = currentStore
+        var index = d.data.index
+        var productKind = d.data.productKind
+        var cart = d.data.cart
+        var personal = d.data.personal
 
-          _self.setData({
-            index: index,
-            productKind: productKind,
-            cart: cart,
-            personal: personal
-          })
+        index["currentStore"] = currentStore
 
-          storeage.setProductKind(productKind)
-          storeage.setCart(cart)
+        _self.setData({
+          index: index,
+          productKind: productKind,
+          cart: cart,
+          personal: personal
+        })
 
-        }
-      })
+         storeage.setProductKind(productKind)
+         storeage.setCart(cart)
+      }
+    })
+    
   },
   mainTabBarItemClick(e) {
     console.log('tabbar.tabBarItemClick')
@@ -210,7 +184,7 @@ Page({
       tabBar: tabBar
     })
   },
-  indexBarBannerSwiperChange: function (e) {
+  indexBarBannerSwiperChange: function(e) {
     var _index = this.data.index;
     _index.banner.currentSwiper = e.detail.current;
     this.setData({
@@ -272,16 +246,16 @@ Page({
       operate: operate,
       skus: operateSkus
     }, {
-        success: function (res) {
-          _self.setData({
-            cart: res.data
-          })
-          app.mainTabBarSetNumber(2, res.data.count)
-        },
-        fail: function () { }
-      })
+      success: function(res) {
+        _self.setData({
+          cart: res.data
+        })
+        app.mainTabBarSetNumber(2, res.data.count)
+      },
+      fail: function() {}
+    })
   },
-  cartBarImmeBuy: function (e) {
+  cartBarImmeBuy: function(e) {
     var _this = this
 
     var block = _this.data.cart.block
@@ -292,7 +266,7 @@ Page({
       for (var j = 0; j < block[i].skus.length; j++) {
         if (block[i].skus[j].selected) {
           skus.push({
-            carId: block[i].skus[j].cartId,
+            cartId: block[i].skus[j].cartId,
             id: block[i].skus[j].id,
             quantity: block[i].skus[j].quantity,
             receptionMode: block[i].skus[j].receptionMode
@@ -310,12 +284,12 @@ Page({
 
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
-      success: function (res) {
+      success: function(res) {
         // success
       },
     })
   },
-  addToCart: function (e) {
+  addToCart: function(e) {
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
     console.log("skuId:" + skuId)
@@ -332,8 +306,8 @@ Page({
       operate: 2,
       skus: skus
     }, {
-        success: function (res) { },
-        fail: function () { }
-      })
+      success: function(res) {},
+      fail: function() {}
+    })
   }
 })

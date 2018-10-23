@@ -1,6 +1,6 @@
-const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const ownRequest = require('../../own/ownRequest.js')
+const lumos = require('../../utils/lumos.minprogram.js')
 const app = getApp()
 
 Page({
@@ -15,7 +15,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var _this = this
     var operate = parseInt(options.operate)
 
@@ -40,21 +40,23 @@ Page({
     })
 
     var isGetHis = false
-    httpUtil.postRequest(config.apiUrl.couponMy, {  isGetHis: isGetHis, couponId: couponId, skus: skus }, {
-      success: function (res) {
+    lumos.postJson({
+      url: config.apiUrl.couponMy,
+      dataParams: {
+        isGetHis: isGetHis,
+        couponId: couponId,
+        skus: skus
+      },
+      success: function(res) {
         _this.setData({
           coupon: res.data,
           operate: operate
         })
-
-      },
-      fail: function () {
-
       }
     })
 
   },
-  goSelect: function (e) {
+  goSelect: function(e) {
     var _this = this
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
     var coupon = _this.data.coupon[index]
@@ -62,13 +64,11 @@ Page({
 
     if (operate == 1) {
       app.switchTab(0)
-    }
-    else if (operate == 2) {
+    } else if (operate == 2) {
       var couponId = []
       if (coupon.isSelected) {
         coupon.isSelected = false
-      }
-      else {
+      } else {
         coupon.isSelected = true
       }
 
@@ -87,49 +87,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

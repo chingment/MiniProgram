@@ -1,32 +1,27 @@
-const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const ownRequest = require('../../own/ownRequest.js')
-
+const lumos = require('../../utils/lumos.minprogram.js')
 
 Page({
 
   getResult: function (id, tp) {
 
     var _this = this;
-    httpUtil.getRequest(config.apiUrl.operateGetResult, {
-      id: id,
-      type: tp
-    }, {
-        success: function (res) {
-
-          if (res.data.isComplete) {
-            clearInterval(_this.countDown);
-          }
-
-          _this.setData({
-            result: res.data
-          })
-
-        },
-        fail: function () { }
-      })
-
+    lumos.getJson({
+      url: config.apiUrl.operateGetResult, urlParams: {
+        id: id,
+        type: tp
+      },
+      success: function (res) {
+        if (res.data.isComplete) {
+          clearInterval(_this.countDown);
+        }
+        _this.setData({
+          result: res.data
+        })
+      }
+    })
   },
 
   onLoad: function (options) {

@@ -17,6 +17,7 @@ var config = {
     home: `${host}/Account/Home`,
     globalDataSet: `${host}/Global/DataSet`,
     cartOperate: `${host}/Cart/Operate`,
+    cartGetPageData: `${host}/Cart/GetPageData`,
     productGetList: `${host}/ProductSku/List`,
     productGetSkuDetails: `${host}/ProductSku/Details`,
     deliveryAddressEdit: `${host}/DeliveryAddress/Edit`,
@@ -25,7 +26,8 @@ var config = {
     couponMy: `${host}/Coupon/My`,
     storeList: `${host}/Store/List`,
     userLoginByMinProgram: `${host}/User/LoginByMinProgram`,
-    operateGetResult: `${host}/Operate/GetResult`
+    operateGetResult: `${host}/Operate/GetResult`,
+    orderReserve: `${host}/Order/Reserve`
   }
 
 };

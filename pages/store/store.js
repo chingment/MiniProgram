@@ -1,19 +1,20 @@
-const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const ownRequest = require('../../own/ownRequest.js')
+const lumos = require('../../utils/lumos.minprogram.js')
 const app = getApp()
 
 Page({
   data: {
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     var _this = this
-    httpUtil.getRequest(config.apiUrl.storeList, {
-      merchantId: "",
-      lat: 0,
-      lng: 0
-    }, {
-      success: function(res) {
+    lumos.getJson({
+      url: config.apiUrl.storeList, urlParams: {
+        merchantId: "",
+        lat: 0,
+        lng: 0
+      },
+      success: function (res) {
         _this.setData({
           list: res.data,
           currentStore: ownRequest.getCurrentStore()
@@ -21,8 +22,8 @@ Page({
       }
     })
   },
-  selectStore: function(e) {
-    var store = e.currentTarget.dataset.replyStore 
+  selectStore: function (e) {
+    var store = e.currentTarget.dataset.replyStore
     ownRequest.setCurrentStore(store);
     wx.reLaunch({
       url: ownRequest.getReturnUrl()

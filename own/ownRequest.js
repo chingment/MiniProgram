@@ -1,5 +1,5 @@
-const httpUtil = require("../utils/apphttputil.js")
 const config = require('../config')
+const lumos = require('../utils/lumos.minprogram.js')
 const storeage = require('../utils/storeageutil.js')
 
 
@@ -117,21 +117,19 @@ function getUserInfo(code, callback) {
         encryptedData: res.encryptedData
       }
 
-      httpUtil.postRequest(config.apiUrl.userLoginByMinProgram, params, {
+      lumos.postJson({
+        url: config.apiUrl.userLoginByMinProgram, dataParams: params,
         success: function (res) {
           if (res.result == 1) {
             storeage.setAccessToken(res.data.accessToken);
             console.log("getAccessonToken" + storeage.getAccessToken())
             callback && callback()
           }
-
         },
         fail: function () {
           showToast()
         }
       })
-
-
     },
     // 获取失败，弹窗提示一键登录
     fail() {

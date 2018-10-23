@@ -1,3 +1,6 @@
+<import src="../../template/showToast.wxml" />
+<template is="showToast" data="{{showToast: showToast}}" />
+
 <view class='tag-address'>
   <image class="img" src="/content/default/images/tag_address.png"></image>
 </view>
@@ -51,4 +54,4 @@
 </view>
 
 
-<button class="btn-bottom bg-main" form-type="submit">立即支付({{actualAmount}})</button>
+<button bindtap="unifiedOrder" class="btn-bottom bg-main"  >立即支付({{actualAmount}})</button>

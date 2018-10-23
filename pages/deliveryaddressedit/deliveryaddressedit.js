@@ -1,11 +1,11 @@
-const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const ownRequest = require('../../own/ownRequest.js')
-const app = getApp()
-
+const lumos = require('../../utils/lumos.minprogram.js')
 const cityList = require('./cityList').cityList;
 const toastUtil = require('../../utils/showtoastutil');//引入消息提醒暴露的接口
+
+const app = getApp()
 
 Page({
   data: {
@@ -235,11 +235,10 @@ Page({
       return
     }
 
-    httpUtil.postRequest(config.apiUrl.deliveryAddressEdit, { id: id, consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault }, {
+    lumos.postJson({
+      url: config.apiUrl.deliveryAddressEdit, dataParams: { id: id, consignee: consignee, phoneNumber: phoneNumber, areaName: areaName, address: address, isDefault: isDefault },
       success: function (res) {
         wx.navigateBack()
-      },
-      fail: function () {
       }
     })
 

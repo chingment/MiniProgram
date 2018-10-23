@@ -1,9 +1,9 @@
-const httpUtil = require("../../utils/apphttputil.js")
 const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const wxparse = require("../../wxParse/wxParse.js")
 const cart = require('../../pages/cart/cart.js')
 const ownRequest = require('../../own/ownRequest.js')
+const lumos = require('../../utils/lumos.minprogram.js')
 const app = getApp()
 
 Page({
@@ -24,19 +24,18 @@ Page({
 
     //app.changeData("main", { cart: cart })
 
-    httpUtil.getRequest(config.apiUrl.productGetSkuDetails, {
-      skuId: skuId
-    }, {
+    lumos.getJson({
+      url: config.apiUrl.productGetSkuDetails,
+      urlParams: {
+        skuId: skuId
+      },
       success: function(res) {
         _this.setData({
           sku: res.data,
           cart: storeage.getCart()
         })
-
         wxparse.wxParse('dkcontent', 'html', res.data.detailsDes, _this, 0);
-
-      },
-      fail: function() {}
+      }
     })
   },
   goHome: function(e) {
@@ -77,9 +76,10 @@ Page({
     var _this = this
     var skus = []
     skus.push({
-      carId: 0,
+      cartId: 0,
       id: _this.data.sku.id,
-      quantity: 1
+      quantity: 1,
+      receptionMode: 1
     })
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
