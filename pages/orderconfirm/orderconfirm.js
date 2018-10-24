@@ -158,6 +158,24 @@ Page({
   },
   goPay: function() {
     console.log("orderconfirm.goPay->>>orderId:" + orderId);
+
+
+    lumos.getJson({
+      url: config.apiUrl.orderGetJsApiPaymentPms,
+      dataParams: {
+        orderId: orderId,
+        payWay: 1,
+        caller:2
+      },
+      success: function (res) {
+        if (res.result == lumos.resultType.success) {
+        
+        } else {
+         
+        }
+      }
+    })
+
   }
 
 

@@ -27,7 +27,8 @@ var config = {
     storeList: `${host}/Store/List`,
     userLoginByMinProgram: `${host}/User/LoginByMinProgram`,
     operateGetResult: `${host}/Operate/GetResult`,
-    orderReserve: `${host}/Order/Reserve`
+    orderReserve: `${host}/Order/Reserve`,
+    orderGetJsApiPaymentPms: `${host}/Order/GetJsApiPaymentPms`
   }
 
 };
