@@ -1,4 +1,5 @@
 const storeage = require('../utils/storeageutil.js')
+const config = require('../config')
 var class2type = {}
 var toString = class2type.toString
 var hasOwn = class2type.hasOwnProperty
@@ -236,7 +237,7 @@ function wxRequest(opts) {
     _url += "&"
   }
 
-  _url += "accesstoken=" + storeage.getAccessToken()
+  _url += "appId="+config.appId+"&accesstoken=" + storeage.getAccessToken()
 
   if (!isNullOrEmpty(_urlParams)) {
     _url += "&"

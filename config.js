@@ -10,8 +10,7 @@ var host = "https://demo.res.17fanju.com/api"
 var config = {
   // 下面的地址配合云端 Server 工作
   host,
-  key: `test`,
-  secret: '6ZB97cdVz211O08EKZ6yriAYrHXFBowC',
+  appId: `wxb01e0e16d57bd762`,
   apiUrl: {
     // 获取分类
     home: `${host}/Account/Home`,
