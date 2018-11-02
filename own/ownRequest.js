@@ -1,8 +1,4 @@
-const config = require('../config')
-const lumos = require('../utils/lumos.minprogram.js')
 const storeage = require('../utils/storeageutil.js')
-
-
 var loginPage = '../login/login'
 
 function getAccessonToken() {
@@ -43,6 +39,10 @@ function isLogin() {
   } else {
     return true
   }
+}
+
+function goLogin() {
+  showLoginModal()
 }
 
 function getReturnUrl() {
@@ -116,20 +116,20 @@ function getUserInfo(code, callback) {
         iv: res.iv,
         encryptedData: res.encryptedData
       }
-
-      lumos.postJson({
-        url: config.apiUrl.userLoginByMinProgram, dataParams: params,
-        success: function (res) {
-          if (res.result == 1) {
-            storeage.setAccessToken(res.data.accessToken);
-            console.log("getAccessonToken" + storeage.getAccessToken())
-            callback && callback()
-          }
-        },
-        fail: function () {
-          showToast()
-        }
-      })
+      callback && callback(params)
+      // lumos.postJson({
+      //   url: config.apiUrl.userLoginByMinProgram, dataParams: params,
+      //   success: function (res) {
+      //     if (res.result == 1) {
+      //       storeage.setAccessToken(res.data.accessToken);
+      //       console.log("getAccessonToken" + storeage.getAccessToken())
+      //       callback && callback()
+      //     }
+      //   },
+      //   fail: function () {
+      //     showToast()
+      //   }
+      // })
     },
     // 获取失败，弹窗提示一键登录
     fail() {
@@ -190,6 +190,7 @@ function rem2px(rem) {
 }
 
 module.exports = {
+  goLogin: goLogin,
   getCurrentStoreId: getCurrentStoreId,
   setCurrentStore: setCurrentStore,
   getCurrentStore: getCurrentStore,

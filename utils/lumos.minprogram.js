@@ -1,5 +1,7 @@
-const storeage = require('../utils/storeageutil.js')
 const config = require('../config')
+const storeage = require('../utils/storeageutil.js')
+const ownRequest = require('../own/ownRequest.js')
+
 var class2type = {}
 var toString = class2type.toString
 var hasOwn = class2type.hasOwnProperty
@@ -158,16 +160,16 @@ function postJson(opts) {
     url: '',
     method: 'POST',
     urlParams: null,
-    dataParams:null,
+    dataParams: null,
     async: true,
     timeout: 0,
-    beforeSend: function (res) {
+    beforeSend: function(res) {
 
     },
-    complete: function (res, status) {
+    complete: function(res, status) {
 
     },
-    suceess: function () {
+    suceess: function() {
 
     }
   }, opts)
@@ -180,7 +182,7 @@ function getJson(opts) {
   opts = extend({
     isShowLoading: false,
     url: '',
-    method:'GET',
+    method: 'GET',
     urlParams: null,
     async: true,
     timeout: 0,
@@ -200,11 +202,10 @@ function getJson(opts) {
 }
 
 function wxRequest(opts) {
-
   opts = extend({
     isShowLoading: false,
     url: '',
-    method:'GET',
+    method: 'GET',
     urlParams: null,
     dataParams: null,
     async: true,
@@ -237,7 +238,7 @@ function wxRequest(opts) {
     _url += "&"
   }
 
-  _url += "appId="+config.appId+"&accesstoken=" + storeage.getAccessToken()
+  _url += "appId=" + config.appId + "&accesstoken=" + storeage.getAccessToken()
 
   if (!isNullOrEmpty(_urlParams)) {
     _url += "&"
@@ -255,7 +256,7 @@ function wxRequest(opts) {
   wx.request({
     url: _url,
     data: _dataParams,
-    method: _method, 
+    method: _method,
     dataType: "json",
     success: function(res) {
       console.log("wxRequest.success->>>>" + JSON.stringify(res));
@@ -267,7 +268,11 @@ function wxRequest(opts) {
         if (res.data.result == 3) {
           console.log("wxRequest.success->>>>data.result is error");
         } else {
-          opts.success(res.data)
+          if (res.data.code == "2010") {
+            ownRequest.goLogin()
+          } else {
+            opts.success(res.data)
+          }
         }
       }
     },

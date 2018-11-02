@@ -1,5 +1,7 @@
+const config = require('../../config')
 const ownRequest = require('../../own/ownRequest.js')
-
+const storeage = require('../../utils/storeageutil.js')
+const lumos = require('../../utils/lumos.minprogram.js')
 // pages/login/login.js
 Page({
 
@@ -80,14 +82,26 @@ Page({
 
     console.log("url:" + url)
     // if (e.target.userInfo) {
-    ownRequest.login(() => {
+    ownRequest.login((params) => {
       // 登录成功后，返回
       // wx.redirectTo({
       //   url: '../main/main',
       // })
 
-      wx.reLaunch({ //关闭所有页面，打开到应用内的某个页面
-        url: ownRequest.getReturnUrl(),
+
+      lumos.postJson({
+        url: config.apiUrl.userLoginByMinProgram, dataParams: params,
+        success: function (res) {
+          if (res.result == 1) {
+            storeage.setAccessToken(res.data.accessToken);
+            console.log("getAccessonToken" + storeage.getAccessToken())
+          
+            wx.reLaunch({ //关闭所有页面，打开到应用内的某个页面
+              url: ownRequest.getReturnUrl()
+            })
+
+          }
+        }
       })
 
     })
