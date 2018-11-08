@@ -170,6 +170,23 @@ Page({
       success: function (res) {
         if (res.result == lumos.resultType.success) {
         
+          var data = res.data;
+          wx.requestPayment({
+            'timeStamp': data.timestamp,
+            'nonceStr': data.nonceStr,
+            'package': data.package,
+            'signType': 'MD5',
+            'paySign': data.paySign,
+            'success': function (res) {
+              wx.redirectTo({
+                url: '/pages/operate/operate?id=' + data.orderId+'&type=1'
+              })
+            },
+            'fail': function (res) {
+            }
+          })
+
+
         } else {
          
         }

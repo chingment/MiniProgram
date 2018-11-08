@@ -7,17 +7,20 @@
             <view class='item-nickname'>
               <text>{{userInfo.nickName}}</text>
             </view>
-            <view class='item-isvip'>
+            <view wx:if="{{userInfo.isVip}}" class='item-isvip'>
               <image src='/content/default/images/member.png'></image>
             </view>
-            <view class='item-phone'>
+            <view wx:else class='item-novip'>
+              <text class='txt' >普通用户</text>
+            </view>
+            <view wx:if="{{userInfo.phoneNumber!=null}}" class='item-phone'>
               <image src='/content/default/images/icon_phone.png'></image>
-              <text>{{userInfo.phone}}</text>
+              <text>{{userInfo.phoneNumber}}</text>
             </view>
           </view>
         </view>
         <view class='item-right'>
-          <image src='{{userInfo.headImg}}'></image>
+          <image src='{{userInfo.headImgUrl}}'></image>
         </view>
       </view>
       <view class='personal-orderstatus'>
@@ -25,7 +28,7 @@
           <image class='item-img' src='/content/default/images/order_status_waitpay.png'></image>
           <text class='item-title'>待支付</text>
         </navigator>
-         <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
+        <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
           <image class='item-img' src='/content/default/images/order_status_pickup.png'></image>
           <text class='item-title'>待取货</text>
         </navigator>
@@ -33,7 +36,7 @@
           <image class='item-img' src='/content/default/images/order_status_complete.png'></image>
           <text class='item-title'>已完成</text>
         </navigator>
-         <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
+        <navigator url="/pages/orderlist/orderlist" class="item" hover-class="none">
           <image class='item-img' src='/content/default/images/order_status_cancel.png'></image>
           <text class='item-title'>已失效</text>
         </navigator>

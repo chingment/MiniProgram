@@ -12,10 +12,10 @@
       <view class="details-info1">
         <view class='container'>
           <view class="item-name">
-            <text>{{sku.name}}</text>
+            <text class="name" >{{sku.name}}</text>
           </view>
           <view class="item-briefIntro font-gray">
-            <text>{{sku.briefIntro}}</text>
+            <text class="briefIntro">{{sku.briefIntro}}</text>
           </view>
           <view class="item-price">
             <text class="unitPrice">{{sku.salePrice}}</text>
