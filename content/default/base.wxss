@@ -45,9 +45,6 @@ page {
   height: 100%;
 }
 
-.hidden {
-  display: none;
-}
 
 .radio image {
   width: 38rpx;
@@ -185,7 +182,7 @@ page {
   display: block;
 }
 
-.hide {
+.hide,.hidden {
   display: none;
 }
 
