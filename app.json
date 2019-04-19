@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/main/main",
     "pages/login/login",
     "pages/store/store",
@@ -14,10 +14,11 @@
     "pages/logs/logs",
     "pages/operate/operate"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
 }

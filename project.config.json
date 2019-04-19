@@ -12,6 +12,8 @@
 	"appid": "wx969a817779af7b53",
 	"projectname": "Lumos.MiniProgram",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
