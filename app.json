@@ -12,7 +12,8 @@
     "pages/personalinfo/personalinfo",
     "pages/orderlist/orderlist",
     "pages/logs/logs",
-    "pages/operate/operate"
+    "pages/operate/operate",
+    "pages/notopen/notopen"
   ],
   "window": {
     "backgroundTextStyle": "light",

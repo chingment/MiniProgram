@@ -1,3 +1,4 @@
 .swiper_item {
   float: left;
+  
 }

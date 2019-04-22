@@ -52,6 +52,7 @@ Page({
     var _this = this
     console.log("orderconfirm.orderid->>>>" + options.orderId)
     console.log("orderconfirm.skus->>>>" + JSON.stringify(options.skus))
+    orderId = options.orderId == undefined ? null : options.orderId;
     skus = JSON.parse(options.skus);
   },
 
@@ -183,12 +184,15 @@ Page({
               })
             },
             'fail': function (res) {
+
             }
           })
 
 
         } else {
-         
+          toastUtil.showToast({
+            title: res.message
+          })
         }
       }
     })

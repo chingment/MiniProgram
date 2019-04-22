@@ -33,7 +33,7 @@
     <view class="fc">
       <view class="ct">
         <view class='its-fc'>
-          <navigator url="/pages/orderlist/orderlist" class="it" hover-class="none">
+          <navigator url="/pages/notopen/notopen" class="it" hover-class="none">
             <view class="icon">
               <image class='img' src='/content/default/images/index-fc-newuser.png'></image>
             </view>
@@ -41,7 +41,7 @@
               <text class='txt'> 新人专享</text>
             </view>
           </navigator>
-          <navigator url="/pages/orderlist/orderlist" class="it" hover-class="none">
+          <navigator url="/pages/notopen/notopen" class="it" hover-class="none">
             <view class="icon">
               <image class='img' src='/content/default/images/index-fc-seckill.png'></image>
             </view>
@@ -49,7 +49,7 @@
               <text class='txt'>限时秒杀</text>
             </view>
           </navigator>
-          <navigator url="/pages/orderlist/orderlist" class="it" hover-class="none">
+          <navigator url="/pages/notopen/notopen" class="it" hover-class="none">
             <view class="icon">
               <image class='img' src='/content/default/images/index-fc-member.png'></image>
             </view>
@@ -57,7 +57,7 @@
               <text class='txt'>会员专区</text>
             </view>
           </navigator>
-          <navigator url="/pages/orderlist/orderlist" class="it" hover-class="none">
+          <navigator url="/pages/notopen/notopen" class="it" hover-class="none">
             <view class="icon">
               <image class='img' src='/content/default/images/index-fc-coupon.png'></image>
             </view>
@@ -87,7 +87,7 @@
                 </navigator>
               </view>
               <view class='it-a2'>
-                <image class="img" src="{{item.bannerImgUrl}}"></image>
+                <image class="img" src="{{item.imgUrl}}"></image>
               </view>
               <view class="it-a3 prd-list-1">
                 <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
