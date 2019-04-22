@@ -1,167 +1,187 @@
-// pages/orderlist/orderlist.js
+const config = require('../../config')
+const storeage = require('../../utils/storeageutil.js')
+const ownRequest = require('../../own/ownRequest.js')
+const lumos = require('../../utils/lumos.minprogram.js')
+const app = getApp()
+
+var getList = function(_this) {
+  console.log("getList")
+  var currentTab;
+  var currentTabIndex = -1;
+  for (var i = 0; i < _this.data.tabs.length; i++) {
+    if (_this.data.tabs[i].selected == true) {
+      currentTab = _this.data.tabs[i];
+      currentTabIndex = i;
+    }
+  }
+
+  if (currentTabIndex == -1) {
+    currentTabIndex = 0;
+    currentTab = _this.data.tabs[currentTabIndex];
+  }
+
+  console.log("getList.currentTabIndex:" + currentTabIndex)
+
+  var pageIndex = currentTab.pageIndex
+  var status = currentTab.status == undefined ? "" : currentTab.status
+  
+  lumos.getJson({
+    url: config.apiUrl.orderGetList,
+    urlParams: {
+      storeId: ownRequest.getCurrentStoreId(),
+      pageIndex: pageIndex,
+      status: status
+    },
+    success: function(res) {
+      console.log("config.apiUrl.productList->success")
+
+      var list
+      if (currentTab.pageIndex == 0) {
+        list = res.data
+      } else {
+        list = _this.data.tabs[currentTabIndex].list.concat(res.data)
+      }
+
+      _this.data.tabs[currentTabIndex].list = list;
+
+      _this.setData({
+        tabs: _this.data.tabs
+      })
+    }
+  })
+}
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    animationData: {},
-    translateX:0,
-    curIndex:0,
-    swiperList:[
-      {
-        img:1
-      },{
-        img: 1
-      },{
-        img: 1
-      }
-    ]
+    tag: "orderlist",
+    scrollHeight: 0,
+    tabsSliderIndex: -1,
+    tabs: [{
+      name: "待支付",
+      selected: false,
+      status: 2000,
+      pageIndex: 0,
+      list: null
+    }, {
+      name: "待取货",
+      selected: false,
+      status: 3000,
+      pageIndex: 0,
+      list: null
+    }, {
+      name: "已完成",
+      selected: false,
+      status: 4000,
+      pageIndex: 0,
+      list: null
+    }, {
+      name: "已失效",
+      selected: false,
+      status: 5000,
+      pageIndex: 0,
+      list: null
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: "ease",
+  onLoad: function(options) {
+    var _this = this
+    var wHeight = wx.getSystemInfoSync().windowHeight;
+    var status = options.status == undefined ? "" : options.status
+    console.log("status=>" + status)
+
+    var _tabsSliderIndex = -1
+    for (var i = 0; i < _this.data.tabs.length; i++) {
+      if (_this.data.tabs[i].status == status) {
+        _this.data.tabs[i].selected = true;
+        _tabsSliderIndex = i;
+      } else {
+        _this.data.tabs[i].selected = false;
+      }
+    }
+
+    _this.setData({
+      tabsSliderIndex: _tabsSliderIndex,
+      tabs: _this.data.tabs,
+      scrollHeight: wHeight - ownRequest.rem2px(2)
     })
 
-    this.animation = animation
-
-    animation.scale(2, 2).rotate(45).step();
-
-    this.setData({
-      animationData: animation.export()
-    })
-
-    setTimeout(function () {
-      animation.translate(30).step();
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 1000)
-
+    getList(_this)
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   },
-  //触摸开始的事件
-  swiperTouchstart: function (e) {
-    // console.log('touchstart',e);
-    let startClinetX = e.changedTouches[0].clientX;
-    this.setData({
-      startClinetX: startClinetX, //触摸开始位置；
-      startTimestamp: e.timeStamp, //触摸开始时间；
-    })
-  },
+  //tab点击
+  tabBarClick: function(e) {
+    console.log("tabBarClick");
+    var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
+    var _this = this
 
-  //触摸移动中的事件
-  swiperTouchmove: function (e) {
-     console.log('touchmove',e);
-  },
-
-  //触摸结束事件
-  swiperTouchend: function (e) {
-     console.log("触摸结束",e);
-
-    let times = e.timeStamp - this.data.startTimestamp, //时间间隔；
-      distance = e.changedTouches[0].clientX - this.data.startClinetX; //距离间隔；
-    //判断
-    if (times < 500 && Math.abs(distance) > 10) {
-      let curIndex = this.data.curIndex;
-
-      let x0 = this.data.itemWidth, x1 = this.data.translateDistance, x = 0;
-      if (distance > 0) {
-
-        curIndex = curIndex - 1
-        if (curIndex < 0) {
-          curIndex = 0;
-          x0 = 0;
-        }
-        x = x1 + x0;
+    for (var i = 0; i < _this.data.tabs.length; i++) {
+      if (i == index) {
+        _this.data.tabs[i].selected = true;
       } else {
-
-        // console.log('+1',x);
-        curIndex = curIndex + 1
-        if (curIndex >= this.data.swiperList.length) {
-          curIndex = this.data.swiperList.length - 1;
-          x0 = 0;
-        }
-        x = x1 - x0;
+        _this.data.tabs[i].selected = false;
       }
-      this.animationToLarge(curIndex, x);
-      this.animationToSmall(curIndex, x);
-      this.setData({
-        curIndex: curIndex,
-        translateDistance: x
-      })
-
-    } else {
-
     }
-  },
-  // 动画
-  animationToLarge: function (curIndex, x) {
-    console.log("animationToLarge");
-    this.animation.translateX(x).scale(1).step()
-    this.setData({
-      animationToLarge: this.animation.export()
+    _this.setData({
+      tabs: _this.data.tabs,
+      tabsSliderIndex: index,
     })
-  },
-  animationToSmall: function (curIndex, x) {
-    console.log("animationToSmall");
-    this.animation.translateX(x).scale(0.7).step()
-    this.setData({
-      animationToSmall: this.animation.export()
-    })
-  }
 
+    //getList(_this)
+  }
 })

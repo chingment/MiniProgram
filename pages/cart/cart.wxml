@@ -1,47 +1,58 @@
 <template name="cart">
   <view class="st-cart">
     <view class="ct">
-      <view class="cart-blocks its-blocks">
-        <block wx:for="{{block}}" wx:for-index="pindex" wx:for-item="item" wx:key="list">
-          <view class="it">
-            <view class="it-tag">
-              <image class="icon img" src='/content/default/images/cart_channel{{item.receptionMode}}.png'></image>
-              <text class="name">{{item.tagName}}</text>
-              <image class="more img" src='/content/default/images/col_nav_right.png'></image>
+
+      <block wx:if="{{block.length>0}}">
+        <view class="cart-blocks its-blocks">
+          <block wx:for="{{block}}" wx:for-index="pindex" wx:for-item="item" wx:key="list">
+            <view class="it">
+              <view class="it-tag">
+                <image class="icon img" src='/content/default/images/cart_channel{{item.receptionMode}}.png'></image>
+                <text class="name">{{item.tagName}}</text>
+                <image class="more img" src='/content/default/images/col_nav_right.png'></image>
+              </view>
+              <view class="it-skus">
+                <block wx:for="{{item.skus}}" wx:for-index="cindex" wx:for-item="itemsku" wx:key="list">
+                  <view class="it">
+                    <view class="it-l" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}">
+                      <image class="img" src='/content/default/images/{{itemsku.selected==false?"checkedoff":"checkedon"}}.png'></image>
+                    </view>
+                    <view class="it-m">
+                      <view class="it-ml">
+                        <navigator url="/pages/productdetails/productdetails?skuId={{itemsku.id}}" style='height:100%;width:100%'>
+                          <image class='img' src="{{itemsku.imgUrl}}" />
+                        </navigator>
+                      </view>
+                      <view class="it-mr">
+                        <text class='skuname font-black'>{{itemsku.name}}</text>
+                        <text class='sumprice font-gray'>{{itemsku.salePrice}}</text>
+                      </view>
+                    </view>
+                    <view class="it-r">
+                      <view class="increase">
+                        <image class="img" bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/increase.png'></image>
+                      </view>
+                      <text class="quantity">{{itemsku.quantity}}</text>
+                      <view class="increase">
+                        <image class="img" bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/decrease.png'></image>
+                      </view>
+                    </view>
+                  </view>
+                </block>
+              </view>
             </view>
-            <view class="it-skus">
-              <block wx:for="{{item.skus}}" wx:for-index="cindex" wx:for-item="itemsku" wx:key="list">
-                <view class="it">
-                  <view class="it-l" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}">
-                    <image class="img" src='/content/default/images/{{itemsku.selected==false?"checkedoff":"checkedon"}}.png'></image>
-                  </view>
-                  <view class="it-m">
-                    <view class="it-ml">
-                      <navigator url="/pages/productdetails/productdetails?skuId={{itemsku.id}}" style='height:100%;width:100%'>
-                        <image class='img' src="{{itemsku.imgUrl}}" />
-                      </navigator>
-                    </view>
-                    <view class="it-mr">
-                      <text class='skuname font-black'>{{itemsku.name}}</text>
-                      <text class='sumprice font-gray'>{{itemsku.salePrice}}</text>
-                    </view>
-                  </view>
-                  <view class="it-r">
-                    <view class="increase">
-                      <image class="img" bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/increase.png'></image>
-                    </view>
-                    <text class="quantity">{{itemsku.quantity}}</text>
-                    <view class="increase">
-                      <image class="img" bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/decrease.png'></image>
-                    </view>
-                  </view>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="line-space"></view>
-        </block>
-      </view>
+            <view class="line-space"></view>
+          </block>
+        </view>
+      </block>
+      <block wx:else>
+
+        <view style='text-align:center'>
+          <image src='/content/default/images/cart_empty.png'></image>
+
+        </view>
+      </block>
+
       <view class="cart-bottom">
         <view class="it-l">
           <text class='font-gray'>已选({{countBySelected}})</text>
