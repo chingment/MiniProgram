@@ -2,7 +2,9 @@
 @import '../productkind/productkind.wxss';
 @import '../cart/cart.wxss';
 @import '../personal/personal.wxss';
-
+page{
+  overflow: hidden;
+}
 .main-tabbar {
   background-color: #fff;
 }

@@ -1,5 +1,19 @@
-<view style="background: green;">
-<view style="height:608px;   background: #8a2be2;"></view>
+<view style='background:red;height:60px;justify-content:center;align-items:center;display:flex;'>
 
-<view style="height:64px;  background: red;"></view>
+ <image style='width:24px;height:24px' class="img" src='/content/default/images/checkedon.png' ></image>
+
+</view>
+
+
+
+<view class="container">
+
+<view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+
+<view class="content">{{item.content}}</view>
+
+<view class="del" catchtap="del" data-index="{{index}}">删除</view>
+
+</view>
+
 </view>

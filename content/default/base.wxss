@@ -342,8 +342,8 @@ page {
 }
 
 .prd-list-1 .increase {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 /*col-its-a*/

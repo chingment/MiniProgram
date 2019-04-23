@@ -13,7 +13,8 @@
     "pages/orderlist/orderlist",
     "pages/logs/logs",
     "pages/operate/operate",
-    "pages/notopen/notopen"
+    "pages/notopen/notopen",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

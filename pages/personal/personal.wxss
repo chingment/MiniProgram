@@ -6,6 +6,10 @@
   margin: 10px;
 }
 
+.st-personal {
+  padding: 0px 16px;
+}
+
 .personal-userinfo {
   height: 200rpx;
   display: flex;
@@ -18,8 +22,6 @@
   width: 70%;
   padding: 20rpx 0rpx 0rpx 70rpx;
 }
-
-
 
 .personal-userinfo .item-right {
   width: 30%;
@@ -49,9 +51,9 @@
   height: 30rpx;
 }
 
-.personal-userinfo .item-novip .txt{
-  font-size: .6rem;
-  color: #9d9d9d
+.personal-userinfo .item-novip .txt {
+  font-size: 0.6rem;
+  color: #9d9d9d;
 }
 
 .personal-userinfo .item-phone {

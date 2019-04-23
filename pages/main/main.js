@@ -89,7 +89,7 @@ Page({
       list: []
     }
   },
-  loadMore: function(e) {
+  loadMore: function (e) {
     console.log("main.loadMore")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -98,7 +98,7 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-  refresh: function(e) {
+  refresh: function (e) {
     console.log("main.refresh")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -107,14 +107,15 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-  changeData: function(data) {
+  changeData: function (data) {
     console.log("main.changeData")
     var _self = this;
     _self.setData(data)
   },
-  onLoad: function() {
+  onLoad: function () {
     console.log("main.onLoad")
     var _self = this;
+
 
     if (!ownRequest.isLogin()) {
       return;
@@ -155,11 +156,11 @@ Page({
           personal: personal
         })
 
-         storeage.setProductKind(productKind)
-         storeage.setCart(cart)
+        storeage.setProductKind(productKind)
+        storeage.setCart(cart)
       }
     })
-    
+
   },
   mainTabBarItemClick(e) {
     console.log('tabbar.tabBarItemClick')
@@ -182,7 +183,7 @@ Page({
       tabBar: tabBar
     })
   },
-  indexBarBannerSwiperChange: function(e) {
+  indexBarBannerSwiperChange: function (e) {
     var _index = this.data.index;
     _index.banner.currentSwiper = e.detail.current;
     this.setData({
@@ -217,7 +218,7 @@ Page({
     console.log('cartBarListItemCheck.cIndex:' + cIndex)
     console.log('cartBarListItemCheck.operate' + operate)
 
-    var sku = _self.data.cart.block[pIndex].skus[cIndex];
+    var sku = _self.data.cart.blocks[pIndex].skus[cIndex];
 
     switch (operate) {
       case "1":
@@ -244,30 +245,30 @@ Page({
       operate: operate,
       skus: operateSkus
     }, {
-      success: function(res) {
-        _self.setData({
-          cart: res.data
-        })
-        app.mainTabBarSetNumber(2, res.data.count)
-      },
-      fail: function() {}
-    })
+        success: function (res) {
+          _self.setData({
+            cart: res.data
+          })
+          app.mainTabBarSetNumber(2, res.data.count)
+        },
+        fail: function () { }
+      })
   },
-  cartBarImmeBuy: function(e) {
+  cartBarImmeBuy: function (e) {
     var _this = this
 
-    var block = _this.data.cart.block
+    var blocks = _this.data.cart.blocks
 
     var skus = []
 
-    for (var i = 0; i < block.length; i++) {
-      for (var j = 0; j < block[i].skus.length; j++) {
-        if (block[i].skus[j].selected) {
+    for (var i = 0; i < blocks.length; i++) {
+      for (var j = 0; j < blocks[i].skus.length; j++) {
+        if (blocks[i].skus[j].selected) {
           skus.push({
-            cartId: block[i].skus[j].cartId,
-            id: block[i].skus[j].id,
-            quantity: block[i].skus[j].quantity,
-            receptionMode: block[i].skus[j].receptionMode
+            cartId: blocks[i].skus[j].cartId,
+            id: blocks[i].skus[j].id,
+            quantity: blocks[i].skus[j].quantity,
+            receptionMode: blocks[i].skus[j].receptionMode
           })
         }
       }
@@ -282,12 +283,12 @@ Page({
 
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
-      success: function(res) {
+      success: function (res) {
         // success
       },
     })
   },
-  addToCart: function(e) {
+  addToCart: function (e) {
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
     console.log("skuId:" + skuId)
@@ -304,8 +305,107 @@ Page({
       operate: 2,
       skus: skus
     }, {
-      success: function(res) {},
-      fail: function() {}
+        success: function (res) { },
+        fail: function () { }
+      })
+  },
+
+  
+  //手指触摸动作开始 记录起点X坐标
+  cartBarTouchstart: function (e) {
+
+    //开始触摸时 重置所有删除
+    var _this = this
+
+    for (var i = 0; i < _this.data.cart.blocks.length; i++) {
+      for (var j = 0; j < _this.data.cart.blocks[i].skus.length; j++) {
+        if (_this.data.cart.blocks[i].skus[j].isTouchMove) {
+          _this.data.cart.blocks[i].skus[j].isTouchMove = false;
+        }
+      }
+    }
+
+    this.setData({
+      startX: e.changedTouches[0].clientX,
+      startY: e.changedTouches[0].clientY,
+      cart: _this.data.cart
     })
+
+  },
+
+  //滑动事件处理
+
+  cartBarTouchmove: function (e) {
+
+    var _this = this,
+
+      cartId = e.currentTarget.dataset.cartid,//当前索引
+
+      startX = _this.data.startX,//开始X坐标
+
+      startY = _this.data.startY,//开始Y坐标
+
+      touchMoveX = e.changedTouches[0].clientX,//滑动变化坐标
+
+      touchMoveY = e.changedTouches[0].clientY,//滑动变化坐标
+
+      //获取滑动角度
+
+      angle = _this.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
+
+    console.log("cartId:" + cartId);
+
+
+    for (var i = 0; i < _this.data.cart.blocks.length; i++) {
+      for (var j = 0; j < _this.data.cart.blocks[i].skus.length; j++) {
+
+        _this.data.cart.blocks[i].skus[j].isTouchMove = false
+
+        //滑动超过30度角 return
+
+        if (Math.abs(angle) > 30) return;
+
+        if (cartId == _this.data.cart.blocks[i].skus[j].cartId) {
+
+          if (touchMoveX > startX) //右滑
+
+            _this.data.cart.blocks[i].skus[j].isTouchMove = false
+
+          else //左滑
+
+            _this.data.cart.blocks[i].skus[j].isTouchMove = true
+
+        }
+      }
+    }
+
+    //更新数据
+    console.log(JSON.stringify(_this.data.cart))
+    _this.setData({
+      cart: _this.data.cart
+    })
+
+  },
+
+  /**
+  
+  * 计算滑动角度
+  
+  * @param {Object} start 起点坐标
+  
+  * @param {Object} end 终点坐标
+  
+  */
+
+  angle: function (start, end) {
+
+    var _X = end.X - start.X,
+
+      _Y = end.Y - start.Y
+
+    //返回角度 /Math.atan()返回数字的反正切值
+
+    return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
+
   }
 })
