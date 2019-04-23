@@ -45,7 +45,6 @@ page {
   height: 100%;
 }
 
-
 .radio image {
   width: 38rpx;
   height: 38rpx;
@@ -182,7 +181,7 @@ page {
   display: block;
 }
 
-.hide,.hidden {
+.hide, .hidden {
   display: none;
 }
 
@@ -492,14 +491,13 @@ page {
 }
 
 .its-a .flex1 {
-	flex: 1;
+  flex: 1;
 }
 
 .its-a .w100 {
-	flex: none;
- width:100px;
+  flex: none;
+  width: 100px;
 }
-
 
 .tabbar-scroll {
   /* position: fixed;
@@ -531,9 +529,10 @@ page {
   z-index: 999;
 }
 
-.tabbar-items .item .title{
+.tabbar-items .item .title {
   display: block;
 }
+
 .tabbar-items .item-seleced .title {
   color: #ffb101;
 }
@@ -566,4 +565,24 @@ page {
 .list-emptytips text {
   font-size: 0.8rem;
   color: #9d9d9d;
+}
+
+.bottom-btn {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.55555556;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #000;
+  border-radius: 0px;
 }

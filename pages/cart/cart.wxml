@@ -1,8 +1,10 @@
 <template name="cart">
-  <view class="st-cart">
-    <view class="ct">
 
-      <block wx:if="{{blocks.length>0}}">
+  <block wx:if="{{blocks.length>0}}">
+    <view class="st-cart">
+      <view class="ct">
+
+
         <view class="cart-blocks its-blocks">
           <block wx:for="{{blocks}}" wx:for-index="pindex" wx:for-item="item" wx:key="list">
             <view class="it">
@@ -13,9 +15,7 @@
               </view>
               <view class="it-skus">
                 <block wx:for="{{item.skus}}" wx:for-index="cindex" wx:for-item="itemsku" wx:key="list">
-                  <view class="it touch-item {{itemsku.isTouchMove ? 'touch-move-active' : ''}}"
-                  data-cartid="{{itemsku.cartId}}" bindtouchstart="cartBarTouchstart" bindtouchmove="cartBarTouchmove"
-                   >
+                  <view class="it touch-item {{itemsku.isTouchMove ? 'touch-move-active' : ''}}" data-cartid="{{itemsku.cartId}}" bindtouchstart="cartBarTouchstart" bindtouchmove="cartBarTouchmove">
                     <view class="it-content">
                       <view class="it-l" bindtap="cartBarListItemOperate" data-reply-operate="1" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}">
                         <image class="img" src='/content/default/images/{{itemsku.selected==false?"checkedoff":"checkedon"}}.png'></image>
@@ -32,19 +32,19 @@
                         </view>
                       </view>
                       <view class="it-r">
-                               <view class="decrease">
+                        <view class="decrease">
                           <image class="img" bindtap="cartBarListItemOperate" data-reply-operate="3" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/decrease.png'></image>
                         </view>
                         <text class="quantity">{{itemsku.quantity}}</text>
 
 
-                                         <view class="increase">
+                        <view class="increase">
                           <image class="img" bindtap="cartBarListItemOperate" data-reply-operate="2" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" src='/content/default/images/increase.png'></image>
                         </view>
                       </view>
                     </view>
-                    <view class="it-del" bindtap="cartBarListItemOperate" data-reply-operate="4" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}" >删除</view>
-                    
+                    <view class="it-del" bindtap="cartBarListItemOperate" data-reply-operate="4" data-reply-pindex="{{pindex}}" data-reply-cindex="{{cindex}}">删除</view>
+
                   </view>
 
 
@@ -55,26 +55,25 @@
             <view class="line-space"></view>
           </block>
         </view>
-      </block>
-      <block wx:else>
-
-        <view style='text-align:center'>
-          <image src='/content/default/images/cart_empty.png'></image>
-
-        </view>
-      </block>
-
-      <view class="cart-bottom">
-        <view class="it-l">
-          <text class='font-gray'>已选({{countBySelected}})</text>
-        </view>
-        <view class="it-m">
-          <text class="font-main" value="249" decimal="2">{{sumPriceBySelected}}</text>
-        </view>
-        <view bindtap="cartBarImmeBuy" class="bg-main it-r">
-          <text>下单</text>
+        <view class="cart-bottom">
+          <view class="it-l">
+            <text class='font-gray'>已选({{countBySelected}})</text>
+          </view>
+          <view class="it-m">
+            <text class="font-main" value="249" decimal="2">{{sumPriceBySelected}}</text>
+          </view>
+          <view bindtap="cartBarImmeBuy" class="bg-main it-r">
+            <text>下单</text>
+          </view>
         </view>
       </view>
     </view>
-  </view>
+  </block>
+  <block wx:else>
+
+    <view style='height:100%;display:flex;justify-content:center;align-items:center'>
+      <image src='/content/default/images/cart_empty.png'></image>
+    </view>
+  </block>
+
 </template>
