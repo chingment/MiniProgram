@@ -52,7 +52,7 @@
 }
 
 .its-blocks >.it>.it-skus >.it> .it-content>.it-l {
-  width: 1.6rem;
+  width: 2.2rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -140,8 +140,8 @@
 
 .cart-bottom {
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 3.044rem;
   background: #fff;
   display: flex;
   border-top: 1px solid #f8f8f8;

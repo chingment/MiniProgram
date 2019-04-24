@@ -85,3 +85,10 @@
   color: #f18d00;
   font-size: 1.2rem;
 }
+
+
+.ord-block{
+  margin-bottom: 3.044rem;
+  padding-bottom: 3.044rem;
+}
+

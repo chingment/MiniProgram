@@ -182,6 +182,6 @@ Page({
       tabsSliderIndex: index,
     })
 
-    //getList(_this)
+    getList(_this)
   }
 })
