@@ -20,102 +20,108 @@
     <swiper-item class="item">
       <scroll-view scroll-top="{{item.scrollTop}}" scroll-y="true" data-reply-index="{{index}}" style="height:{{scrollHeight}}px" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scroll">
 
-        <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
-          <view class="it">
+        <view class='list-data its-orderlist' wx:if="{{item.list.length>0}}">
+          <block wx:for="{{item.list}}" wx:for-index="index" wx:for-item="item2" wx:key="list">
 
-            <view class="it-tag">
-              <view class="tag-name">
+            <view class="it">
 
-                <view class="icon">
-                  <image class="img" src="/content/default/images/store_address.png"></image>
-                </view>
-                <view class="content">
-                  <text class="txt">{{item2.tag.name.content}}</text>
-                </view>
+              <view class="it-tag">
+                <view class="tag-name">
 
-              </view>
-              <view class="tag-desc">
-                <view class="content">
-                  <text class="txt">{{item2.tag.desc.content}}</text>
-                </view>
-
-              </view>
-            </view>
-
-            <view class="it-blocks">
-
-              <block wx:for="{{item2.blocks}}" wx:for-index="index" wx:for-item="block" wx:key="list">
-                <view class="block">
-                  <view class="block-tag">
-
-                    <view class="tag-name">
-
-                      <view class="icon">
-                        <image class="img" src="/content/default/images/store_address.png"></image>
-                      </view>
-                      <view class="content">
-                        <text class="txt">{{block.tag.name.content}}</text>
-                      </view>
-
-                    </view>
-                    <view class="tag-desc">
-                      <view class="content">
-                        <text class="txt">{{block.tag.name.content}}</text>
-                      </view>
-
-                    </view>
+                  <view class="icon">
+                    <image class="img" src="/content/default/images/store_address.png"></image>
                   </view>
-                  <view class="block-field">
+                  <view class="content">
+                    <text class="txt">{{item2.tag.name.content}}</text>
+                  </view>
 
+                </view>
+                <view class="tag-desc">
+                  <view class="content">
+                    <text class="txt">{{item2.tag.desc.content}}</text>
+                  </view>
 
-                    <view class="its-odcskus">
-                      <block wx:for="{{block.fields}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
-                        <view class="it">
-                          <view class="it-l">
-                            <view class="imgUrl">
-                              <image class="img" src="{{skusitem.value.imgUrl}}"></image>
-                            </view>
-                          </view>
-                          <view class="it-m">
-                            <view class="it-ml">
-                              <text class='name'>{{skusitem.value.name}}</text>
-                            </view>
-                            <view class="it-mr">
-                              <text class='quantity'> x {{skusitem.value.quantity}}</text>
-                            </view>
-                          </view>
-                          <view class="it-r">
-                            <text class='salePrice'> {{skusitem.value.salePrice}}</text>
-                          </view>
+                </view>
+              </view>
+
+              <view class="it-blocks">
+
+                <block wx:for="{{item2.blocks}}" wx:for-index="index" wx:for-item="block" wx:key="list">
+                  <view class="block">
+                    <view class="block-tag">
+
+                      <view class="tag-name">
+
+                        <view class="content">
+                          <text class="txt">{{block.tag.name.content}}</text>
                         </view>
-                      </block>
+
+                      </view>
+                      <view class="tag-desc">
+                        <view class="content">
+                          <text class="txt">{{block.tag.name.content}}</text>
+                        </view>
+
+                      </view>
                     </view>
+                    <view class="block-field">
 
+
+                      <view class="its-odcskus">
+                        <block wx:for="{{block.fields}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
+                          <view class="it">
+                            <view class="it-l">
+                              <view class="imgUrl">
+                                <image class="img" src="{{skusitem.value.imgUrl}}"></image>
+                              </view>
+                            </view>
+                            <view class="it-m">
+                              <view class="it-ml">
+                                <text class='name'>{{skusitem.value.name}}</text>
+                              </view>
+                              <view class="it-mr">
+                                <text class='quantity'> x {{skusitem.value.quantity}}</text>
+                              </view>
+                            </view>
+                            <view class="it-r">
+                              <text class='salePrice'> {{skusitem.value.salePrice}}</text>
+                            </view>
+                          </view>
+                        </block>
+                      </view>
+
+                    </view>
                   </view>
-                </view>
 
-              </block>
-            </view>
-
-            <view class="it-message">
-
-            </view>
-            <view class="it-buttons">
-
-
-              <view class="btnbox">
-                <view class="btn" style="color:red; border:1px solid red;">取消订单</view>
+                </block>
               </view>
 
-              <view class="btnbox">
-                <view class="btn" style="color:green; border:1px solid green;">查看详情</view>
+              <view class="it-message">
+
+              </view>
+              <view class="it-buttons">
+
+                <block wx:for="{{item2.buttons}}" wx:for-index="index" wx:for-item="button" wx:key="list">
+                  <view class="btnbox">
+                    <view class="btn" bindtap="operate" data-reply-opval="{{button.opVal}}" data-reply-optype="{{button.opType}}" style="color:{{button.name.color}}; border:1px solid {{button.name.color}};">{{button.name.content}}</view>
+                  </view>
+                </block>
+
               </view>
 
             </view>
+            <view class="line-space"></view>
 
+          </block>
+        </view>
+        <view class="list-emptytips" wx:else>
+          <view class="icon">
+            <image class="img" src='/content/default/images/list_emptytips_img.png'></image>
           </view>
-    <view class="line-space"></view>
-        </block>
+          <view class="msg">
+            <text>~暂无数据~</text>
+          </view>
+        </view>
       </scroll-view>
     </swiper-item>
   </block>

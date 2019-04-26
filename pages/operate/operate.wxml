@@ -6,7 +6,7 @@
     <view class="operate-check">
       <canvas class="it-countdown" style="width: 180px; height: 180px;margin:auto" canvas-id="secondCanvas"></canvas>
       <view class="it-message">
-        <text>正在查询订单信息，请耐心等候</text>
+        <text>正在处理，请耐心等候</text>
       </view>
     </view>
   </block>
@@ -23,7 +23,7 @@
       <view class="it-btns">
         <block wx:for="{{result.buttons}}" wx:key="item">
           <view class="btnbox">
-            <view class="btn" style="color:{{item.color}}; border:1px solid {{item.color}};"  >{{item.name}}</view>
+            <view class="btn" bindtap="operate" data-reply-opval="{{item.opVal}}" data-reply-optype="{{item.opType}}" style="color:{{item.name.color}}; border:1px solid {{item.name.color}};"  >{{item.name.content}}</view>
           </view>
         </block>
       </view>

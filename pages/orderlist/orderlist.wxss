@@ -2,9 +2,16 @@
   float: left;
 }
 
+.its-orderlist > .it{
+  padding: 0 .5rem;
+}
+
 .it-tag {
   align-items: center;
   display: flex;
+    padding: .3rem 0;
+    border-bottom:1px solid #f8f8f8;
+
 }
 
 .it-tag > .tag-name {
@@ -34,8 +41,9 @@
 
 .it-buttons{
   display: flex;
-  padding: 10px 0px;
   justify-content:flex-end;
+  border-top:1px solid #f8f8f8;
+
 
 }
 

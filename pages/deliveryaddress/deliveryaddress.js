@@ -26,12 +26,7 @@ Page({
   data: {
     operate: 0,
     operateIndex: 0,
-    list: [{
-      receiver: "邱庆文",
-      phoneNumber: "1598927032",
-      address: "广州市区花都区狮岭镇振兴村",
-      isDefault: true
-    }]
+    list: []
   },
 
   /**

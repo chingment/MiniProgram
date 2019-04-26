@@ -583,6 +583,6 @@ page {
   line-height: 2.55555556;
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
-  color: #000;
+  color: #fff;
   border-radius: 0px;
 }

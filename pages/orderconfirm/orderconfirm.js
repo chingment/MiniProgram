@@ -180,11 +180,13 @@ Page({
             'paySign': data.paySign,
             'success': function (res) {
               wx.redirectTo({
-                url: '/pages/operate/operate?id=' + data.orderId+'&type=1'
+                url: '/pages/operate/operate?id=' + data.orderId+'&type=1&caller=1'
               })
             },
             'fail': function (res) {
-
+              wx.redirectTo({
+                url: '/pages/operate/operate?id=' + data.orderId + '&type=2&caller=1'
+              })
             }
           })
 

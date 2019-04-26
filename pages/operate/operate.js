@@ -4,15 +4,23 @@ const ownRequest = require('../../own/ownRequest.js')
 const lumos = require('../../utils/lumos.minprogram.js')
 
 Page({
-
-  getResult: function (id, tp) {
+  data: {
+    result: { 
+      isComplete: true,
+      message:"正在处理，请耐心等候" 
+      }
+  },
+  getResult: function (id, tp, caller) {
 
     var _this = this;
     lumos.getJson({
-      url: config.apiUrl.operateGetResult, urlParams: {
+      url: config.apiUrl.operateGetResult,
+      urlParams: {
         id: id,
-        type: tp
+        type: tp,
+        caller: caller
       },
+      isShowLoading: false,
       success: function (res) {
         if (res.data.isComplete) {
           clearInterval(_this.countDown);
@@ -28,6 +36,7 @@ Page({
     var _this = this
     var _id = options.id == undefined ? "" : options.id
     var _type = options.type == undefined ? "" : options.type
+    var _caller = options.caller == undefined ? "" : options.caller
 
     console.log("operate.load()->>>id:" + _id + ",type:" + _type)
 
@@ -46,7 +55,7 @@ Page({
         end = end + 2 * Math.PI / n;
         ringMove(start, end);
         step++;
-        _this.getResult(_id, _type)
+        _this.getResult(_id, _type, _caller)
       } else {
         clearInterval(time);
       }
@@ -103,6 +112,8 @@ Page({
     // 倒计时前先绘制整圆的圆环
     ringMove(start, end);
     // 创建倒计时m.h987yuitryuioihyhujik[jhgvfbnvnjmnbvbnm,nbvfcgklkjhg545545545u ]
+
+
     time = setInterval(animation, animation_interval);
 
     _this.countDown = time
@@ -115,5 +126,24 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  operate: function (e) {
+
+    var opType = e.currentTarget.dataset.replyOptype
+    var opVal = e.currentTarget.dataset.replyOpval
+
+    console.log("opType:" + opType + ",opVal:" + opVal)
+    switch (opType) {
+      case "FUN":
+
+        break;
+      case "URL":
+        wx.redirectTo({
+          url: opVal
+        })
+        break;
+    }
   }
+
 })

@@ -4,7 +4,7 @@ const ownRequest = require('../../own/ownRequest.js')
 const lumos = require('../../utils/lumos.minprogram.js')
 const app = getApp()
 
-var getList = function(_this) {
+var getList = function (_this) {
   console.log("getList")
   var currentTab;
   var currentTabIndex = -1;
@@ -24,15 +24,16 @@ var getList = function(_this) {
 
   var pageIndex = currentTab.pageIndex
   var status = currentTab.status == undefined ? "" : currentTab.status
-  
+
   lumos.getJson({
     url: config.apiUrl.orderGetList,
     urlParams: {
       storeId: ownRequest.getCurrentStoreId(),
       pageIndex: pageIndex,
-      status: status
+      status: status,
+      caller: 1
     },
-    success: function(res) {
+    success: function (res) {
       console.log("config.apiUrl.productList->success")
 
       var list
@@ -90,7 +91,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var _this = this
     var wHeight = wx.getSystemInfoSync().windowHeight;
     var status = options.status == undefined ? "" : options.status
@@ -113,59 +114,59 @@ Page({
     })
 
     getList(_this)
-    
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   //tab点击
-  tabBarClick: function(e) {
+  tabBarClick: function (e) {
     console.log("tabBarClick");
     var index = e.currentTarget.dataset.replyIndex //对应页面data-reply-index
     var _this = this
@@ -183,5 +184,22 @@ Page({
     })
 
     getList(_this)
+  },
+  operate: function (e) {
+
+    var opType = e.currentTarget.dataset.replyOptype
+    var opVal = e.currentTarget.dataset.replyOpval
+
+    console.log("opType:" + opType + ",opVal:" + opVal)
+    switch (opType) {
+      case "FUN":
+
+        break;
+      case "URL":
+        wx.navigateTo({
+          url: opVal　　
+        })
+        break;
+    }
   }
 })
