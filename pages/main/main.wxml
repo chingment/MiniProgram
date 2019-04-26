@@ -11,18 +11,33 @@
   <view class="content">
     <view class="ct">
       <view class="its">
-        <scroll-view class='it {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}">
-          <template is="{{tabBar[0].name}}" data="{{...index}}" />
-        </scroll-view>
-        <scroll-view class='it {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}">
-          <template is="{{tabBar[1].name}}" data="{{...productKind}}" />
-        </scroll-view>
-        <scroll-view class='it {{tabBar[2].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{2}}" data-reply-name="{{tabBar[2].name}}">
-          <template is="{{tabBar[2].name}}" data="{{...cart}}" />
-        </scroll-view>
-        <scroll-view class='it {{tabBar[3].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{3}}" data-reply-name="{{tabBar[3].name}}">
-          <template is="{{tabBar[3].name}}" data="{{...personal}}" />
-        </scroll-view>
+
+        <block wx:if="{{isLogin}}">
+
+          <scroll-view class='it {{tabBar[0].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{0}}" data-reply-name="{{tabBar[0].name}}">
+            <template is="{{tabBar[0].name}}" data="{{...index}}" />
+          </scroll-view>
+          <scroll-view class='it {{tabBar[1].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{1}}" data-reply-name="{{tabBar[1].name}}">
+            <template is="{{tabBar[1].name}}" data="{{...productKind}}" />
+          </scroll-view>
+          <scroll-view class='it {{tabBar[2].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{2}}" data-reply-name="{{tabBar[2].name}}">
+            <template is="{{tabBar[2].name}}" data="{{...cart}}" />
+          </scroll-view>
+          <scroll-view class='it {{tabBar[3].selected==false?"hidden":""}}' style="height:{{tabBarContentHeight}}px" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="loadMore" data-reply-index="{{3}}" data-reply-name="{{tabBar[3].name}}">
+            <template is="{{tabBar[3].name}}" data="{{...personal}}" />
+          </scroll-view>
+           </block>
+          <block wx:else>
+
+<view class="login-box">
+  <view class="logo">
+    <image class="img" src='/content/default/images/logo.jpg'></image>
+  </view>
+
+  <button class="btn bg-main btn-login" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">授权登录</button>
+</view>
+
+          </block>
       </view>
     </view>
   </view>

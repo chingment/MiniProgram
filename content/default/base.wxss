@@ -586,3 +586,18 @@ page {
   color: #fff;
   border-radius: 0px;
 }
+
+.login-box{
+
+}
+.login-box .logo{
+  width: 10rem;
+  height: 10rem;
+  margin: auto;
+
+}
+
+.login-box .btn-login{
+  color: #fff;
+  margin: 0 1rem;
+}

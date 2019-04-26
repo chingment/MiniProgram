@@ -2,13 +2,14 @@ const config = require('../../config')
 const storeage = require('../../utils/storeageutil.js')
 const ownRequest = require('../../own/ownRequest.js')
 const lumos = require('../../utils/lumos.minprogram.js')
+const app = getApp()
 
 Page({
   data: {
-    result: { 
+    result: {
       isComplete: true,
-      message:"正在处理，请耐心等候" 
-      }
+      message: "正在处理，请耐心等候"
+    }
   },
   getResult: function (id, tp, caller) {
 
@@ -136,7 +137,11 @@ Page({
     console.log("opType:" + opType + ",opVal:" + opVal)
     switch (opType) {
       case "FUN":
-
+        switch (opVal) {
+          case "goHome":
+            app.mainTabBarSwitch(0)
+            break;
+        }
         break;
       case "URL":
         wx.redirectTo({

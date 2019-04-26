@@ -13,6 +13,7 @@ var app = getApp()
 
 Page({
   data: {
+    isLogin: false,
     scrollHeight: 500,
     tag: "main",
     tabBarContentHeight: 0,
@@ -89,7 +90,38 @@ Page({
       list: []
     }
   },
-  loadMore: function (e) {
+  bindgetuserinfo: function (e) {
+
+
+
+
+    // if (e.target.userInfo) {
+    ownRequest.login((params) => {
+      // 登录成功后，返回
+      // wx.redirectTo({
+      //   url: '../main/main',
+      // })
+
+
+      lumos.postJson({
+        url: config.apiUrl.userLoginByMinProgram, dataParams: params,
+        success: function (res) {
+          if (res.result == 1) {
+            storeage.setAccessToken(res.data.accessToken);
+            console.log("getAccessonToken" + storeage.getAccessToken())
+
+            wx.reLaunch({ //关闭所有页面，打开到应用内的某个页面
+              url: ownRequest.getReturnUrl()
+            })
+
+          }
+        }
+      })
+
+    })
+    //}
+  },
+  loadMore: function(e) {
     console.log("main.loadMore")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -98,7 +130,7 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-  refresh: function (e) {
+  refresh: function(e) {
     console.log("main.refresh")
     var _self = this
     var _dataset = e.currentTarget.dataset
@@ -107,23 +139,27 @@ Page({
     console.log("main.loadMore.index:" + index)
     console.log("main.loadMore.name:" + name)
   },
-  changeData: function (data) {
+  changeData: function(data) {
     console.log("main.changeData")
     var _self = this;
     _self.setData(data)
   },
-  onLoad: function () {
+  onLoad: function() {
     console.log("main.onLoad")
     var _self = this;
 
+    var isLogin = ownRequest.isLogin(); 
 
-    if (!ownRequest.isLogin()) {
+    if (!isLogin) {
       return;
     }
+
 
     if (!ownRequest.isSelectedStore(true)) {
       return
     }
+
+
 
     var currentStore = ownRequest.getCurrentStore()
     var wHeight = wx.getSystemInfoSync().windowHeight;
@@ -140,7 +176,7 @@ Page({
         storeId: ownRequest.getCurrentStoreId(),
         datetime: '2018-03-30'
       },
-      success: function (d) {
+      success: function(d) {
 
         var index = d.data.index
         var productKind = d.data.productKind
@@ -150,6 +186,7 @@ Page({
         index["currentStore"] = currentStore
 
         _self.setData({
+          isLogin:isLogin,
           index: index,
           productKind: productKind,
           cart: cart,
@@ -183,7 +220,7 @@ Page({
       tabBar: tabBar
     })
   },
-  indexBarBannerSwiperChange: function (e) {
+  indexBarBannerSwiperChange: function(e) {
     var _index = this.data.index;
     _index.banner.currentSwiper = e.detail.current;
     this.setData({
@@ -240,21 +277,43 @@ Page({
 
     console.log('ownRequest.getCurrentStoreId():' + ownRequest.getCurrentStoreId())
 
-    cart.operate({
-      storeId: ownRequest.getCurrentStoreId(),
-      operate: operate,
-      skus: operateSkus
-    }, {
-        success: function (res) {
+    function _operate() {
+
+      cart.operate({
+        storeId: ownRequest.getCurrentStoreId(),
+        operate: operate,
+        skus: operateSkus
+      }, {
+        success: function(res) {
           _self.setData({
             cart: res.data
           })
           app.mainTabBarSetNumber(2, res.data.count)
         },
-        fail: function () { }
+        fail: function() {}
       })
+    }
+
+    if (operate == 4) {
+      wx.showModal({
+        title: '提示',
+        content: '确定要删除吗？',
+        success: function(sm) {
+          if (sm.confirm) {
+            _operate()
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+
+    } else {
+      _operate()
+    }
+
+
   },
-  cartBarImmeBuy: function (e) {
+  cartBarImmeBuy: function(e) {
     var _this = this
 
     var blocks = _this.data.cart.blocks
@@ -283,12 +342,12 @@ Page({
 
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?skus=' + JSON.stringify(skus),
-      success: function (res) {
+      success: function(res) {
         // success
       },
     })
   },
-  addToCart: function (e) {
+  addToCart: function(e) {
     var _self = this
     var skuId = e.currentTarget.dataset.replySkuid //对应页面data-reply-index
     console.log("skuId:" + skuId)
@@ -305,14 +364,14 @@ Page({
       operate: 2,
       skus: skus
     }, {
-        success: function (res) { },
-        fail: function () { }
-      })
+      success: function(res) {},
+      fail: function() {}
+    })
   },
 
-  
+
   //手指触摸动作开始 记录起点X坐标
-  cartBarTouchstart: function (e) {
+  cartBarTouchstart: function(e) {
 
     //开始触摸时 重置所有删除
     var _this = this
@@ -335,23 +394,29 @@ Page({
 
   //滑动事件处理
 
-  cartBarTouchmove: function (e) {
+  cartBarTouchmove: function(e) {
 
     var _this = this,
 
-      cartId = e.currentTarget.dataset.cartid,//当前索引
+      cartId = e.currentTarget.dataset.cartid, //当前索引
 
-      startX = _this.data.startX,//开始X坐标
+      startX = _this.data.startX, //开始X坐标
 
-      startY = _this.data.startY,//开始Y坐标
+      startY = _this.data.startY, //开始Y坐标
 
-      touchMoveX = e.changedTouches[0].clientX,//滑动变化坐标
+      touchMoveX = e.changedTouches[0].clientX, //滑动变化坐标
 
-      touchMoveY = e.changedTouches[0].clientY,//滑动变化坐标
+      touchMoveY = e.changedTouches[0].clientY, //滑动变化坐标
 
       //获取滑动角度
 
-      angle = _this.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
+      angle = _this.angle({
+        X: startX,
+        Y: startY
+      }, {
+        X: touchMoveX,
+        Y: touchMoveY
+      });
 
     console.log("cartId:" + cartId);
 
@@ -397,7 +462,7 @@ Page({
   
   */
 
-  angle: function (start, end) {
+  angle: function(start, end) {
 
     var _X = end.X - start.X,
 

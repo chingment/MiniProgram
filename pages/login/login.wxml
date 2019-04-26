@@ -1,4 +1,7 @@
+<view class='login-box'>
+  <view class="logo">
+    <image class="img" src='/content/default/images/logo.jpg'></image>
+  </view>
 
-
-
-    <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">授权登录</button>
+  <button class="btn bg-main btn-login" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">授权登录</button>
+</view>
