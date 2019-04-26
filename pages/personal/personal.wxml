@@ -58,7 +58,7 @@
         </view>
       </navigator>
 
-      <navigator url="/pages/personalinfo/personalinfo" class="col-nav-item" hover-class="none">
+      <navigator url="/pages/notopen/notopen" class="col-nav-item" hover-class="none">
         <view class="item-left">
           <image src='/content/default/images/col_nav_icon_personalinfo.png'></image>
         </view>
