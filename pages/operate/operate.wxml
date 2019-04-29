@@ -32,10 +32,10 @@
           <view class="it">
             <view class="it-m">
               <view class="it-ml w100">
-                <text class="txt">{{item.name}}</text>
+                <text class="txt">{{item.title.content}}</text>
               </view>
               <view class="it-mr flex1">
-                <text class="txt">{{item.value}}</text>
+                <text class="txt">{{item.value.content}}</text>
               </view>
             </view>
           </view>

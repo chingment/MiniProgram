@@ -17,7 +17,7 @@
 
 <swiper class="tabbar-contents" bindchange="swiperSwitchTab" current="{{tabsSliderIndex}}" duration="300" style="height:{{scrollHeight}}px">
   <block wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item" wx:key="list">
-    <swiper-item class="item">
+    <swiper-item class="item" catchtouchmove="stopTouchMove">
       <scroll-view scroll-top="{{item.scrollTop}}" scroll-y="true" data-reply-index="{{index}}" style="height:{{scrollHeight}}px" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scroll">
 
         <view class='list-data its-orderlist' wx:if="{{item.list.length>0}}">
@@ -38,7 +38,8 @@
                 </view>
                 <view class="tag-desc">
                   <view class="content">
-                    <text class="txt">{{item2.tag.desc.content}}</text>
+                    <text class="txt">{{item2.tag.desc.title.content}}</text>
+                    <text class="txt">{{item2.tag.desc.value.content}}</text>
                   </view>
 
                 </view>
@@ -59,7 +60,8 @@
                       </view>
                       <view class="tag-desc">
                         <view class="content">
-                          <text class="txt">{{block.tag.name.content}}</text>
+                         <text class="t">{{block.tag.desc.title.content}}</text>
+                         <text class="c" style="color:{{block.tag.desc.value.color}}" >{{block.tag.desc.value.content}}</text>
                         </view>
 
                       </view>
@@ -68,7 +70,7 @@
 
 
                       <view class="its-odcskus">
-                        <block wx:for="{{block.fields}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
+                        <block wx:for="{{block.data}}" wx:for-index="index" wx:for-item="skusitem" wx:key="list">
                           <view class="it">
                             <view class="it-l">
                               <view class="imgUrl">
@@ -103,7 +105,7 @@
 
                 <block wx:for="{{item2.buttons}}" wx:for-index="index" wx:for-item="button" wx:key="list">
                   <view class="btnbox">
-                    <view class="btn" bindtap="operate" data-reply-opval="{{button.opVal}}" data-reply-optype="{{button.opType}}" style="color:{{button.name.color}}; border:1px solid {{button.name.color}};">{{button.name.content}}</view>
+                    <view class="btn" bindtap="operate" data-reply-opval="{{button.opVal}}" data-reply-optype="{{button.opType}}" data-reply-id="{{item2.id}}"  style="color:{{button.name.color}}; border:1px solid {{button.name.color}};">{{button.name.content}}</view>
                   </view>
                 </block>
 

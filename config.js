@@ -28,7 +28,9 @@ var config = {
     operateGetResult: `${host}/Operate/GetResult`,
     orderReserve: `${host}/Order/Reserve`,
     orderGetJsApiPaymentPms: `${host}/Order/GetJsApiPaymentPms`,
-    orderGetList: `${host}/Order/List`
+    orderGetList: `${host}/Order/List`,
+    orderCancle: `${host}/Order/Cancle`,
+    orderGetDetails: `${host}/Order/Details`
   }
 
 };
