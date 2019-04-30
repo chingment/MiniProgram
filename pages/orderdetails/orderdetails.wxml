@@ -1,4 +1,4 @@
-<view class="it">
+<view class="it block">
 
   <view class="it-tag">
     <view class="tag-name">
@@ -81,17 +81,26 @@
 </view>
 <view class="line-space"></view>
 
-<view class="its-a">
-  <block wx:for="{fieldBlocks}}" wx:key="item">
-    <view class="it">
-      <view class="it-m">
-        <view class="it-ml w100">
-          <text class="txt">{{item.title.content}}</text>
-        </view>
-        <view class="it-mr flex1">
-          <text class="txt">{{item.value.content}}</text>
+
+<view class="its-a fieldBlock">
+  <block wx:for="{{fieldBlocks}}" wx:for-item="fieldBlock" wx:key="list" >
+
+    <block wx:for="{{fieldBlock.data}}" wx:for-item="item" wx:key="list" >
+      <view class="it">
+        <view class="it-m">
+          <view class="it-ml w100">
+            <text class="txt">{{item.title.content}}</text>
+          </view>
+          <view class="it-mr flex1">
+            <text class="txt">{{item.value.content}}</text>
+          </view>
         </view>
       </view>
-    </view>
+    </block>
   </block>
 </view>
+<view class="line-space"></view>
+
+<block wx:if="{{status==2000}}">
+  <button bindtap="goPay" class="btn-bottom bg-main">立即支付</button>
+</block>

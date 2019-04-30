@@ -2,6 +2,10 @@
   float: left;
 }
 
+.block,.fieldBlock{
+ padding: 0 .5rem;
+}
+
 .its-orderlist > .it {
   padding: 0 0.5rem;
 }
